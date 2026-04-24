@@ -1,0 +1,36 @@
+# 数据集配置
+datasets:
+  mnist:
+    name: "MNIST"
+    num_classes: 10
+    input_channels: 1
+    input_size: 28
+    default_tasks: 5
+
+  cifar10:
+    name: "CIFAR-10"
+    num_classes: 10
+    input_channels: 3
+    input_size: 32
+    default_tasks: 5
+
+  cifar100:
+    name: "CIFAR-100"
+    num_classes: 100
+    input_channels: 3
+    input_size: 32
+    default_tasks: 10
+
+# 任务划分配置
+task_types:
+  split:
+    description: "按类别划分，每个任务包含不相交的类别子集"
+    supported_datasets: ["mnist", "cifar10", "cifar100"]
+
+  permuted:
+    description: "固定像素排列，每个任务使用不同的排列方式"
+    supported_datasets: ["mnist"]
+
+  rotated:
+    description: "渐进旋转，每个任务使用不同旋转角度"
+    supported_datasets: ["mnist"]

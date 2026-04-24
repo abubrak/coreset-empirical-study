@@ -1,0 +1,43 @@
+# 核心集选择方法配置
+methods:
+  random:
+    name: "随机采样"
+    type: "baseline"
+    description: "均匀随机采样作为基准方法"
+    params: {}
+
+  greedy:
+    name: "贪心核心集"
+    type: "traditional"
+    description: "基于最远优先遍历的贪心选择"
+    params:
+      distance_metric: "euclidean"
+      use_features: true
+
+  csrel:
+    name: "CSReL"
+    type: "traditional"
+    description: "基于可约损失的核心集选择"
+    params:
+      temperature: 1.0
+
+  bcsr:
+    name: "BCSR"
+    type: "bilevel"
+    description: "基于双层优化的核心集选择，内外层交替优化"
+    params:
+      inner_lr: 0.01
+      outer_lr: 0.1
+      inner_steps: 5
+      meta_steps: 3
+      temperature: 1.0
+      use_val_set: true
+      val_ratio: 0.2
+
+  ensemble:
+    name: "集成方法"
+    type: "adaptive"
+    description: "自适应集成 CSReL 和 BCSR 的选择策略"
+    params:
+      switch_threshold: 0.5
+      early_ratio: 0.3

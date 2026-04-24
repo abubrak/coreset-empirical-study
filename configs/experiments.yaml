@@ -1,0 +1,44 @@
+# 实验配置
+experiment:
+  name: "coreset_empirical_study"
+  seed: 42
+  device: "auto"  # auto / cuda / cpu
+
+# 训练超参数
+training:
+  num_epochs: 50
+  batch_size: 128
+  learning_rate: 0.01
+  momentum: 0.9
+  weight_decay: 0.0001
+
+# 核心集参数
+coreset:
+  memory_ratios: [0.01, 0.05, 0.1, 0.2]  # 核心集占训练集比例
+  num_tasks: 5
+
+# 对比实验矩阵
+comparison:
+  datasets: ["mnist", "cifar10"]
+  methods: ["random", "greedy", "csrel", "bcsr", "ensemble"]
+  task_type: "split"
+  num_tasks_list: [5]
+  memory_ratios: [0.05, 0.1]
+  num_runs: 3  # 每组实验重复次数
+
+# 评估指标
+metrics:
+  - average_accuracy      # 平均准确率
+  - forgetting_measure    # 遗忘度量
+  - forward_transfer      # 前向迁移
+  - coreset_quality       # 核心集质量（与全量数据训练的差距）
+  - selection_time        # 选择耗时
+  - training_time         # 训练耗时
+
+# 输出配置
+output:
+  results_dir: "./results"
+  figures_dir: "./results/figures"
+  logs_dir: "./results/logs"
+  save_model: false
+  save_coreset: true

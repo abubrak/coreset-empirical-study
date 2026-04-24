@@ -1,0 +1,259 @@
+"""
+核心集选择基础接口
+定义所有核心集选择方法的统一接口
+"""
+from abc import ABC, abstractmethod
+from typing import Tuple, Optional
+import torch
+import torch.nn as nn
+from torch.utils.data import DataLoader, Subset
+
+
+class CoresetSelector(ABC):
+    """核心集选择器基类"""
+
+    def __init__(self, memory_budget: int, device: torch.device = None):
+        """
+        Args:
+            memory_budget: 核心集大小限制
+            device: 计算设备
+        """
+        self.memory_budget = memory_budget
+        self.device = device or torch.device('cuda' if torch.cuda.is_available() else 'cpu')
+        self.selected_indices = None
+        self.selection_weights = None
+
+    @abstractmethod
+    def select_coreset(
+        self,
+        dataset: DataLoader,
+        model: nn.Module,
+        task_id: int,
+        previous_coresets: Optional[list] = None
+    ) -> Tuple[list, torch.Tensor]:
+        """
+        选择核心集
+
+        Args:
+            dataset: 当前任务的数据加载器
+            model: 当前模型
+            task_id: 任务ID
+            previous_coresets: 之前任务的核心集索引列表
+
+        Returns:
+            (selected_indices, selection_weights): 选择的索引和权重
+        """
+        pass
+
+    def get_coreset_subset(self, dataset: DataLoader, indices: list) -> DataLoader:
+        """根据索引获取数据子集"""
+        subset = Subset(dataset.dataset, indices)
+        return DataLoader(
+            subset,
+            batch_size=dataset.batch_size,
+            shuffle=False,
+            num_workers=dataset.num_workers
+        )
+
+    def compute_reducible_loss(
+        self,
+        dataset: DataLoader,
+        model_full: nn.Module,
+        model_subset: nn.Module
+    ) -> torch.Tensor:
+        """
+        计算可约损失 (用于CSReL方法)
+
+        Args:
+            dataset: 数据集
+            model_full: 在全量数据上训练的模型
+            model_subset: 在子集上训练的模型
+
+        Returns:
+            每个样本的可约损失值
+        """
+        model_full.eval()
+        model_subset.eval()
+
+        rel_losses = []
+
+        with torch.no_grad():
+            for batch_x, batch_y, idx in dataset:
+                batch_x = batch_x.to(self.device)
+
+                # 全量模型的损失
+                logits_full = model_full(batch_x)
+                loss_full = nn.functional.cross_entropy(logits_full, batch_y.to(self.device))
+
+                # 子集模型的损失
+                logits_sub = model_subset(batch_x)
+                loss_sub = nn.functional.cross_entropy(logits_sub, batch_y.to(self.device))
+
+                # 可约损失 = 子集损失 - 全量损失
+                rel_loss = loss_sub - loss_full
+                rel_losses.append(rel_loss)
+
+        return torch.cat(rel_losses)
+
+
+class ContinualLearningFramework:
+    """持续学习框架"""
+
+    def __init__(
+        self,
+        model: nn.Module,
+        device: torch.device = None,
+        optimizer_class = torch.optim.SGD,
+        optimizer_kwargs = None
+    ):
+        """
+        Args:
+            model: 神经网络模型
+            device: 计算设备
+            optimizer_class: 优化器类
+            optimizer_kwargs: 优化器参数
+        """
+        self.model = model
+        self.device = device or torch.device('cuda' if torch.cuda.is_available() else 'cpu')
+        self.model = self.model.to(self.device)
+
+        self.optimizer_class = optimizer_class
+        self.optimizer_kwargs = optimizer_kwargs or {'lr': 0.01, 'momentum': 0.9}
+        self.optimizer = None
+        self.current_task = 0
+
+    def train_task(
+        self,
+        train_loader: DataLoader,
+        num_epochs: int = 50,
+        coreset_indices: list = None,
+        coreset_weights: torch.Tensor = None
+    ) -> dict:
+        """
+        训练单个任务
+
+        Args:
+            train_loader: 训练数据加载器
+            num_epochs: 训练轮数
+            coreset_indices: 核心集索引（如果使用回放）
+            coreset_weights: 核心集权重
+
+        Returns:
+            训练指标字典
+        """
+        self.model.train()
+
+        if self.optimizer is None:
+            self.optimizer = self.optimizer_class(
+                self.model.parameters(),
+                **self.optimizer_kwargs
+            )
+
+        metrics = {
+            'train_losses': [],
+            'train_accuracy': []
+        }
+
+        criterion = nn.CrossEntropyLoss()
+
+        for epoch in range(num_epochs):
+            epoch_loss = 0.0
+            correct = 0
+            total = 0
+
+            for batch_x, batch_y in train_loader:
+                batch_x = batch_x.to(self.device)
+                batch_y = batch_y.to(self.device)
+
+                self.optimizer.zero_grad()
+                outputs = self.model(batch_x)
+
+                # 如果提供了核心集权重，应用加权损失
+                if coreset_weights is not None:
+                    loss = (criterion(outputs, batch_y) * coreset_weights).mean()
+                else:
+                    loss = criterion(outputs, batch_y)
+
+                loss.backward()
+                self.optimizer.step()
+
+                epoch_loss += loss.item() * batch_x.size(0)
+                _, predicted = outputs.max(1)
+                correct += predicted.eq(batch_y).sum().item()
+                total += batch_x.size(0)
+
+            avg_loss = epoch_loss / total
+            accuracy = correct / total
+
+            metrics['train_losses'].append(avg_loss)
+            metrics['train_accuracy'].append(accuracy)
+
+        return metrics
+
+    def evaluate(self, test_loader: DataLoader) -> Tuple[float, dict]:
+        """
+        评估模型性能
+
+        Returns:
+            (accuracy, per_class_accuracy)
+        """
+        self.model.eval()
+
+        correct = 0
+        total = 0
+        class_correct = {}
+        class_total = {}
+
+        with torch.no_grad():
+            for batch_x, batch_y in test_loader:
+                batch_x = batch_x.to(self.device)
+                batch_y = batch_y.to(self.device)
+
+                outputs = self.model(batch_x)
+                _, predicted = outputs.max(1)
+
+                correct += predicted.eq(batch_y).sum().item()
+                total += batch_x.size(0)
+
+                # 每类准确率
+                for cls in range(outputs.size(1)):
+                    cls_mask = (batch_y == cls)
+                    if cls_mask.any():
+                        cls_correct[cls] = cls_correct.get(cls, 0) + predicted[cls_mask].eq(batch_y[cls_mask]).sum().item()
+                        cls_total[cls] = cls_total.get(cls, 0) + cls_mask.sum().item()
+
+        accuracy = correct / total
+
+        per_class_acc = {
+            cls: cls_correct[cls] / cls_total[cls]
+            for cls in cls_total.keys()
+        }
+
+        return accuracy, per_class_acc
+
+    def compute_forgetting_measure(self, task_accuracies: dict) -> float:
+        """
+        计算遗忘度量
+
+        Args:
+            task_accuracies: 每个任务的历史准确率字典 {task_id: [acc1, acc2, ...]}
+
+        Returns:
+            平均遗忘率
+        """
+        if not task_accuracies:
+            return 0.0
+
+        forgetting = 0.0
+        count = 0
+
+        for task_id, acc_history in task_accuracies.items():
+            if len(acc_history) > 1:
+                # 遗忘率 = 历史最高 - 当前值
+                max_acc = max(acc_history[:-1])  # 除去当前值
+                current_acc = acc_history[-1]
+                task_forgetting = max_acc - current_acc
+                forgetting += task_forgetting
+                count += 1
+
+        return forgetting / count if count > 0 else 0.0
