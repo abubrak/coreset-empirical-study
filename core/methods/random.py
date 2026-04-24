@@ -4,7 +4,7 @@
 import torch
 import random
 import numpy as np
-from .coreset_base import CoresetSelector
+from ..coreset_base import CoresetSelector
 
 
 class RandomSelector(CoresetSelector):

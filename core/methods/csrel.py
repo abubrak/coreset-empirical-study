@@ -4,7 +4,7 @@ CSReL: 基于可约损失的核心集选择
 import torch
 import random
 import numpy as np
-from .coreset_base import CoresetSelector
+from ..coreset_base import CoresetSelector
 
 
 class CSReLSelector(CoresetSelector):

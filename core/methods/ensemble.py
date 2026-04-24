@@ -4,7 +4,7 @@
 """
 import torch
 import numpy as np
-from .coreset_base import CoresetSelector
+from ..coreset_base import CoresetSelector
 from .csrel import CSReLSelector
 
 
