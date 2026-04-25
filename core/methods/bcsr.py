@@ -130,26 +130,39 @@ class BCSRSelector(CoresetSelector):
             )
 
             # --- 内层优化：在加权子集上训练模型 ---
+            # 使用 detach 断开梯度图，内层仅更新模型参数
             model_copy = self._copy_model(model)
             inner_opt = torch.optim.SGD(
                 model_copy.parameters(), lr=self.inner_lr
             )
+            detached_probs = selection_probs.detach()
 
             for _ in range(self.inner_steps):
                 inner_opt.zero_grad()
                 logits = model_copy(train_data)
-                # 加权交叉熵
+                # 加权交叉熵（使用固定权重，不传播梯度到 selection_logits）
                 loss = F.cross_entropy(logits, train_targets, reduction='none')
-                weighted_loss = (loss * selection_probs).sum()
+                weighted_loss = (loss * detached_probs).sum()
                 weighted_loss.backward()
                 inner_opt.step()
 
-            # --- 外层优化：在验证集上评估并优化权重 ---
-            optimizer.zero_grad()
-            val_logits = model_copy(val_data)
-            val_loss = F.cross_entropy(val_logits, val_targets)
+            # --- 外层优化：一阶近似更新选择权重 ---
+            # 使用训练后的模型评估每个样本的重要性
+            # 一阶近似：∂L_val/∂w_i ≈ loss_i（高损失样本更应被关注）
+            with torch.no_grad():
+                train_logits = model_copy(train_data)
+                per_sample_loss = F.cross_entropy(
+                    train_logits, train_targets, reduction='none'
+                )
+                val_logits = model_copy(val_data)
+                val_loss_scalar = F.cross_entropy(
+                    val_logits, val_targets
+                ).item()
 
-            val_loss.backward()
+            # 直接更新 logits：增加高损失样本的权重
+            # 梯度信号为负，因为我们要最小化验证集损失
+            optimizer.zero_grad()
+            self.selection_logits.grad = -per_sample_loss * self.inner_lr
             optimizer.step()
 
         # 第四步：根据权重选择 top-k
