@@ -83,7 +83,8 @@ def full_experiments():
 
     # 创建日志文件
     log_file = base_dir / "experiment_log.txt"
-    log_file.write_text(f"实验开始: {datetime.now()}\n")
+    with open(log_file, 'w') as f:
+        f.write(f"实验开始: {datetime.now()}\n")
 
     datasets = ["mnist", "cifar10", "cifar100"]
     methods = "random,greedy,csrel,bcsr"
@@ -99,7 +100,9 @@ def full_experiments():
         dataset_dir.mkdir(exist_ok=True)
 
         dataset_start = datetime.now()
-        log_file.write_text(f"\n[{dataset}] 实验开始: {dataset_start}\n", append_ok=True)
+        # 关键修复：使用 open() 以追加模式写入日志
+        with open(log_file, 'a') as f:
+            f.write(f"\n[{dataset}] 实验开始: {dataset_start}\n")
 
         cmd = [
             sys.executable,
@@ -115,14 +118,17 @@ def full_experiments():
         dataset_end = datetime.now()
         duration = (dataset_end - dataset_start).total_seconds()
 
-        if success:
-            log_file.write_text(f"[{dataset}] ✅ 完成 (耗时: {duration:.0f} 秒)\n", append_ok=True)
-        else:
-            log_file.write_text(f"[{dataset}] ❌ 失败 (耗时: {duration:.0f} 秒)\n", append_ok=True)
-            all_success = False
+        # 追加写入结果
+        with open(log_file, 'a') as f:
+            if success:
+                f.write(f"[{dataset}] ✅ 完成 (耗时: {duration:.0f} 秒)\n")
+            else:
+                f.write(f"[{dataset}] ❌ 失败 (耗时: {duration:.0f} 秒)\n")
+                all_success = False
 
     # 记录结束时间
-    log_file.write_text(f"\n实验结束: {datetime.now()}\n", append_ok=True)
+    with open(log_file, 'a') as f:
+        f.write(f"\n实验结束: {datetime.now()}\n")
 
     print(f"\n{'='*60}")
     if all_success:
