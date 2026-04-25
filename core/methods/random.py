@@ -30,7 +30,11 @@ class RandomSelector(CoresetSelector):
             (indices, weights): 选择的索引和均匀权重
         """
         # 获取所有样本的索引
-        all_indices = list(range(len(dataset.dataset)))
+        dataset_size = len(dataset.dataset)
+        all_indices = list(range(dataset_size))
+
+        if dataset_size == 0:
+            raise ValueError("Dataset is empty")
 
         # 随机选择
         if len(all_indices) <= self.memory_budget:
@@ -52,17 +56,20 @@ class RandomSelector(CoresetSelector):
             max_new = self.memory_budget
 
             if total_history > 0:
-                keep_ratio = min(1.0, max_new / total_history)
-                keep_indices = random.sample(all_previous, int(total_history * keep_ratio))
+                keep_count = min(total_history, max_new)
+                keep_indices = random.sample(all_previous, keep_count)
             else:
                 keep_indices = []
 
             # 添加新样本
-            remaining_budget = self.memory_budget - len(keep_indices)
-            new_indices = random.sample(all_indices, remaining_budget)
+            remaining_budget = max(0, self.memory_budget - len(keep_indices))
+            if remaining_budget > 0:
+                new_indices = random.sample(all_indices, min(remaining_budget, len(all_indices)))
+            else:
+                new_indices = []
 
             selected_indices = keep_indices + new_indices
-            weights = torch.ones(self.memory_budget, device=self.device)
+            weights = torch.ones(len(selected_indices), device=self.device)
 
         self.selected_indices = selected_indices
         self.selection_weights = weights

@@ -9,6 +9,27 @@ import torch.nn as nn
 from torch.utils.data import DataLoader, Subset
 
 
+def _parse_batch(batch):
+    """
+    解析数据批次，支持多种返回格式
+
+    Args:
+        batch: 数据批次，可能是 (x, y) 或 (x, y, idx)
+
+    Returns:
+        (x, y, indices): 数据、标签和索引
+    """
+    if len(batch) == 3:
+        x, y, indices = batch
+    elif len(batch) == 2:
+        x, y = batch
+        indices = torch.arange(x.size(0))
+    else:
+        raise ValueError(f"Unexpected batch format: {len(batch)} elements")
+
+    return x, y, indices
+
+
 class CoresetSelector(ABC):
     """核心集选择器基类"""
 
@@ -18,6 +39,9 @@ class CoresetSelector(ABC):
             memory_budget: 核心集大小限制
             device: 计算设备
         """
+        if memory_budget <= 0:
+            raise ValueError(f"memory_budget must be positive, got {memory_budget}")
+
         self.memory_budget = memory_budget
         self.device = device or torch.device('cuda' if torch.cuda.is_available() else 'cpu')
         self.selected_indices = None
@@ -47,10 +71,24 @@ class CoresetSelector(ABC):
 
     def get_coreset_subset(self, dataset: DataLoader, indices: list) -> DataLoader:
         """根据索引获取数据子集"""
-        subset = Subset(dataset.dataset, indices)
+        if not indices:
+            raise ValueError("Cannot create subset from empty indices list")
+
+        # 验证索引在有效范围内
+        dataset_size = len(dataset.dataset)
+        valid_indices = [i for i in indices if 0 <= i < dataset_size]
+
+        if len(valid_indices) != len(indices):
+            invalid_count = len(indices) - len(valid_indices)
+            print(f"警告: {invalid_count} 个索引超出范围，已过滤")
+
+        if not valid_indices:
+            raise ValueError("No valid indices remaining after filtering")
+
+        subset = Subset(dataset.dataset, valid_indices)
         return DataLoader(
             subset,
-            batch_size=dataset.batch_size,
+            batch_size=min(dataset.batch_size, len(valid_indices)),
             shuffle=False,
             num_workers=dataset.num_workers
         )
@@ -78,7 +116,8 @@ class CoresetSelector(ABC):
         rel_losses = []
 
         with torch.no_grad():
-            for batch_x, batch_y, idx in dataset:
+            for batch in dataset:
+                batch_x, batch_y, _ = _parse_batch(batch)
                 batch_x = batch_x.to(self.device)
 
                 # 全量模型的损失
@@ -161,7 +200,8 @@ class ContinualLearningFramework:
             correct = 0
             total = 0
 
-            for batch_x, batch_y in train_loader:
+            for batch in train_loader:
+                batch_x, batch_y, _ = _parse_batch(batch)
                 batch_x = batch_x.to(self.device)
                 batch_y = batch_y.to(self.device)
 

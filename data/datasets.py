@@ -3,7 +3,8 @@
 支持 Split、Permuted、Rotated 等任务划分方式
 """
 import torch
-from torch.utils.data import DataLoader, Subset, random
+import random
+from torch.utils.data import DataLoader, Subset
 from torchvision import datasets, transforms
 
 

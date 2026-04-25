@@ -13,7 +13,7 @@ import torch
 import torch.nn as nn
 import torch.nn.functional as F
 import numpy as np
-from ..coreset_base import CoresetSelector
+from ..coreset_base import CoresetSelector, _parse_batch
 
 
 class BCSRSelector(CoresetSelector):
@@ -201,12 +201,7 @@ class BCSRSelector(CoresetSelector):
         all_indices = []
 
         for batch in dataset:
-            if len(batch) == 3:
-                x, y, idx = batch
-            else:
-                x, y = batch
-                idx = torch.arange(x.size(0))
-
+            x, y, idx = _parse_batch(batch)
             all_data.append(x)
             all_targets.append(y)
             all_indices.extend(idx.tolist())

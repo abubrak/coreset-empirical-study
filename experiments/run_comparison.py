@@ -18,7 +18,10 @@ from tqdm import tqdm
 
 # 项目内部导入
 import sys
-sys.path.insert(0, str(Path(__file__).resolve().parent.parent))
+# 使用绝对路径的父目录，确保跨平台兼容
+_current_file = Path(__file__).absolute()
+_project_root = _current_file.parent.parent
+sys.path.insert(0, str(_project_root))
 
 from core import get_selector, ContinualLearningFramework
 from data.datasets import ContinualDataset

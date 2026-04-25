@@ -4,7 +4,7 @@ Greedy Coreset Selection
 """
 import torch
 import numpy as np
-from ..coreset_base import CoresetSelector
+from ..coreset_base import CoresetSelector, _parse_batch
 
 
 class GreedySelector(CoresetSelector):
@@ -101,13 +101,7 @@ class GreedySelector(CoresetSelector):
 
         with torch.no_grad():
             for batch in dataset:
-                # 兼容不同数据格式 (x, y) 或 (x, y, idx)
-                if len(batch) == 3:
-                    batch_x, _, idx = batch
-                else:
-                    batch_x, _ = batch
-                    idx = torch.arange(batch_x.size(0))
-
+                batch_x, _, idx = _parse_batch(batch)
                 batch_x = batch_x.to(self.device)
 
                 if self.use_features:
@@ -155,8 +149,14 @@ class GreedySelector(CoresetSelector):
         每轮选择距离已选集合最远的样本点。
         O(n*k) 复杂度，k 为核心集大小。
         """
+        if features.shape[0] == 0:
+            raise ValueError("Cannot select from empty features")
+
         n = features.shape[0]
         k = min(self.memory_budget, n)
+
+        if k == 0:
+            return []
 
         # 以全局中心最近点作为种子
         center = features.mean(dim=0, keepdim=True)

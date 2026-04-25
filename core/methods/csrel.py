@@ -4,7 +4,7 @@ CSReL: 基于可约损失的核心集选择
 import torch
 import random
 import numpy as np
-from ..coreset_base import CoresetSelector
+from ..coreset_base import CoresetSelector, _parse_batch
 
 
 class CSReLSelector(CoresetSelector):
@@ -111,7 +111,8 @@ class CSReLSelector(CoresetSelector):
         rel_losses = []
 
         with torch.no_grad():
-            for batch_x, batch_y, idx in dataset:
+            for batch in dataset:
+                batch_x, batch_y, _ = _parse_batch(batch)
                 batch_x = batch_x.to(self.device)
                 batch_y = batch_y.to(self.device)
 
@@ -122,7 +123,7 @@ class CSReLSelector(CoresetSelector):
                 loss = -probs[range(len(batch_y)), batch_y].log()
 
                 # 可约损失越高，说明模型对该样本的不确定性越高
-                rel_losses.append(loss.sum(dim=0))
+                rel_losses.append(loss)
 
         return torch.cat(rel_losses)
 

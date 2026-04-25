@@ -4,6 +4,12 @@
 """
 import sys
 import os
+# 设置 UTF-8 编码输出（Windows 兼容）
+if sys.platform == 'win32':
+    import io
+    sys.stdout = io.TextIOWrapper(sys.stdout.buffer, encoding='utf-8')
+    sys.stderr = io.TextIOWrapper(sys.stderr.buffer, encoding='utf-8')
+
 sys.path.insert(0, os.path.dirname(os.path.abspath(__file__)))
 
 import torch
@@ -52,9 +58,9 @@ def quick_test():
             )
             print(f"  选择 {len(indices)} 样本, "
                   f"权重范围 [{weights.min():.4f}, {weights.max():.4f}]")
-            print(f"  ✓ {method_name} 通过")
+            print(f"  [OK] {method_name} 通过")
         except Exception as e:
-            print(f"  ✗ {method_name} 失败: {e}")
+            print(f"  [FAIL] {method_name} 失败: {e}")
             import traceback
             traceback.print_exc()
 

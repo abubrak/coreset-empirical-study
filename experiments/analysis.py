@@ -28,8 +28,14 @@ class ResultAnalyzer:
             results_path: 实验结果 JSON 文件路径
             output_dir: 图表输出目录
         """
+        if not Path(results_path).exists():
+            raise FileNotFoundError(f"Results file not found: {results_path}")
+
         with open(results_path, 'r', encoding='utf-8') as f:
             self.results = json.load(f)
+
+        if not isinstance(self.results, list):
+            raise ValueError("Results must be a list of experiment results")
 
         self.output_dir = Path(output_dir or Path(results_path).parent / 'figures')
         self.output_dir.mkdir(parents=True, exist_ok=True)
@@ -55,6 +61,10 @@ class ResultAnalyzer:
     def generate_all(self):
         """生成所有分析图表"""
         print("生成分析图表...")
+
+        if not self.results:
+            print("警告: 没有实验结果可供分析")
+            return
 
         self._print_summary_table()
         self.plot_accuracy_comparison()
@@ -97,19 +107,28 @@ class ResultAnalyzer:
 
     def plot_accuracy_comparison(self):
         """绘制平均准确率对比柱状图"""
+        if not self.results:
+            print("警告: 没有可用于准确率对比的结果")
+            return
+
         fig, ax = plt.subplots(figsize=(10, 6))
 
         # 按数据集分组
         datasets = sorted(set(r['dataset'] for r in self.results))
 
+        all_accs = []
         for dataset in datasets:
             dataset_results = [
                 r for r in self.results
                 if r['dataset'] == dataset and r.get('run_id', 0) == 0
             ]
 
+            if not dataset_results:
+                continue
+
             methods = [r['method'] for r in dataset_results]
             accs = [r['summary']['average_accuracy'] for r in dataset_results]
+            all_accs.extend(accs)
             labels = [self.method_names.get(m, m) for m in methods]
 
             x = np.arange(len(labels))
@@ -136,7 +155,8 @@ class ResultAnalyzer:
         ax.set_xticklabels([self.method_names.get(m, m) for m in
                            ['random', 'greedy', 'csrel', 'bcsr', 'ensemble']])
         ax.legend()
-        ax.set_ylim(0, max(accs) * 1.15)
+        if all_accs:
+            ax.set_ylim(0, max(all_accs) * 1.15)
         ax.grid(axis='y', alpha=0.3)
 
         plt.tight_layout()
@@ -206,9 +226,12 @@ class ResultAnalyzer:
                 for tid in range(num_tasks):
                     if str(tid) in task_accs:
                         accs = task_accs[str(tid)]
+                        # 修复：安全计算列索引，确保不越界
+                        start_col = max(0, num_tasks - len(accs))
                         for i, a in enumerate(accs):
-                            if i < num_tasks and tid < num_tasks:
-                                acc_matrix[tid, i + num_tasks - len(accs)] = a
+                            col = start_col + i
+                            if col < num_tasks and tid < num_tasks:
+                                acc_matrix[tid, col] = a
 
                 # 平均准确率曲线
                 avg_accs = []
@@ -354,12 +377,13 @@ class ResultAnalyzer:
                 num_tasks = r['num_tasks']
                 task_accs = r['task_accuracies']
 
-                # 构建矩阵
+                # 构建矩阵 - 修复索引越界问题
                 matrix = np.zeros((num_tasks, num_tasks))
                 for tid in range(num_tasks):
                     accs = task_accs.get(str(tid), [])
+                    start_col = max(0, num_tasks - len(accs))
                     for j, a in enumerate(accs):
-                        col = num_tasks - len(accs) + j
+                        col = start_col + j
                         if 0 <= col < num_tasks:
                             matrix[int(tid), col] = a
 
