@@ -50,6 +50,7 @@ print("\n[步骤 2/6] 导入项目模块...")
 sys.path.insert(0, '.')
 try:
     from core import get_selector, ContinualLearningFramework
+    from core.coreset_base import reset_batch_index_counter
     from data.datasets import ContinualDataset
     print("✓ 模块导入成功")
 except Exception as e:
@@ -92,6 +93,7 @@ results = {}
 for method_name in methods_to_test:
     print(f"\n  测试 {method_name}...", end=" ")
     try:
+        reset_batch_index_counter()  # 重置索引计数器
         selector = get_selector(method_name, memory_budget=memory_budget, device=device)
         train_loader = dataset.get_task_loaders(0)
         indices, weights = selector.select_coreset(train_loader, model, task_id=0)

@@ -32,6 +32,7 @@ except ImportError:
 print("\n[2/5] 导入模块...")
 try:
     from core import get_selector, ContinualLearningFramework
+    from core.coreset_base import reset_batch_index_counter
     from data.datasets import ContinualDataset
     print("✓ 模块导入成功")
 except Exception as e:
@@ -66,6 +67,7 @@ memory_budget = 500
 
 for method_name in methods:
     try:
+        reset_batch_index_counter()  # 重置索引计数器
         selector = get_selector(method_name, memory_budget=memory_budget, device=device)
         train_loader = dataset.get_task_loaders(0)
         indices, weights = selector.select_coreset(train_loader, model, task_id=0)

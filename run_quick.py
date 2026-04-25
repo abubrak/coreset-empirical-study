@@ -14,6 +14,7 @@ sys.path.insert(0, os.path.dirname(os.path.abspath(__file__)))
 
 import torch
 from core import get_selector
+from core.coreset_base import reset_batch_index_counter
 from data.datasets import ContinualDataset
 
 
@@ -47,6 +48,7 @@ def quick_test():
     for method_name in methods:
         print(f"\n--- 测试 {method_name} ---")
         try:
+            reset_batch_index_counter()  # 重置索引计数器
             selector = get_selector(
                 method_name,
                 memory_budget=memory_budget,

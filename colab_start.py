@@ -161,6 +161,7 @@ import sys
 sys.path.insert(0, '.')
 try:
     from core import get_selector, ContinualLearningFramework
+    from core.coreset_base import reset_batch_index_counter
     from data.datasets import ContinualDataset
     print("✓ 模块导入成功")
 except Exception as e:
@@ -186,6 +187,7 @@ model = nn.Sequential(
 
 # 测试 random 方法
 try:
+    reset_batch_index_counter()  # 重置索引计数器
     selector = get_selector('random', memory_budget=200, device=device)
     train_loader = dataset.get_task_loaders(0)
     indices, weights = selector.select_coreset(train_loader, model, task_id=0)

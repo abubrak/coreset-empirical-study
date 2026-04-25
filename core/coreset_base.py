@@ -39,7 +39,14 @@ def _parse_batch(batch):
 
 
 def reset_batch_index_counter():
-    """重置全局批次索引计数器"""
+    """
+    重置全局批次索引计数器
+
+    ⚠️ 并发限制: 此实现使用全局变量，不支持多线程/多进程环境。
+    如果需要并行实验，请使用不同的方案。
+
+    应该在每个新实验开始时调用，确保索引从0开始。
+    """
     global _batch_index_counter
     _batch_index_counter = 0
 
