@@ -1,0 +1,665 @@
+- generic [ref=e2]:
+  - region
+  - generic [ref=e3]:
+    - link "Skip to content" [ref=e4] [cursor=pointer]:
+      - /url: "#start-of-content"
+    - banner [ref=e6]:
+      - heading "Navigation Menu" [level=2] [ref=e7]
+      - generic [ref=e8]:
+        - link "Homepage" [ref=e10] [cursor=pointer]:
+          - /url: /
+          - img [ref=e11]
+        - generic [ref=e13]:
+          - navigation "Global" [ref=e16]:
+            - list [ref=e17]:
+              - listitem [ref=e18]:
+                - button "Platform" [ref=e20] [cursor=pointer]:
+                  - text: Platform
+                  - img [ref=e21]
+              - listitem [ref=e23]:
+                - button "Solutions" [ref=e25] [cursor=pointer]:
+                  - text: Solutions
+                  - img [ref=e26]
+              - listitem [ref=e28]:
+                - button "Resources" [ref=e30] [cursor=pointer]:
+                  - text: Resources
+                  - img [ref=e31]
+              - listitem [ref=e33]:
+                - button "Open Source" [ref=e35] [cursor=pointer]:
+                  - text: Open Source
+                  - img [ref=e36]
+              - listitem [ref=e38]:
+                - button "Enterprise" [ref=e40] [cursor=pointer]:
+                  - text: Enterprise
+                  - img [ref=e41]
+              - listitem [ref=e43]:
+                - link "Pricing" [ref=e44] [cursor=pointer]:
+                  - /url: https://github.com/pricing
+                  - generic [ref=e45]: Pricing
+          - generic [ref=e46]:
+            - button "Search or jump to…" [ref=e49] [cursor=pointer]:
+              - img [ref=e51]
+            - link "Sign in" [ref=e54] [cursor=pointer]:
+              - /url: /login?return_to=https%3A%2F%2Fgithub.com%2Fzalanborsos%2Fbilevel_coresets
+            - link "Sign up" [ref=e55] [cursor=pointer]:
+              - /url: /signup?ref_cta=Sign+up&ref_loc=header+logged+out&ref_page=%2F%3Cuser-name%3E%2F%3Crepo-name%3E&source=header-repo&source_repo=zalanborsos%2Fbilevel_coresets
+            - button "Appearance settings" [ref=e58] [cursor=pointer]:
+              - img
+  - main [ref=e62]:
+    - generic [ref=e63]:
+      - generic [ref=e64]:
+        - generic [ref=e66]:
+          - img [ref=e67]
+          - link "zalanborsos" [ref=e70] [cursor=pointer]:
+            - /url: /zalanborsos
+          - generic [ref=e71]: /
+          - strong [ref=e72]:
+            - link "bilevel_coresets" [ref=e73] [cursor=pointer]:
+              - /url: /zalanborsos/bilevel_coresets
+          - generic [ref=e74]: Public
+        - generic [ref=e75]:
+          - list:
+            - listitem [ref=e76]:
+              - link "You must be signed in to change notification settings" [ref=e77] [cursor=pointer]:
+                - /url: /login?return_to=%2Fzalanborsos%2Fbilevel_coresets
+                - img [ref=e78]
+                - text: Notifications
+            - listitem [ref=e80]:
+              - link "Fork 9" [ref=e81] [cursor=pointer]:
+                - /url: /login?return_to=%2Fzalanborsos%2Fbilevel_coresets
+                - img [ref=e82]
+                - text: Fork
+                - generic "9" [ref=e84]
+            - listitem [ref=e85]:
+              - link "You must be signed in to star a repository" [ref=e87] [cursor=pointer]:
+                - /url: /login?return_to=%2Fzalanborsos%2Fbilevel_coresets
+                - img [ref=e88]
+                - text: Star
+                - generic "68 users starred this repository" [ref=e90]: "68"
+      - navigation "Repository" [ref=e91]:
+        - list [ref=e92]:
+          - listitem [ref=e93]:
+            - link "Code" [ref=e94] [cursor=pointer]:
+              - /url: /zalanborsos/bilevel_coresets
+              - img [ref=e95]
+              - generic [ref=e97]: Code
+          - listitem [ref=e98]:
+            - link "Issues 1" [ref=e99] [cursor=pointer]:
+              - /url: /zalanborsos/bilevel_coresets/issues
+              - img [ref=e100]
+              - generic [ref=e103]: Issues
+              - generic "1" [ref=e104]
+          - listitem [ref=e105]:
+            - link "Pull requests" [ref=e106] [cursor=pointer]:
+              - /url: /zalanborsos/bilevel_coresets/pulls
+              - img [ref=e107]
+              - generic [ref=e109]: Pull requests
+          - listitem [ref=e110]:
+            - link "Actions" [ref=e111] [cursor=pointer]:
+              - /url: /zalanborsos/bilevel_coresets/actions
+              - img [ref=e112]
+              - generic [ref=e114]: Actions
+          - listitem [ref=e115]:
+            - link "Projects" [ref=e116] [cursor=pointer]:
+              - /url: /zalanborsos/bilevel_coresets/projects
+              - img [ref=e117]
+              - generic [ref=e119]: Projects
+          - listitem [ref=e120]:
+            - link "Security and quality" [ref=e121] [cursor=pointer]:
+              - /url: /zalanborsos/bilevel_coresets/security
+              - img [ref=e122]
+              - generic [ref=e124]: Security and quality
+          - listitem [ref=e125]:
+            - link "Insights" [ref=e126] [cursor=pointer]:
+              - /url: /zalanborsos/bilevel_coresets/pulse
+              - img [ref=e127]
+              - generic [ref=e129]: Insights
+    - generic [ref=e142]:
+      - heading "zalanborsos/bilevel_coresets" [level=1] [ref=e144]
+      - generic [ref=e145]:
+        - generic [ref=e148]:
+          - generic [ref=e149]:
+            - generic [ref=e150]:
+              - button "main branch" [ref=e152] [cursor=pointer]:
+                - generic [ref=e153]:
+                  - generic [ref=e155]:
+                    - img [ref=e157]
+                    - generic [ref=e160]: main
+                  - generic:
+                    - img
+              - generic [ref=e161]:
+                - link "Go to Branches page" [ref=e162] [cursor=pointer]:
+                  - /url: /zalanborsos/bilevel_coresets/branches
+                  - img [ref=e163]
+                - link "Go to Tags page" [ref=e165] [cursor=pointer]:
+                  - /url: /zalanborsos/bilevel_coresets/tags
+                  - img [ref=e166]
+            - generic [ref=e168]:
+              - generic [ref=e172]:
+                - img [ref=e174]
+                - combobox "Go to file" [ref=e176]
+              - button "Code" [ref=e177] [cursor=pointer]:
+                - generic [ref=e178]:
+                  - generic:
+                    - img
+                  - generic [ref=e179]: Code
+                  - generic:
+                    - img
+          - generic [ref=e180]:
+            - generic [ref=e181]:
+              - heading "Folders and files" [level=2] [ref=e182]
+              - table "Folders and files" [ref=e183]:
+                - rowgroup:
+                  - row "Name Last commit message Last commit date":
+                    - columnheader "Name"
+                    - columnheader "Last commit message":
+                      - generic "Last commit message"
+                    - columnheader "Last commit date":
+                      - generic "Last commit date"
+                - rowgroup [ref=e184]:
+                  - row "Latest commit zalanborsos commits by zalanborsos fix typo Commit d76cf15 · Nov 3, 20206 years ago History 53 Commits" [ref=e185]:
+                    - cell "Latest commit zalanborsos commits by zalanborsos fix typo Commit d76cf15 · Nov 3, 20206 years ago History 53 Commits" [ref=e186]:
+                      - generic [ref=e187]:
+                        - heading "Latest commit" [level=2] [ref=e188]
+                        - generic [ref=e189]:
+                          - generic [ref=e191]:
+                            - link "zalanborsos" [ref=e192] [cursor=pointer]:
+                              - /url: /zalanborsos
+                              - img "zalanborsos" [ref=e193]
+                            - link "commits by zalanborsos" [ref=e194] [cursor=pointer]:
+                              - /url: /zalanborsos/bilevel_coresets/commits?author=zalanborsos
+                              - text: zalanborsos
+                          - link "fix typo" [ref=e198] [cursor=pointer]:
+                            - /url: /zalanborsos/bilevel_coresets/commit/d76cf15185e2d1bdeb8b6dea7b1a3ff9023fc69c
+                        - generic [ref=e199]:
+                          - generic [ref=e201]:
+                            - link "Commit d76cf15" [ref=e202] [cursor=pointer]:
+                              - /url: /zalanborsos/bilevel_coresets/commit/d76cf15185e2d1bdeb8b6dea7b1a3ff9023fc69c
+                              - text: d76cf15
+                            - text: ·
+                            - generic "Nov 3, 2020, 2:35 AM GMT+8" [ref=e203]: Nov 3, 20206 years ago
+                          - generic [ref=e204]:
+                            - heading "History" [level=2] [ref=e205]
+                            - link "53 Commits" [ref=e206] [cursor=pointer]:
+                              - /url: /zalanborsos/bilevel_coresets/commits/main/
+                              - generic [ref=e207]:
+                                - generic:
+                                  - img
+                                - generic [ref=e208]: 53 Commits
+                  - row "batch_active_learning, (Directory) implement Nystrom proxy used in batch active learning with SSL Oct 27, 20206 years ago" [ref=e209]:
+                    - cell "batch_active_learning, (Directory)" [ref=e210]:
+                      - generic [ref=e211]:
+                        - img [ref=e212]
+                        - link "batch_active_learning, (Directory)" [ref=e217] [cursor=pointer]:
+                          - /url: /zalanborsos/bilevel_coresets/tree/main/batch_active_learning
+                          - text: batch_active_learning
+                    - cell "implement Nystrom proxy used in batch active learning with SSL" [ref=e218]:
+                      - link "implement Nystrom proxy used in batch active learning with SSL" [ref=e221] [cursor=pointer]:
+                        - /url: /zalanborsos/bilevel_coresets/commit/c1085dbfad3bf156f161fa7f5ba814c3337ed052
+                    - cell "Oct 27, 20206 years ago" [ref=e222]:
+                      - generic [ref=e223]: Oct 27, 20206 years ago
+                  - row "cl_streaming, (Directory) add best betas for cifar Oct 24, 20206 years ago" [ref=e224]:
+                    - cell "cl_streaming, (Directory)" [ref=e225]:
+                      - generic [ref=e226]:
+                        - img [ref=e227]
+                        - link "cl_streaming, (Directory)" [ref=e232] [cursor=pointer]:
+                          - /url: /zalanborsos/bilevel_coresets/tree/main/cl_streaming
+                          - text: cl_streaming
+                    - cell "add best betas for cifar" [ref=e233]:
+                      - link "add best betas for cifar" [ref=e236] [cursor=pointer]:
+                        - /url: /zalanborsos/bilevel_coresets/commit/baa485e0eb4bb78e4feb8f58169816561e13998c
+                    - cell "Oct 24, 20206 years ago" [ref=e237]:
+                      - generic [ref=e238]: Oct 24, 20206 years ago
+                  - row "data_summarization, (Directory) add KRR on CIFAR-10 with a different kernel Oct 24, 20206 years ago" [ref=e239]:
+                    - cell "data_summarization, (Directory)" [ref=e240]:
+                      - generic [ref=e241]:
+                        - img [ref=e242]
+                        - link "data_summarization, (Directory)" [ref=e247] [cursor=pointer]:
+                          - /url: /zalanborsos/bilevel_coresets/tree/main/data_summarization
+                          - text: data_summarization
+                    - cell "add KRR on CIFAR-10 with a different kernel" [ref=e248]:
+                      - link "add KRR on CIFAR-10 with a different kernel" [ref=e251] [cursor=pointer]:
+                        - /url: /zalanborsos/bilevel_coresets/commit/0c5df9f939e1067702fb44abc69e5800b302f072
+                    - cell "Oct 24, 20206 years ago" [ref=e252]:
+                      - generic [ref=e253]: Oct 24, 20206 years ago
+                  - row ".gitignore, (File) add KRR on CIFAR-10 with a different kernel Oct 24, 20206 years ago" [ref=e254]:
+                    - cell ".gitignore, (File)" [ref=e255]:
+                      - generic [ref=e256]:
+                        - img [ref=e257]
+                        - link ".gitignore, (File)" [ref=e262] [cursor=pointer]:
+                          - /url: /zalanborsos/bilevel_coresets/blob/main/.gitignore
+                          - text: .gitignore
+                    - cell "add KRR on CIFAR-10 with a different kernel" [ref=e263]:
+                      - link "add KRR on CIFAR-10 with a different kernel" [ref=e266] [cursor=pointer]:
+                        - /url: /zalanborsos/bilevel_coresets/commit/0c5df9f939e1067702fb44abc69e5800b302f072
+                    - cell "Oct 24, 20206 years ago" [ref=e267]:
+                      - generic [ref=e268]: Oct 24, 20206 years ago
+                  - row "LICENSE, (File) Initial commit Oct 14, 20206 years ago" [ref=e269]:
+                    - cell "LICENSE, (File)" [ref=e270]:
+                      - generic [ref=e271]:
+                        - img [ref=e272]
+                        - link "LICENSE, (File)" [ref=e277] [cursor=pointer]:
+                          - /url: /zalanborsos/bilevel_coresets/blob/main/LICENSE
+                          - text: LICENSE
+                    - cell "Initial commit" [ref=e278]:
+                      - link "Initial commit" [ref=e281] [cursor=pointer]:
+                        - /url: /zalanborsos/bilevel_coresets/commit/1c62a985071d722288a9d681da3c52f94a282f8b
+                    - cell "Oct 14, 20206 years ago" [ref=e282]:
+                      - generic [ref=e283]: Oct 14, 20206 years ago
+                  - row "README.md, (File) implement Nystrom proxy used in batch active learning with SSL Oct 27, 20206 years ago" [ref=e284]:
+                    - cell "README.md, (File)" [ref=e285]:
+                      - generic [ref=e286]:
+                        - img [ref=e287]
+                        - link "README.md, (File)" [ref=e292] [cursor=pointer]:
+                          - /url: /zalanborsos/bilevel_coresets/blob/main/README.md
+                          - text: README.md
+                    - cell "implement Nystrom proxy used in batch active learning with SSL" [ref=e293]:
+                      - link "implement Nystrom proxy used in batch active learning with SSL" [ref=e296] [cursor=pointer]:
+                        - /url: /zalanborsos/bilevel_coresets/commit/b628fdde1db83151bf560b31c8c4d23279552678
+                    - cell "Oct 27, 20206 years ago" [ref=e297]:
+                      - generic [ref=e298]: Oct 27, 20206 years ago
+                  - row "bilevel_coreset.py, (File) fix typo Nov 3, 20206 years ago" [ref=e299]:
+                    - cell "bilevel_coreset.py, (File)" [ref=e300]:
+                      - generic [ref=e301]:
+                        - img [ref=e302]
+                        - link "bilevel_coreset.py, (File)" [ref=e307] [cursor=pointer]:
+                          - /url: /zalanborsos/bilevel_coresets/blob/main/bilevel_coreset.py
+                          - text: bilevel_coreset.py
+                    - cell "fix typo" [ref=e308]:
+                      - link "fix typo" [ref=e311] [cursor=pointer]:
+                        - /url: /zalanborsos/bilevel_coresets/commit/d76cf15185e2d1bdeb8b6dea7b1a3ff9023fc69c
+                    - cell "Nov 3, 20206 years ago" [ref=e312]:
+                      - generic [ref=e313]: Nov 3, 20206 years ago
+                  - row "demo.ipynb, (File) udpate notebook with GPU JAX Oct 27, 20206 years ago" [ref=e314]:
+                    - cell "demo.ipynb, (File)" [ref=e315]:
+                      - generic [ref=e316]:
+                        - img [ref=e317]
+                        - link "demo.ipynb, (File)" [ref=e322] [cursor=pointer]:
+                          - /url: /zalanborsos/bilevel_coresets/blob/main/demo.ipynb
+                          - text: demo.ipynb
+                    - cell "udpate notebook with GPU JAX" [ref=e323]:
+                      - link "udpate notebook with GPU JAX" [ref=e326] [cursor=pointer]:
+                        - /url: /zalanborsos/bilevel_coresets/commit/b3c23c260ad70faf2253830ea6521f5798539a7a
+                    - cell "Oct 27, 20206 years ago" [ref=e327]:
+                      - generic [ref=e328]: Oct 27, 20206 years ago
+                  - row "loss_utils.py, (File) add bilevel proxy solver Oct 15, 20206 years ago" [ref=e329]:
+                    - cell "loss_utils.py, (File)" [ref=e330]:
+                      - generic [ref=e331]:
+                        - img [ref=e332]
+                        - link "loss_utils.py, (File)" [ref=e337] [cursor=pointer]:
+                          - /url: /zalanborsos/bilevel_coresets/blob/main/loss_utils.py
+                          - text: loss_utils.py
+                    - cell "add bilevel proxy solver" [ref=e338]:
+                      - link "add bilevel proxy solver" [ref=e341] [cursor=pointer]:
+                        - /url: /zalanborsos/bilevel_coresets/commit/f91893fdd9ec74a0c1e69f3dfa6302ef3c09e076
+                    - cell "Oct 15, 20206 years ago" [ref=e342]:
+                      - generic [ref=e343]: Oct 15, 20206 years ago
+                  - row "models.py, (File) implement Nystrom proxy used in batch active learning with SSL Oct 27, 20206 years ago" [ref=e344]:
+                    - cell "models.py, (File)" [ref=e345]:
+                      - generic [ref=e346]:
+                        - img [ref=e347]
+                        - link "models.py, (File)" [ref=e352] [cursor=pointer]:
+                          - /url: /zalanborsos/bilevel_coresets/blob/main/models.py
+                          - text: models.py
+                    - cell "implement Nystrom proxy used in batch active learning with SSL" [ref=e353]:
+                      - link "implement Nystrom proxy used in batch active learning with SSL" [ref=e356] [cursor=pointer]:
+                        - /url: /zalanborsos/bilevel_coresets/commit/c1085dbfad3bf156f161fa7f5ba814c3337ed052
+                    - cell "Oct 27, 20206 years ago" [ref=e357]:
+                      - generic [ref=e358]: Oct 27, 20206 years ago
+                  - row "requirements.txt, (File) fix requirements.txt Oct 22, 20206 years ago" [ref=e359]:
+                    - cell "requirements.txt, (File)" [ref=e360]:
+                      - generic [ref=e361]:
+                        - img [ref=e362]
+                        - link "requirements.txt, (File)" [ref=e367] [cursor=pointer]:
+                          - /url: /zalanborsos/bilevel_coresets/blob/main/requirements.txt
+                          - text: requirements.txt
+                    - cell "fix requirements.txt" [ref=e368]:
+                      - link "fix requirements.txt" [ref=e371] [cursor=pointer]:
+                        - /url: /zalanborsos/bilevel_coresets/commit/54a0254a51cc8d1b2ad7895b559cdbf4709aa457
+                    - cell "Oct 22, 20206 years ago" [ref=e372]:
+                      - generic [ref=e373]: Oct 22, 20206 years ago
+                  - row "thumbnail.png, (File) update thumbnail Oct 19, 20206 years ago" [ref=e374]:
+                    - cell "thumbnail.png, (File)" [ref=e375]:
+                      - generic [ref=e376]:
+                        - img [ref=e377]
+                        - link "thumbnail.png, (File)" [ref=e382] [cursor=pointer]:
+                          - /url: /zalanborsos/bilevel_coresets/blob/main/thumbnail.png
+                          - text: thumbnail.png
+                    - cell "update thumbnail" [ref=e383]:
+                      - link "update thumbnail" [ref=e386] [cursor=pointer]:
+                        - /url: /zalanborsos/bilevel_coresets/commit/15cfc64e06c4466bd84c2eb1694fb7077bee52f2
+                    - cell "Oct 19, 20206 years ago" [ref=e387]:
+                      - generic [ref=e388]: Oct 19, 20206 years ago
+            - generic [ref=e390]:
+              - generic [ref=e391]:
+                - heading "Repository files navigation" [level=2] [ref=e392]
+                - navigation "Repository files" [ref=e393]:
+                  - list [ref=e394]:
+                    - listitem [ref=e395]:
+                      - link "README" [ref=e396] [cursor=pointer]:
+                        - /url: "#"
+                        - img [ref=e398]
+                        - generic [ref=e400]: README
+                    - listitem [ref=e401]:
+                      - link "MIT license" [ref=e402] [cursor=pointer]:
+                        - /url: "#"
+                        - img [ref=e404]
+                        - generic [ref=e406]: MIT license
+                - button "Outline" [ref=e407] [cursor=pointer]:
+                  - img [ref=e408]
+              - article [ref=e411]:
+                - generic [ref=e412]:
+                  - heading "Coresets via Bilevel Optimization" [level=1] [ref=e413]
+                  - 'link "Permalink: Coresets via Bilevel Optimization" [ref=e414] [cursor=pointer]':
+                    - /url: "#coresets-via-bilevel-optimization"
+                    - img [ref=e415]
+                - paragraph [ref=e417]:
+                  - link [ref=e418] [cursor=pointer]:
+                    - /url: /zalanborsos/bilevel_coresets/blob/main/thumbnail.png
+                    - img [ref=e419]
+                - paragraph [ref=e420]:
+                  - text: This is the reference implementation for "Coresets via Bilevel Optimization for Continual Learning and Streaming"
+                  - link "https://arxiv.org/pdf/2006.03875.pdf" [ref=e421] [cursor=pointer]:
+                    - /url: https://arxiv.org/pdf/2006.03875.pdf
+                  - text: .
+                - paragraph [ref=e422]:
+                  - text: This repository also contains the implementation of the selection via Nyström proxy used for selecting batches in "Semi-supervised Batch Active Learning via Bilevel Optimization"
+                  - link "https://arxiv.org/pdf/2010.09654" [ref=e423] [cursor=pointer]:
+                    - /url: https://arxiv.org/pdf/2010.09654
+                  - text: . Selection via the Nyström proxy supports data augmentation, it is faster for larger coresets and hence supersedes the representer proxy in data summarization scenarios.
+                - generic [ref=e424]:
+                  - heading "Overview" [level=2] [ref=e425]
+                  - 'link "Permalink: Overview" [ref=e426] [cursor=pointer]':
+                    - /url: "#overview"
+                    - img [ref=e427]
+                - paragraph [ref=e429]:
+                  - text: To get started with the library, check out
+                  - link "demo.ipynb" [ref=e430] [cursor=pointer]:
+                    - /url: https://github.com/zalanborsos/bilevel_coresets/blob/main/demo.ipynb
+                    - code [ref=e431]: demo.ipynb
+                  - link "Open In Colab" [ref=e432] [cursor=pointer]:
+                    - /url: https://colab.research.google.com/github/zalanborsos/bilevel_coresets/blob/main/demo.ipynb
+                    - img "Open In Colab" [ref=e433]
+                  - text: "that shows how to build coresets for a toy regression problem and for MNIST classification. The following snippet outlines the general usage:"
+                - generic [ref=e434]:
+                  - generic [ref=e435]: "import bilevel_coreset import loss_utils import numpy as np x, y = load_data() # define proxy kernel function linear_kernel_fn = lambda x1, x2: np.dot(x1, x2.T) coreset_size = 10 coreset_constructor = bilevel_coreset.BilevelCoreset(outer_loss_fn=loss_utils.cross_entropy, inner_loss_fn=loss_utils.cross_entropy, out_dim=y.shape[1]) coreset_inds, coreset_weights = coreset_constructor.build_with_representer_proxy_batch(x, y, coreset_size, linear_kernel_fn, inner_reg=1e-3) x_coreset, y_coreset = x[coreset_inds], y[coreset_inds]"
+                  - button "Copy" [ref=e437] [cursor=pointer]:
+                    - img [ref=e438]
+                - paragraph [ref=e441]:
+                  - strong [ref=e442]: Note
+                  - text: ": if you are planning to use the library on your problem, the most important hyperparameter to tune is"
+                  - code [ref=e443]: inner_reg
+                  - text: ", the regularizer of the inner objective in the representer proxy - try the grid [10"
+                  - superscript [ref=e444]: "-2"
+                  - text: ", 10"
+                  - superscript [ref=e445]: "-3"
+                  - text: ", 10"
+                  - superscript [ref=e446]: "-4"
+                  - text: ", 10"
+                  - superscript [ref=e447]: "-5"
+                  - text: ", 10"
+                  - superscript [ref=e448]: "-6"
+                  - text: "]."
+                - generic [ref=e449]:
+                  - heading "Requirements" [level=2] [ref=e450]
+                  - 'link "Permalink: Requirements" [ref=e451] [cursor=pointer]':
+                    - /url: "#requirements"
+                    - img [ref=e452]
+                - paragraph [ref=e454]: "Python 3 is required. To install the required dependencies, run:"
+                - generic [ref=e455]:
+                  - generic [ref=e456]: pip install -r requirements.txt
+                  - button "Copy" [ref=e458] [cursor=pointer]:
+                    - img [ref=e459]
+                - paragraph [ref=e462]:
+                  - text: "If you are planning to use the NTK proxy, consider installing the GPU version of JAX: instructions"
+                  - link "here" [ref=e463] [cursor=pointer]:
+                    - /url: https://github.com/google/jax#installation
+                  - text: . If you would like to run the experiments, add the project root to your PYTHONPATH env variable.
+                - generic [ref=e464]:
+                  - heading "Data Summarization" [level=2] [ref=e465]
+                  - 'link "Permalink: Data Summarization" [ref=e466] [cursor=pointer]':
+                    - /url: "#data-summarization"
+                    - img [ref=e467]
+                - paragraph [ref=e469]:
+                  - text: Change dir to
+                  - code [ref=e470]: data_summarization
+                  - text: . For running and plotting the
+                  - strong [ref=e471]: MNIST summarization
+                  - text: experiment, adjust the globals in
+                  - code [ref=e472]: runner.py
+                  - text: "to your setup and run:"
+                - generic [ref=e473]:
+                  - generic [ref=e474]: python runner.py --exp cnn_mnist python plotter.py --exp cnn_mnist
+                  - button "Copy" [ref=e476] [cursor=pointer]:
+                    - img [ref=e477]
+                - paragraph [ref=e480]:
+                  - text: Similarly, for the
+                  - strong [ref=e481]: CIFAR-10 summary
+                  - text: for a version of
+                  - strong [ref=e482]: ResNet-18
+                  - text: "run:"
+                - generic [ref=e483]:
+                  - generic [ref=e484]: python runner.py --exp resnet_cifar python plotter.py --exp resnet_cifar
+                  - button "Copy" [ref=e486] [cursor=pointer]:
+                    - img [ref=e487]
+                - paragraph [ref=e490]:
+                  - text: For running the
+                  - strong [ref=e491]: Kernel Ridge Regression experiment
+                  - text: ", you first need to generate the kernel with"
+                  - code [ref=e492]: python generate_cntk.py
+                  - text: ". Note: this implementation differs in the kernel choice in"
+                  - code [ref=e493]: generate_kernel()
+                  - text: "from the paper. For details on the original kernel, please refer to the paper. Once you generated the kernel, generate the results by:"
+                - generic [ref=e494]:
+                  - generic [ref=e495]: python runner.py --exp krr_cifar python plotter.py --exp krr_cifar
+                  - button "Copy" [ref=e497] [cursor=pointer]:
+                    - img [ref=e498]
+                - generic [ref=e501]:
+                  - heading "Continual Learning and Streaming" [level=2] [ref=e502]
+                  - 'link "Permalink: Continual Learning and Streaming" [ref=e503] [cursor=pointer]':
+                    - /url: "#continual-learning-and-streaming"
+                    - img [ref=e504]
+                - paragraph [ref=e506]:
+                  - text: We showcase the usage our coreset construction in continual learning and streaming with memory replay. The buffer regularizer
+                  - code [ref=e507]: beta
+                  - text: is tuned individually for each method. We provide the best betas from
+                  - code [ref=e508]: "[0.01, 0.1, 1.0, 10.0, 100.0, 1000.0]"
+                  - text: for each method in
+                  - code [ref=e509]: cl_results/
+                  - text: and
+                  - code [ref=e510]: streaming_results/
+                  - text: .
+                - generic [ref=e511]:
+                  - heading "Running the Experiments" [level=4] [ref=e512]
+                  - 'link "Permalink: Running the Experiments" [ref=e513] [cursor=pointer]':
+                    - /url: "#running-the-experiments"
+                    - img [ref=e514]
+                - paragraph [ref=e516]:
+                  - text: Change dir to
+                  - code [ref=e517]: cl_streaming
+                  - text: ". After this, you can run individual experiments, e.g.:"
+                - generic [ref=e518]:
+                  - generic [ref=e519]: python cl.py --buffer_size 100 --dataset splitmnist --seed 0 --method coreset --beta 100.0
+                  - button "Copy" [ref=e521] [cursor=pointer]:
+                    - img [ref=e522]
+                - paragraph [ref=e525]:
+                  - text: You can also run the continual learning and streaming experiments with grid search over
+                  - code [ref=e526]: beta
+                  - text: on datasets derived from MNIST by adjusting the globals in
+                  - code [ref=e527]: runner.py
+                  - text: "to your setup and running:"
+                - generic [ref=e528]:
+                  - generic [ref=e529]: python runner.py --exp cl python runner.py --exp streaming python runner.py --exp imbalanced_streaming
+                  - button "Copy" [ref=e531] [cursor=pointer]:
+                    - img [ref=e532]
+                - paragraph [ref=e535]:
+                  - text: The table of result can be displayed by running
+                  - code [ref=e536]: python process_results.py
+                  - text: with the corresponding
+                  - code [ref=e537]: "--exp"
+                  - text: argument. For example,
+                  - code [ref=e538]: python process_results.py --exp imbalanced_streaming
+                  - text: "produces:"
+                - table [ref=e540]:
+                  - rowgroup [ref=e541]:
+                    - row "Method \\ Dataset splitmnistimbalanced" [ref=e542]:
+                      - columnheader "Method \\ Dataset" [ref=e543]
+                      - columnheader "splitmnistimbalanced" [ref=e544]
+                  - rowgroup [ref=e545]:
+                    - row "reservoir 80.60 +- 4.36" [ref=e546]:
+                      - cell "reservoir" [ref=e547]
+                      - cell "80.60 +- 4.36" [ref=e548]
+                    - row "cbrs 89.71 +- 1.31" [ref=e549]:
+                      - cell "cbrs" [ref=e550]
+                      - cell "89.71 +- 1.31" [ref=e551]
+                    - row "coreset 92.30 +- 0.23" [ref=e552]:
+                      - cell "coreset" [ref=e553]
+                      - cell "92.30 +- 0.23" [ref=e554]
+                - paragraph [ref=e555]: "The experiments derived from CIFAR-10 can be similarly run by:"
+                - generic [ref=e556]:
+                  - generic [ref=e557]: python cifar_runner.py --exp cl python process_results --exp splitcifar python cifar_runner.py --exp imbalanced_streaming python process_results --exp imbalanced_streaming_cifar
+                  - button "Copy" [ref=e559] [cursor=pointer]:
+                    - img [ref=e560]
+                - generic [ref=e563]:
+                  - heading "Selection via the Nyström proxy" [level=2] [ref=e564]
+                  - 'link "Permalink: Selection via the Nyström proxy" [ref=e565] [cursor=pointer]':
+                    - /url: "#selection-via-the-nyström-proxy"
+                    - img [ref=e566]
+                - paragraph [ref=e568]:
+                  - text: The Nyström proxy was proposed to support data augmentations. It is also faster for larger coresets than the representer proxy. An example of running the selection on CIFAR-10 can be found in
+                  - code [ref=e569]: batch_active_learning/nystrom_example.py
+                  - text: .
+                - generic [ref=e570]:
+                  - heading "Citation" [level=2] [ref=e571]
+                  - 'link "Permalink: Citation" [ref=e572] [cursor=pointer]':
+                    - /url: "#citation"
+                    - img [ref=e573]
+                - paragraph [ref=e575]: "If you use the code in a publication, please cite the paper:"
+                - generic [ref=e576]:
+                  - code [ref=e578]: "@article{borsos2020coresets, title={Coresets via Bilevel Optimization for Continual Learning and Streaming}, author={Zalán Borsos and Mojmír Mutný and Andreas Krause}, year={2020}, journal={arXiv preprint arXiv:2006.03875} }"
+                  - button "Copy" [ref=e580] [cursor=pointer]:
+                    - img [ref=e581]
+        - generic [ref=e587]:
+          - generic [ref=e590]:
+            - heading "About" [level=2] [ref=e591]
+            - paragraph [ref=e592]: Coresets via Bilevel Optimization
+            - heading "Topics" [level=3] [ref=e593]
+            - generic [ref=e595]:
+              - link "streaming" [ref=e596] [cursor=pointer]:
+                - /url: /topics/streaming
+              - link "bilevel-optimization" [ref=e597] [cursor=pointer]:
+                - /url: /topics/bilevel-optimization
+              - link "continual-learning" [ref=e598] [cursor=pointer]:
+                - /url: /topics/continual-learning
+              - link "coresets" [ref=e599] [cursor=pointer]:
+                - /url: /topics/coresets
+            - heading "Resources" [level=3] [ref=e600]
+            - link "Readme" [ref=e602] [cursor=pointer]:
+              - /url: "#readme-ov-file"
+              - img [ref=e603]
+              - text: Readme
+            - heading "License" [level=3] [ref=e605]
+            - link "MIT license" [ref=e607] [cursor=pointer]:
+              - /url: "#MIT-1-ov-file"
+              - img [ref=e608]
+              - text: MIT license
+            - link "Activity" [ref=e611] [cursor=pointer]:
+              - /url: /zalanborsos/bilevel_coresets/activity
+              - img [ref=e612]
+              - text: Activity
+            - heading "Stars" [level=3] [ref=e614]
+            - link "68 stars" [ref=e616] [cursor=pointer]:
+              - /url: /zalanborsos/bilevel_coresets/stargazers
+              - img [ref=e617]
+              - strong [ref=e619]: "68"
+              - text: stars
+            - heading "Watchers" [level=3] [ref=e620]
+            - link "2 watching" [ref=e622] [cursor=pointer]:
+              - /url: /zalanborsos/bilevel_coresets/watchers
+              - img [ref=e623]
+              - strong [ref=e625]: "2"
+              - text: watching
+            - heading "Forks" [level=3] [ref=e626]
+            - link "9 forks" [ref=e628] [cursor=pointer]:
+              - /url: /zalanborsos/bilevel_coresets/forks
+              - img [ref=e629]
+              - strong [ref=e631]: "9"
+              - text: forks
+            - link "Report repository" [ref=e633] [cursor=pointer]:
+              - /url: /contact/report-content?content_url=https%3A%2F%2Fgithub.com%2Fzalanborsos%2Fbilevel_coresets&report=zalanborsos+%28user%29
+          - generic [ref=e635]:
+            - heading "Releases" [level=2] [ref=e636]:
+              - link "Releases" [ref=e637] [cursor=pointer]:
+                - /url: /zalanborsos/bilevel_coresets/releases
+            - generic [ref=e638]: No releases published
+          - generic [ref=e640]:
+            - heading "Packages" [level=2] [ref=e641]:
+              - link "Packages" [ref=e642] [cursor=pointer]:
+                - /url: /users/zalanborsos/packages?repo_name=bilevel_coresets
+            - generic [ref=e643]: No packages published
+          - generic [ref=e645]:
+            - heading "Contributors 1" [level=2] [ref=e646]:
+              - link "Contributors 1" [ref=e647] [cursor=pointer]:
+                - /url: /zalanborsos/bilevel_coresets/graphs/contributors
+                - text: Contributors
+                - generic "1" [ref=e648]
+            - list [ref=e649]:
+              - listitem [ref=e650]:
+                - link "@zalanborsos" [ref=e651] [cursor=pointer]:
+                  - /url: https://github.com/zalanborsos
+                  - img "@zalanborsos" [ref=e652]
+                - link "zalanborsos Zalán Borsos" [ref=e654] [cursor=pointer]:
+                  - /url: https://github.com/zalanborsos
+                  - strong [ref=e655]: zalanborsos
+                  - text: Zalán Borsos
+          - generic [ref=e657]:
+            - heading "Languages" [level=2] [ref=e658]
+            - list [ref=e663]:
+              - listitem [ref=e664]:
+                - link "Jupyter Notebook 66.1%" [ref=e665] [cursor=pointer]:
+                  - /url: /zalanborsos/bilevel_coresets/search?l=jupyter-notebook
+                  - img [ref=e666]
+                  - generic [ref=e668]: Jupyter Notebook
+                  - generic [ref=e669]: 66.1%
+              - listitem [ref=e670]:
+                - link "Python 33.9%" [ref=e671] [cursor=pointer]:
+                  - /url: /zalanborsos/bilevel_coresets/search?l=python
+                  - img [ref=e672]
+                  - generic [ref=e674]: Python
+                  - generic [ref=e675]: 33.9%
+  - contentinfo [ref=e677]:
+    - heading "Footer" [level=2] [ref=e678]
+    - generic [ref=e679]:
+      - generic [ref=e680]:
+        - link "GitHub Homepage" [ref=e681] [cursor=pointer]:
+          - /url: https://github.com
+          - img [ref=e682]
+        - generic [ref=e684]: © 2026 GitHub, Inc.
+      - navigation "Footer" [ref=e685]:
+        - heading "Footer navigation" [level=3] [ref=e686]
+        - list "Footer navigation" [ref=e687]:
+          - listitem [ref=e688]:
+            - link "Terms" [ref=e689] [cursor=pointer]:
+              - /url: https://docs.github.com/site-policy/github-terms/github-terms-of-service
+          - listitem [ref=e690]:
+            - link "Privacy" [ref=e691] [cursor=pointer]:
+              - /url: https://docs.github.com/site-policy/privacy-policies/github-privacy-statement
+          - listitem [ref=e692]:
+            - link "Security" [ref=e693] [cursor=pointer]:
+              - /url: https://github.com/security
+          - listitem [ref=e694]:
+            - link "Status" [ref=e695] [cursor=pointer]:
+              - /url: https://www.githubstatus.com/
+          - listitem [ref=e696]:
+            - link "Community" [ref=e697] [cursor=pointer]:
+              - /url: https://github.community/
+          - listitem [ref=e698]:
+            - link "Docs" [ref=e699] [cursor=pointer]:
+              - /url: https://docs.github.com/
+          - listitem [ref=e700]:
+            - link "Contact" [ref=e701] [cursor=pointer]:
+              - /url: https://support.github.com?tags=dotcom-footer
+          - listitem [ref=e702]:
+            - button "Manage cookies" [ref=e704] [cursor=pointer]
+          - listitem [ref=e705]:
+            - button "Do not share my personal information" [ref=e707] [cursor=pointer]

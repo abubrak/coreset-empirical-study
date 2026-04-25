@@ -1,0 +1,418 @@
+- generic [ref=e2]:
+  - region
+  - generic [ref=e3]:
+    - link "Skip to content" [ref=e4] [cursor=pointer]:
+      - /url: "#start-of-content"
+    - banner [ref=e6]:
+      - heading "Navigation Menu" [level=2] [ref=e7]
+      - generic [ref=e8]:
+        - link "Homepage" [ref=e10] [cursor=pointer]:
+          - /url: /
+          - img [ref=e11]
+        - generic [ref=e13]:
+          - navigation "Global" [ref=e16]:
+            - list [ref=e17]:
+              - listitem [ref=e18]:
+                - button "Platform" [ref=e20] [cursor=pointer]:
+                  - text: Platform
+                  - img [ref=e21]
+              - listitem [ref=e23]:
+                - button "Solutions" [ref=e25] [cursor=pointer]:
+                  - text: Solutions
+                  - img [ref=e26]
+              - listitem [ref=e28]:
+                - button "Resources" [ref=e30] [cursor=pointer]:
+                  - text: Resources
+                  - img [ref=e31]
+              - listitem [ref=e33]:
+                - button "Open Source" [ref=e35] [cursor=pointer]:
+                  - text: Open Source
+                  - img [ref=e36]
+              - listitem [ref=e38]:
+                - button "Enterprise" [ref=e40] [cursor=pointer]:
+                  - text: Enterprise
+                  - img [ref=e41]
+              - listitem [ref=e43]:
+                - link "Pricing" [ref=e44] [cursor=pointer]:
+                  - /url: https://github.com/pricing
+                  - generic [ref=e45]: Pricing
+          - generic [ref=e46]:
+            - button "Search or jump to…" [ref=e49] [cursor=pointer]:
+              - img [ref=e51]
+            - link "Sign in" [ref=e54] [cursor=pointer]:
+              - /url: /login?return_to=https%3A%2F%2Fgithub.com%2FMingruiLiu-ML-Lab%2FBilevel-Coreset-Selection-via-Regularization%2Ftree%2Fmain
+            - link "Sign up" [ref=e55] [cursor=pointer]:
+              - /url: /signup?ref_cta=Sign+up&ref_loc=header+logged+out&ref_page=%2F%3Cuser-name%3E%2F%3Crepo-name%3E&source=header-repo&source_repo=MingruiLiu-ML-Lab%2FBilevel-Coreset-Selection-via-Regularization
+            - button "Appearance settings" [ref=e58] [cursor=pointer]:
+              - img
+  - main [ref=e62]:
+    - generic [ref=e63]:
+      - generic [ref=e64]:
+        - generic [ref=e66]:
+          - img [ref=e67]
+          - link "MingruiLiu-ML-Lab" [ref=e70] [cursor=pointer]:
+            - /url: /MingruiLiu-ML-Lab
+          - generic [ref=e71]: /
+          - strong [ref=e72]:
+            - link "Bilevel-Coreset-Selection-via-Regularization" [ref=e73] [cursor=pointer]:
+              - /url: /MingruiLiu-ML-Lab/Bilevel-Coreset-Selection-via-Regularization
+          - generic [ref=e74]: Public
+        - generic [ref=e75]:
+          - list:
+            - listitem [ref=e76]:
+              - link "You must be signed in to change notification settings" [ref=e77] [cursor=pointer]:
+                - /url: /login?return_to=%2FMingruiLiu-ML-Lab%2FBilevel-Coreset-Selection-via-Regularization
+                - img [ref=e78]
+                - text: Notifications
+            - listitem [ref=e80]:
+              - link "Fork 3" [ref=e81] [cursor=pointer]:
+                - /url: /login?return_to=%2FMingruiLiu-ML-Lab%2FBilevel-Coreset-Selection-via-Regularization
+                - img [ref=e82]
+                - text: Fork
+                - generic "3" [ref=e84]
+            - listitem [ref=e85]:
+              - link "You must be signed in to star a repository" [ref=e87] [cursor=pointer]:
+                - /url: /login?return_to=%2FMingruiLiu-ML-Lab%2FBilevel-Coreset-Selection-via-Regularization
+                - img [ref=e88]
+                - text: Star
+                - generic "14 users starred this repository" [ref=e90]: "14"
+      - navigation "Repository" [ref=e91]:
+        - list [ref=e92]:
+          - listitem [ref=e93]:
+            - link "Code" [ref=e94] [cursor=pointer]:
+              - /url: /MingruiLiu-ML-Lab/Bilevel-Coreset-Selection-via-Regularization
+              - img [ref=e95]
+              - generic [ref=e97]: Code
+          - listitem [ref=e98]:
+            - link "Issues" [ref=e99] [cursor=pointer]:
+              - /url: /MingruiLiu-ML-Lab/Bilevel-Coreset-Selection-via-Regularization/issues
+              - img [ref=e100]
+              - generic [ref=e103]: Issues
+          - listitem [ref=e104]:
+            - link "Pull requests" [ref=e105] [cursor=pointer]:
+              - /url: /MingruiLiu-ML-Lab/Bilevel-Coreset-Selection-via-Regularization/pulls
+              - img [ref=e106]
+              - generic [ref=e108]: Pull requests
+          - listitem [ref=e109]:
+            - link "Actions" [ref=e110] [cursor=pointer]:
+              - /url: /MingruiLiu-ML-Lab/Bilevel-Coreset-Selection-via-Regularization/actions
+              - img [ref=e111]
+              - generic [ref=e113]: Actions
+          - listitem [ref=e114]:
+            - link "Projects" [ref=e115] [cursor=pointer]:
+              - /url: /MingruiLiu-ML-Lab/Bilevel-Coreset-Selection-via-Regularization/projects
+              - img [ref=e116]
+              - generic [ref=e118]: Projects
+          - listitem [ref=e119]:
+            - link "Security and quality" [ref=e120] [cursor=pointer]:
+              - /url: /MingruiLiu-ML-Lab/Bilevel-Coreset-Selection-via-Regularization/security
+              - img [ref=e121]
+              - generic [ref=e123]: Security and quality
+          - listitem [ref=e124]:
+            - link "Insights" [ref=e125] [cursor=pointer]:
+              - /url: /MingruiLiu-ML-Lab/Bilevel-Coreset-Selection-via-Regularization/pulse
+              - img [ref=e126]
+              - generic [ref=e128]: Insights
+    - generic [ref=e141]:
+      - heading "MingruiLiu-ML-Lab/Bilevel-Coreset-Selection-via-Regularization" [level=1] [ref=e143]
+      - generic [ref=e144]:
+        - generic [ref=e147]:
+          - generic [ref=e148]:
+            - generic [ref=e149]:
+              - button "main branch" [ref=e151] [cursor=pointer]:
+                - generic [ref=e152]:
+                  - generic [ref=e154]:
+                    - img [ref=e156]
+                    - generic [ref=e159]: main
+                  - generic:
+                    - img
+              - generic [ref=e160]:
+                - link "Go to Branches page" [ref=e161] [cursor=pointer]:
+                  - /url: /MingruiLiu-ML-Lab/Bilevel-Coreset-Selection-via-Regularization/branches
+                  - img [ref=e162]
+                - link "Go to Tags page" [ref=e164] [cursor=pointer]:
+                  - /url: /MingruiLiu-ML-Lab/Bilevel-Coreset-Selection-via-Regularization/tags
+                  - img [ref=e165]
+            - generic [ref=e167]:
+              - generic [ref=e171]:
+                - img [ref=e173]
+                - combobox "Go to file" [ref=e175]
+              - button "Code" [ref=e176] [cursor=pointer]:
+                - generic [ref=e177]:
+                  - generic:
+                    - img
+                  - generic [ref=e178]: Code
+                  - generic:
+                    - img
+          - generic [ref=e179]:
+            - generic [ref=e180]:
+              - heading "Folders and files" [level=2] [ref=e181]
+              - table "Folders and files" [ref=e182]:
+                - rowgroup:
+                  - row "Name Last commit message Last commit date":
+                    - columnheader "Name"
+                    - columnheader "Last commit message":
+                      - generic "Last commit message"
+                    - columnheader "Last commit date":
+                      - generic "Last commit date"
+                - rowgroup [ref=e183]:
+                  - row "Latest commit mingrliu commits by mingrliu Update README.md Commit 8e5359c · Nov 24, 20233 years ago History 12 Commits" [ref=e184]:
+                    - cell "Latest commit mingrliu commits by mingrliu Update README.md Commit 8e5359c · Nov 24, 20233 years ago History 12 Commits" [ref=e185]:
+                      - generic [ref=e186]:
+                        - heading "Latest commit" [level=2] [ref=e187]
+                        - generic [ref=e188]:
+                          - generic [ref=e190]:
+                            - link "mingrliu" [ref=e191] [cursor=pointer]:
+                              - /url: /mingrliu
+                              - img "mingrliu" [ref=e192]
+                            - link "commits by mingrliu" [ref=e193] [cursor=pointer]:
+                              - /url: /MingruiLiu-ML-Lab/Bilevel-Coreset-Selection-via-Regularization/commits?author=mingrliu
+                              - text: mingrliu
+                          - link "Update README.md" [ref=e197] [cursor=pointer]:
+                            - /url: /MingruiLiu-ML-Lab/Bilevel-Coreset-Selection-via-Regularization/commit/8e5359cfa7a7a97cc77ae3d0216d6868b134ad4a
+                        - generic [ref=e198]:
+                          - generic [ref=e200]:
+                            - link "Commit 8e5359c" [ref=e201] [cursor=pointer]:
+                              - /url: /MingruiLiu-ML-Lab/Bilevel-Coreset-Selection-via-Regularization/commit/8e5359cfa7a7a97cc77ae3d0216d6868b134ad4a
+                              - text: 8e5359c
+                            - text: ·
+                            - generic "Nov 24, 2023, 1:36 AM GMT+8" [ref=e202]: Nov 24, 20233 years ago
+                          - generic [ref=e203]:
+                            - heading "History" [level=2] [ref=e204]
+                            - link "12 Commits" [ref=e205] [cursor=pointer]:
+                              - /url: /MingruiLiu-ML-Lab/Bilevel-Coreset-Selection-via-Regularization/commits/main/
+                              - generic [ref=e206]:
+                                - generic:
+                                  - img
+                                - generic [ref=e207]: 12 Commits
+                  - row "core, (Directory) initial commit Oct 26, 20233 years ago" [ref=e208]:
+                    - cell "core, (Directory)" [ref=e209]:
+                      - generic [ref=e210]:
+                        - img [ref=e211]
+                        - link "core, (Directory)" [ref=e216] [cursor=pointer]:
+                          - /url: /MingruiLiu-ML-Lab/Bilevel-Coreset-Selection-via-Regularization/tree/main/core
+                          - text: core
+                    - cell "initial commit" [ref=e217]:
+                      - link "initial commit" [ref=e220] [cursor=pointer]:
+                        - /url: /MingruiLiu-ML-Lab/Bilevel-Coreset-Selection-via-Regularization/commit/112a7821b90e180109f375878c55883e4a15a9ab
+                    - cell "Oct 26, 20233 years ago" [ref=e221]:
+                      - generic [ref=e222]: Oct 26, 20233 years ago
+                  - row "LICENSE, (File) Initial commit Oct 26, 20233 years ago" [ref=e223]:
+                    - cell "LICENSE, (File)" [ref=e224]:
+                      - generic [ref=e225]:
+                        - img [ref=e226]
+                        - link "LICENSE, (File)" [ref=e231] [cursor=pointer]:
+                          - /url: /MingruiLiu-ML-Lab/Bilevel-Coreset-Selection-via-Regularization/blob/main/LICENSE
+                          - text: LICENSE
+                    - cell "Initial commit" [ref=e232]:
+                      - link "Initial commit" [ref=e235] [cursor=pointer]:
+                        - /url: /MingruiLiu-ML-Lab/Bilevel-Coreset-Selection-via-Regularization/commit/18ea9d48d27af905dc1f94b2808eae316eb11e53
+                    - cell "Oct 26, 20233 years ago" [ref=e236]:
+                      - generic [ref=e237]: Oct 26, 20233 years ago
+                  - row "README.md, (File) Update README.md Nov 24, 20233 years ago" [ref=e238]:
+                    - cell "README.md, (File)" [ref=e239]:
+                      - generic [ref=e240]:
+                        - img [ref=e241]
+                        - link "README.md, (File)" [ref=e246] [cursor=pointer]:
+                          - /url: /MingruiLiu-ML-Lab/Bilevel-Coreset-Selection-via-Regularization/blob/main/README.md
+                          - text: README.md
+                    - cell "Update README.md" [ref=e247]:
+                      - link "Update README.md" [ref=e250] [cursor=pointer]:
+                        - /url: /MingruiLiu-ML-Lab/Bilevel-Coreset-Selection-via-Regularization/commit/8e5359cfa7a7a97cc77ae3d0216d6868b134ad4a
+                    - cell "Nov 24, 20233 years ago" [ref=e251]:
+                      - generic [ref=e252]: Nov 24, 20233 years ago
+                  - row "main.py, (File) initial commit Oct 26, 20233 years ago" [ref=e253]:
+                    - cell "main.py, (File)" [ref=e254]:
+                      - generic [ref=e255]:
+                        - img [ref=e256]
+                        - link "main.py, (File)" [ref=e261] [cursor=pointer]:
+                          - /url: /MingruiLiu-ML-Lab/Bilevel-Coreset-Selection-via-Regularization/blob/main/main.py
+                          - text: main.py
+                    - cell "initial commit" [ref=e262]:
+                      - link "initial commit" [ref=e265] [cursor=pointer]:
+                        - /url: /MingruiLiu-ML-Lab/Bilevel-Coreset-Selection-via-Regularization/commit/112a7821b90e180109f375878c55883e4a15a9ab
+                    - cell "Oct 26, 20233 years ago" [ref=e266]:
+                      - generic [ref=e267]: Oct 26, 20233 years ago
+                  - row "requirements.txt, (File) initial commit Oct 26, 20233 years ago" [ref=e268]:
+                    - cell "requirements.txt, (File)" [ref=e269]:
+                      - generic [ref=e270]:
+                        - img [ref=e271]
+                        - link "requirements.txt, (File)" [ref=e276] [cursor=pointer]:
+                          - /url: /MingruiLiu-ML-Lab/Bilevel-Coreset-Selection-via-Regularization/blob/main/requirements.txt
+                          - text: requirements.txt
+                    - cell "initial commit" [ref=e277]:
+                      - link "initial commit" [ref=e280] [cursor=pointer]:
+                        - /url: /MingruiLiu-ML-Lab/Bilevel-Coreset-Selection-via-Regularization/commit/112a7821b90e180109f375878c55883e4a15a9ab
+                    - cell "Oct 26, 20233 years ago" [ref=e281]:
+                      - generic [ref=e282]: Oct 26, 20233 years ago
+            - generic [ref=e284]:
+              - generic [ref=e285]:
+                - heading "Repository files navigation" [level=2] [ref=e286]
+                - navigation "Repository files" [ref=e287]:
+                  - list [ref=e288]:
+                    - listitem [ref=e289]:
+                      - link "README" [ref=e290] [cursor=pointer]:
+                        - /url: "#"
+                        - img [ref=e292]
+                        - generic [ref=e294]: README
+                    - listitem [ref=e295]:
+                      - link "MIT license" [ref=e296] [cursor=pointer]:
+                        - /url: "#"
+                        - img [ref=e298]
+                        - generic [ref=e300]: MIT license
+                - button "Outline" [ref=e301] [cursor=pointer]:
+                  - img [ref=e302]
+              - article [ref=e305]:
+                - generic [ref=e306]:
+                  - 'heading "Bilevel Coreset Selection in Continual Learning: A New Formulation and Algorithm" [level=1] [ref=e307]'
+                  - 'link "Permalink: Bilevel Coreset Selection in Continual Learning: A New Formulation and Algorithm" [ref=e308] [cursor=pointer]':
+                    - /url: "#bilevel-coreset-selection-in-continual-learning-a-new-formulation-and-algorithm"
+                    - img [ref=e309]
+                - paragraph [ref=e311]:
+                  - text: This is an implementation for paper of
+                  - 'link "Bilevel Coreset Selection in Continual Learning: A New Formulation and Algorithm" [ref=e312] [cursor=pointer]':
+                    - /url: https://openreview.net/pdf?id=2dtU9ZbgSN
+                  - text: Jie Hao, Kaiyi Ji, Mingrui Liu, 37th Conference on Neural Information Processing Systems (NeurIPS 2023).
+                - generic [ref=e313]:
+                  - heading "Abstract" [level=3] [ref=e314]
+                  - 'link "Permalink: Abstract" [ref=e315] [cursor=pointer]':
+                    - /url: "#abstract"
+                    - img [ref=e316]
+                - paragraph [ref=e318]:
+                  - text: Coreset is a small set that provides a data summary for a large dataset, such that training solely on the small set achieves competitive performance compared with a large dataset. In rehearsal-based continual learning, the coreset is typically used in the memory replay buffer to stand for representative samples in previous tasks, and the coreset selection procedure is typically formulated as a bilevel problem. However, the typical bilevel formulation for coreset selection explicitly performs optimization over discrete decision variables with greedy search, which is computationally expensive. Several works consider other formulations to address this issue, but they ignore the nested nature of bilevel optimization problems and may not solve the bilevel coreset selection problem accurately. To address these issues, we propose a new bilevel formulation, where the inner problem tries to find a model which minimizes the expected training error sampled from a given probability distribution, and the outer problem aims to learn the probability distribution with approximately
+                  - math [ref=e320]:
+                    - generic [ref=e321]: K
+                  - text: (coreset size) nonzero entries such that learned model in the inner problem minimizes the training error over the whole data. To ensure the learned probability has approximately
+                  - math [ref=e323]:
+                    - generic [ref=e324]: K
+                  - text: nonzero entries, we introduce a novel regularizer based on the smoothed top-$K$ loss in the upper problem. We design a new optimization algorithm that provably converges to the
+                  - math [ref=e326]:
+                    - generic [ref=e327]: ϵ
+                  - text: "-stationary point with"
+                  - math [ref=e329]:
+                    - generic [ref=e330]: O
+                    - generic [ref=e331]: (
+                    - generic [ref=e332]: "1"
+                    - generic [ref=e334]: /
+                    - generic [ref=e335]:
+                      - generic [ref=e336]: ϵ
+                      - generic [ref=e337]: "4"
+                    - generic [ref=e338]: )
+                  - text: computational complexity. We conduct extensive experiments in various settings in continual learning, including balanced data, imbalanced data, and label noise, to show that our proposed formulation and new algorithm significantly outperform competitive baselines. From bilevel optimization point of view, our algorithm significantly improves the vanilla greedy coreset selection method in terms of running time on continual learning benchmark datasets.
+                - generic [ref=e339]:
+                  - heading "Instruction" [level=3] [ref=e340]
+                  - 'link "Permalink: Instruction" [ref=e341] [cursor=pointer]':
+                    - /url: "#instruction"
+                    - img [ref=e342]
+                - generic [ref=e344]:
+                  - heading "Prerequisites" [level=4] [ref=e345]
+                  - 'link "Permalink: Prerequisites" [ref=e346] [cursor=pointer]':
+                    - /url: "#prerequisites"
+                    - img [ref=e347]
+                - generic [ref=e349]:
+                  - code [ref=e351]: $ pip install -r requirements.txt
+                  - button "Copy" [ref=e353] [cursor=pointer]:
+                    - img [ref=e354]
+                - paragraph [ref=e357]: Before running the code, please download the corresponding dataset and put it the data directory.
+                - generic [ref=e358]:
+                  - heading "Example for running BCSR on Split CIFAR-100" [level=4] [ref=e359]
+                  - 'link "Permalink: Example for running BCSR on Split CIFAR-100" [ref=e360] [cursor=pointer]':
+                    - /url: "#example-for-running-bcsr-on-split-cifar-100"
+                    - img [ref=e361]
+                - generic [ref=e363]:
+                  - code [ref=e365]: $ python main.py --select_type bcsr
+                  - button "Copy" [ref=e367] [cursor=pointer]:
+                    - img [ref=e368]
+                - generic [ref=e371]:
+                  - heading "Citation" [level=3] [ref=e372]
+                  - 'link "Permalink: Citation" [ref=e373] [cursor=pointer]':
+                    - /url: "#citation"
+                    - img [ref=e374]
+                - paragraph [ref=e376]: "If you found this repository helpful, please cite our paper:"
+                - generic [ref=e377]:
+                  - code [ref=e379]: "@inproceedings{ hao2023bilevel, title={Bilevel Coreset Selection in Continual Learning: A New Formulation and Algorithm}, author={Jie Hao, Kaiyi Ji, Mingrui Liu}, booktitle={Thirty-seventh Conference on Neural Information Processing Systems}, year={2023}, url={https://openreview.net/forum?id=2dtU9ZbgSN} }'''"
+                  - button "Copy" [ref=e381] [cursor=pointer]:
+                    - img [ref=e382]
+        - generic [ref=e388]:
+          - generic [ref=e391]:
+            - heading "About" [level=2] [ref=e392]
+            - paragraph [ref=e393]: "[NeurIPS 2023] Bilevel Coreset Selection in Continual Learning: A New Formulation and Algorithm"
+            - heading "Resources" [level=3] [ref=e394]
+            - link "Readme" [ref=e396] [cursor=pointer]:
+              - /url: "#readme-ov-file"
+              - img [ref=e397]
+              - text: Readme
+            - heading "License" [level=3] [ref=e399]
+            - link "MIT license" [ref=e401] [cursor=pointer]:
+              - /url: "#MIT-1-ov-file"
+              - img [ref=e402]
+              - text: MIT license
+            - link "Activity" [ref=e405] [cursor=pointer]:
+              - /url: /MingruiLiu-ML-Lab/Bilevel-Coreset-Selection-via-Regularization/activity
+              - img [ref=e406]
+              - text: Activity
+            - link "Custom properties" [ref=e409] [cursor=pointer]:
+              - /url: /MingruiLiu-ML-Lab/Bilevel-Coreset-Selection-via-Regularization/custom-properties
+              - img [ref=e410]
+              - text: Custom properties
+            - heading "Stars" [level=3] [ref=e412]
+            - link "14 stars" [ref=e414] [cursor=pointer]:
+              - /url: /MingruiLiu-ML-Lab/Bilevel-Coreset-Selection-via-Regularization/stargazers
+              - img [ref=e415]
+              - strong [ref=e417]: "14"
+              - text: stars
+            - heading "Watchers" [level=3] [ref=e418]
+            - link "1 watching" [ref=e420] [cursor=pointer]:
+              - /url: /MingruiLiu-ML-Lab/Bilevel-Coreset-Selection-via-Regularization/watchers
+              - img [ref=e421]
+              - strong [ref=e423]: "1"
+              - text: watching
+            - heading "Forks" [level=3] [ref=e424]
+            - link "3 forks" [ref=e426] [cursor=pointer]:
+              - /url: /MingruiLiu-ML-Lab/Bilevel-Coreset-Selection-via-Regularization/forks
+              - img [ref=e427]
+              - strong [ref=e429]: "3"
+              - text: forks
+            - link "Report repository" [ref=e431] [cursor=pointer]:
+              - /url: /contact/report-content?content_url=https%3A%2F%2Fgithub.com%2FMingruiLiu-ML-Lab%2FBilevel-Coreset-Selection-via-Regularization&report=MingruiLiu-ML-Lab+%28user%29
+          - generic [ref=e433]:
+            - heading "Releases" [level=2] [ref=e434]:
+              - link "Releases" [ref=e435] [cursor=pointer]:
+                - /url: /MingruiLiu-ML-Lab/Bilevel-Coreset-Selection-via-Regularization/releases
+            - generic [ref=e436]: No releases published
+          - generic [ref=e438]:
+            - heading "Packages" [level=2] [ref=e479]:
+              - link "Packages" [ref=e480] [cursor=pointer]:
+                - /url: /orgs/MingruiLiu-ML-Lab/packages?repo_name=Bilevel-Coreset-Selection-via-Regularization
+            - generic [ref=e481]: No packages published
+          - generic [ref=e452]:
+            - heading "Contributors 2" [level=2] [ref=e482]:
+              - link "Contributors 2" [ref=e483] [cursor=pointer]:
+                - /url: /MingruiLiu-ML-Lab/Bilevel-Coreset-Selection-via-Regularization/graphs/contributors
+                - text: Contributors
+                - generic "2" [ref=e484]
+            - list [ref=e485]:
+              - listitem [ref=e486]:
+                - link "@jhao6" [ref=e487] [cursor=pointer]:
+                  - /url: https://github.com/jhao6
+                  - img "@jhao6" [ref=e488]
+                - link "jhao6 JHao" [ref=e490] [cursor=pointer]:
+                  - /url: https://github.com/jhao6
+                  - strong [ref=e491]: jhao6
+                  - text: JHao
+              - listitem [ref=e492]:
+                - link "@mingrliu" [ref=e493] [cursor=pointer]:
+                  - /url: https://github.com/mingrliu
+                  - img "@mingrliu" [ref=e494]
+                - link "mingrliu" [ref=e496] [cursor=pointer]:
+                  - /url: https://github.com/mingrliu
+                  - strong [ref=e497]: mingrliu
+          - generic [ref=e464]:
+            - heading "Languages" [level=2] [ref=e465]
+            - list [ref=e469]:
+              - listitem [ref=e470]:
+                - link "Python 100.0%" [ref=e471] [cursor=pointer]:
+                  - /url: /MingruiLiu-ML-Lab/Bilevel-Coreset-Selection-via-Regularization/search?l=python
+                  - img [ref=e472]
+                  - generic [ref=e474]: Python
+                  - generic [ref=e475]: 100.0%

@@ -1,0 +1,244 @@
+- generic [ref=e2]:
+  - region
+  - generic [ref=e3]:
+    - link "Skip to content" [ref=e4] [cursor=pointer]:
+      - /url: "#start-of-content"
+    - banner [ref=e6]:
+      - heading "Navigation Menu" [level=2] [ref=e7]
+      - generic [ref=e8]:
+        - link "Homepage" [ref=e10] [cursor=pointer]:
+          - /url: /
+          - img [ref=e11]
+        - generic [ref=e13]:
+          - navigation "Global" [ref=e16]:
+            - list [ref=e17]:
+              - listitem [ref=e18]:
+                - button "Platform" [ref=e20] [cursor=pointer]:
+                  - text: Platform
+                  - img [ref=e21]
+              - listitem [ref=e23]:
+                - button "Solutions" [ref=e25] [cursor=pointer]:
+                  - text: Solutions
+                  - img [ref=e26]
+              - listitem [ref=e28]:
+                - button "Resources" [ref=e30] [cursor=pointer]:
+                  - text: Resources
+                  - img [ref=e31]
+              - listitem [ref=e33]:
+                - button "Open Source" [ref=e35] [cursor=pointer]:
+                  - text: Open Source
+                  - img [ref=e36]
+              - listitem [ref=e38]:
+                - button "Enterprise" [ref=e40] [cursor=pointer]:
+                  - text: Enterprise
+                  - img [ref=e41]
+              - listitem [ref=e43]:
+                - link "Pricing" [ref=e44] [cursor=pointer]:
+                  - /url: https://github.com/pricing
+                  - generic [ref=e45]: Pricing
+          - generic [ref=e46]:
+            - button "Search or jump to…" [ref=e49] [cursor=pointer]:
+              - img [ref=e51]
+            - generic [ref=e53]:
+              - link "Sign in" [ref=e54] [cursor=pointer]:
+                - /url: /login?return_to=https%3A%2F%2Fgithub.com%2Fzalanborsos%2Fbilevel_coresets%2Ftree%2Fmain%2Fbilevel_coreset
+              - generic [ref=e56]:
+                - heading "Sign in to GitHub" [level=4] [ref=e57]
+                - generic [ref=e58]:
+                  - text: Username or email address
+                  - textbox "Username or email address" [active] [ref=e59]
+                  - generic [ref=e60]:
+                    - text: Password
+                    - textbox "Password" [ref=e61]
+                    - link "Forgot password?" [ref=e62] [cursor=pointer]:
+                      - /url: /password_reset
+                    - button "Sign in" [ref=e63] [cursor=pointer]
+                - link "or continue with other methods" [ref=e66] [cursor=pointer]:
+                  - /url: /login?return_to=https%3A%2F%2Fgithub.com%2Fzalanborsos%2Fbilevel_coresets%2Ftree%2Fmain%2Fbilevel_coreset
+                  - generic [ref=e68]: or continue with other methods
+            - link "Sign up" [ref=e69] [cursor=pointer]:
+              - /url: /signup?ref_cta=Sign+up&ref_loc=header+logged+out&ref_page=%2F%3Cuser-name%3E%2F%3Crepo-name%3E%2Ffiles%2Fdisambiguate&source=header-repo&source_repo=zalanborsos%2Fbilevel_coresets
+            - button "Appearance settings" [ref=e72] [cursor=pointer]:
+              - img
+  - main [ref=e76]:
+    - generic [ref=e77]:
+      - generic [ref=e78]:
+        - generic [ref=e80]:
+          - img [ref=e81]
+          - link "zalanborsos" [ref=e84] [cursor=pointer]:
+            - /url: /zalanborsos
+          - generic [ref=e85]: /
+          - strong [ref=e86]:
+            - link "bilevel_coresets" [ref=e87] [cursor=pointer]:
+              - /url: /zalanborsos/bilevel_coresets
+          - generic [ref=e88]: Public
+        - generic [ref=e89]:
+          - list:
+            - listitem [ref=e90]:
+              - link "You must be signed in to change notification settings" [ref=e91] [cursor=pointer]:
+                - /url: /login?return_to=%2Fzalanborsos%2Fbilevel_coresets
+                - img [ref=e92]
+                - text: Notifications
+            - listitem [ref=e94]:
+              - link "Fork 9" [ref=e95] [cursor=pointer]:
+                - /url: /login?return_to=%2Fzalanborsos%2Fbilevel_coresets
+                - img [ref=e96]
+                - text: Fork
+                - generic "9" [ref=e98]
+            - listitem [ref=e99]:
+              - link "You must be signed in to star a repository" [ref=e101] [cursor=pointer]:
+                - /url: /login?return_to=%2Fzalanborsos%2Fbilevel_coresets
+                - img [ref=e102]
+                - text: Star
+                - generic "68 users starred this repository" [ref=e104]: "68"
+      - navigation "Repository" [ref=e105]:
+        - list [ref=e106]:
+          - listitem [ref=e107]:
+            - link "Code" [ref=e108] [cursor=pointer]:
+              - /url: /zalanborsos/bilevel_coresets
+              - img [ref=e109]
+              - generic [ref=e111]: Code
+          - listitem [ref=e112]:
+            - link "Issues 1" [ref=e113] [cursor=pointer]:
+              - /url: /zalanborsos/bilevel_coresets/issues
+              - img [ref=e114]
+              - generic [ref=e117]: Issues
+              - generic "1" [ref=e118]
+          - listitem [ref=e119]:
+            - link "Pull requests" [ref=e120] [cursor=pointer]:
+              - /url: /zalanborsos/bilevel_coresets/pulls
+              - img [ref=e121]
+              - generic [ref=e123]: Pull requests
+          - listitem [ref=e124]:
+            - link "Actions" [ref=e125] [cursor=pointer]:
+              - /url: /zalanborsos/bilevel_coresets/actions
+              - img [ref=e126]
+              - generic [ref=e128]: Actions
+          - listitem [ref=e129]:
+            - link "Projects" [ref=e130] [cursor=pointer]:
+              - /url: /zalanborsos/bilevel_coresets/projects
+              - img [ref=e131]
+              - generic [ref=e133]: Projects
+          - listitem [ref=e134]:
+            - link "Security and quality" [ref=e135] [cursor=pointer]:
+              - /url: /zalanborsos/bilevel_coresets/security
+              - img [ref=e136]
+              - generic [ref=e138]: Security and quality
+          - listitem [ref=e139]:
+            - link "Insights" [ref=e140] [cursor=pointer]:
+              - /url: /zalanborsos/bilevel_coresets/pulse
+              - img [ref=e141]
+              - generic [ref=e143]: Insights
+    - generic [ref=e151]:
+      - generic [ref=e153]:
+        - generic [ref=e156]:
+          - generic [ref=e157]:
+            - generic [ref=e158]:
+              - heading "Collapse file tree" [level=2] [ref=e159]:
+                - button "Collapse file tree" [expanded] [ref=e160] [cursor=pointer]:
+                  - img [ref=e161]
+              - heading "Files" [level=2] [ref=e164]
+            - generic [ref=e165]:
+              - button "main branch" [ref=e167] [cursor=pointer]:
+                - generic [ref=e168]:
+                  - generic [ref=e170]:
+                    - img [ref=e172]
+                    - generic [ref=e175]: main
+                  - generic:
+                    - img
+              - button "Search this repository (forward slash)" [ref=e177] [cursor=pointer]:
+                - img [ref=e178]
+          - generic [ref=e181]:
+            - img [ref=e183]
+            - combobox "Go to file" [ref=e185]
+          - navigation "File Tree Navigation" [ref=e191]:
+            - tree "Files" [ref=e193]:
+              - treeitem "batch_active_learning" [level=1] [ref=e194]:
+                - generic [ref=e195] [cursor=pointer]:
+                  - img [ref=e197]
+                  - generic [ref=e199]:
+                    - img [ref=e203]
+                    - generic [ref=e205]: batch_active_learning
+              - treeitem "cl_streaming" [level=1] [ref=e206]:
+                - generic [ref=e207] [cursor=pointer]:
+                  - img [ref=e209]
+                  - generic [ref=e211]:
+                    - img [ref=e215]
+                    - generic [ref=e217]: cl_streaming
+              - treeitem "data_summarization" [level=1] [ref=e218]:
+                - generic [ref=e219] [cursor=pointer]:
+                  - img [ref=e221]
+                  - generic [ref=e223]:
+                    - img [ref=e227]
+                    - generic [ref=e229]: data_summarization
+              - treeitem ".gitignore" [level=1] [ref=e230]:
+                - generic [ref=e232] [cursor=pointer]:
+                  - img [ref=e235]
+                  - generic [ref=e237]: .gitignore
+              - treeitem "LICENSE" [level=1] [ref=e238]:
+                - generic [ref=e240] [cursor=pointer]:
+                  - img [ref=e243]
+                  - generic [ref=e245]: LICENSE
+              - treeitem "README.md" [level=1] [ref=e246]:
+                - generic [ref=e248] [cursor=pointer]:
+                  - img [ref=e251]
+                  - generic [ref=e253]: README.md
+              - treeitem "bilevel_coreset.py" [level=1] [ref=e254]:
+                - generic [ref=e256] [cursor=pointer]:
+                  - img [ref=e259]
+                  - generic [ref=e261]: bilevel_coreset.py
+              - treeitem "demo.ipynb" [level=1] [ref=e262]:
+                - generic [ref=e264] [cursor=pointer]:
+                  - img [ref=e267]
+                  - generic [ref=e269]: demo.ipynb
+              - treeitem "loss_utils.py" [level=1] [ref=e270]:
+                - generic [ref=e272] [cursor=pointer]:
+                  - img [ref=e275]
+                  - generic [ref=e277]: loss_utils.py
+              - treeitem "models.py" [level=1] [ref=e278]:
+                - generic [ref=e280] [cursor=pointer]:
+                  - img [ref=e283]
+                  - generic [ref=e285]: models.py
+              - treeitem "requirements.txt" [level=1] [ref=e286]:
+                - generic [ref=e288] [cursor=pointer]:
+                  - img [ref=e291]
+                  - generic [ref=e293]: requirements.txt
+              - treeitem "thumbnail.png" [level=1] [ref=e294]:
+                - generic [ref=e296] [cursor=pointer]:
+                  - img [ref=e299]
+                  - generic [ref=e301]: thumbnail.png
+        - slider "Draggable pane splitter" [ref=e303]
+      - generic [ref=e306]:
+        - generic [ref=e310]:
+          - generic [ref=e312]:
+            - navigation "Breadcrumbs" [ref=e313]:
+              - heading "Breadcrumbs" [level=2] [ref=e314]
+              - list [ref=e315]:
+                - listitem [ref=e316]:
+                  - link "bilevel_coresets" [ref=e317] [cursor=pointer]:
+                    - /url: /zalanborsos/bilevel_coresets/tree/main
+            - generic [ref=e318]:
+              - text: /
+              - heading "bilevel_coreset" [level=1] [ref=e319]
+              - text: /
+            - button "Copy path" [ref=e320] [cursor=pointer]:
+              - img [ref=e321]
+          - generic [ref=e326]:
+            - heading "Directory actions" [level=2] [ref=e327]
+            - heading "More options" [level=2] [ref=e328]
+            - button "More options" [ref=e329] [cursor=pointer]:
+              - img [ref=e330]
+        - generic [ref=e333]:
+          - img [ref=e334]
+          - generic [ref=e336]:
+            - generic [ref=e337]: 404 - page not found
+            - generic [ref=e338]:
+              - text: The
+              - paragraph [ref=e339]: main
+              - text: branch of
+              - paragraph [ref=e340]: bilevel_coresets
+              - text: does not contain the path
+              - paragraph [ref=e341]: bilevel_coreset.
+          - link "go to Overview" [ref=e342] [cursor=pointer]:
+            - /url: /zalanborsos/bilevel_coresets
+            - generic [ref=e344]: Return to the repository overview

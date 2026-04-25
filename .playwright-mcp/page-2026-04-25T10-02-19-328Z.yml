@@ -1,0 +1,2427 @@
+- generic [active] [ref=e1]:
+  - generic [ref=e2]:
+    - region
+    - generic [ref=e3]:
+      - link "Skip to content" [ref=e4] [cursor=pointer]:
+        - /url: "#start-of-content"
+      - banner [ref=e6]:
+        - heading "Navigation Menu" [level=2] [ref=e7]
+        - generic [ref=e8]:
+          - link "Homepage" [ref=e10] [cursor=pointer]:
+            - /url: /
+            - img [ref=e11]
+          - generic [ref=e13]:
+            - navigation "Global" [ref=e16]:
+              - list [ref=e17]:
+                - listitem [ref=e18]:
+                  - button "Platform" [ref=e20] [cursor=pointer]:
+                    - text: Platform
+                    - img [ref=e21]
+                - listitem [ref=e23]:
+                  - button "Solutions" [ref=e25] [cursor=pointer]:
+                    - text: Solutions
+                    - img [ref=e26]
+                - listitem [ref=e28]:
+                  - button "Resources" [ref=e30] [cursor=pointer]:
+                    - text: Resources
+                    - img [ref=e31]
+                - listitem [ref=e33]:
+                  - button "Open Source" [ref=e35] [cursor=pointer]:
+                    - text: Open Source
+                    - img [ref=e36]
+                - listitem [ref=e38]:
+                  - button "Enterprise" [ref=e40] [cursor=pointer]:
+                    - text: Enterprise
+                    - img [ref=e41]
+                - listitem [ref=e43]:
+                  - link "Pricing" [ref=e44] [cursor=pointer]:
+                    - /url: https://github.com/pricing
+                    - generic [ref=e45]: Pricing
+            - generic [ref=e46]:
+              - button "Search or jump to…" [ref=e49] [cursor=pointer]:
+                - img [ref=e51]
+              - link "Sign in" [ref=e54] [cursor=pointer]:
+                - /url: /login?return_to=https%3A%2F%2Fgithub.com%2Fzalanborsos%2Fbilevel_coresets
+              - link "Sign up" [ref=e55] [cursor=pointer]:
+                - /url: /signup?ref_cta=Sign+up&ref_loc=header+logged+out&ref_page=%2F%3Cuser-name%3E%2F%3Crepo-name%3E&source=header-repo&source_repo=zalanborsos%2Fbilevel_coresets
+              - button "Appearance settings" [ref=e58] [cursor=pointer]:
+                - img
+    - main [ref=e62]:
+      - generic [ref=e63]:
+        - generic [ref=e64]:
+          - generic [ref=e66]:
+            - img [ref=e67]
+            - link "zalanborsos" [ref=e70] [cursor=pointer]:
+              - /url: /zalanborsos
+            - generic [ref=e71]: /
+            - strong [ref=e72]:
+              - link "bilevel_coresets" [ref=e73] [cursor=pointer]:
+                - /url: /zalanborsos/bilevel_coresets
+            - generic [ref=e74]: Public
+          - generic [ref=e75]:
+            - list:
+              - listitem [ref=e76]:
+                - link "You must be signed in to change notification settings" [ref=e77] [cursor=pointer]:
+                  - /url: /login?return_to=%2Fzalanborsos%2Fbilevel_coresets
+                  - img [ref=e78]
+                  - text: Notifications
+              - listitem [ref=e80]:
+                - link "Fork 9" [ref=e81] [cursor=pointer]:
+                  - /url: /login?return_to=%2Fzalanborsos%2Fbilevel_coresets
+                  - img [ref=e82]
+                  - text: Fork
+                  - generic "9" [ref=e84]
+              - listitem [ref=e85]:
+                - link "You must be signed in to star a repository" [ref=e87] [cursor=pointer]:
+                  - /url: /login?return_to=%2Fzalanborsos%2Fbilevel_coresets
+                  - img [ref=e88]
+                  - text: Star
+                  - generic "68 users starred this repository" [ref=e90]: "68"
+        - navigation "Repository" [ref=e91]:
+          - list [ref=e92]:
+            - listitem [ref=e93]:
+              - link "Code" [ref=e94] [cursor=pointer]:
+                - /url: /zalanborsos/bilevel_coresets
+                - img [ref=e95]
+                - generic [ref=e97]: Code
+            - listitem [ref=e98]:
+              - link "Issues 1" [ref=e99] [cursor=pointer]:
+                - /url: /zalanborsos/bilevel_coresets/issues
+                - img [ref=e100]
+                - generic [ref=e103]: Issues
+                - generic "1" [ref=e104]
+            - listitem [ref=e105]:
+              - link "Pull requests" [ref=e106] [cursor=pointer]:
+                - /url: /zalanborsos/bilevel_coresets/pulls
+                - img [ref=e107]
+                - generic [ref=e109]: Pull requests
+            - listitem [ref=e110]:
+              - link "Actions" [ref=e111] [cursor=pointer]:
+                - /url: /zalanborsos/bilevel_coresets/actions
+                - img [ref=e112]
+                - generic [ref=e114]: Actions
+            - listitem [ref=e115]:
+              - link "Projects" [ref=e116] [cursor=pointer]:
+                - /url: /zalanborsos/bilevel_coresets/projects
+                - img [ref=e117]
+                - generic [ref=e119]: Projects
+            - listitem [ref=e120]:
+              - link "Security and quality" [ref=e121] [cursor=pointer]:
+                - /url: /zalanborsos/bilevel_coresets/security
+                - img [ref=e122]
+                - generic [ref=e124]: Security and quality
+            - listitem [ref=e125]:
+              - link "Insights" [ref=e126] [cursor=pointer]:
+                - /url: /zalanborsos/bilevel_coresets/pulse
+                - img [ref=e127]
+                - generic [ref=e129]: Insights
+      - generic [ref=e712]:
+        - generic [ref=e714]:
+          - generic [ref=e717]:
+            - generic [ref=e718]:
+              - generic [ref=e719]:
+                - heading "Collapse file tree" [level=2] [ref=e720]:
+                  - button "Collapse file tree" [expanded] [ref=e721] [cursor=pointer]:
+                    - img [ref=e722]
+                - heading "Files" [level=2] [ref=e725]
+              - generic [ref=e726]:
+                - button "main branch" [ref=e728] [cursor=pointer]:
+                  - generic [ref=e729]:
+                    - generic [ref=e731]:
+                      - img [ref=e733]
+                      - generic [ref=e736]: main
+                    - generic:
+                      - img
+                - button "Search this repository (forward slash)" [ref=e738] [cursor=pointer]:
+                  - img [ref=e739]
+            - generic [ref=e742]:
+              - img [ref=e744]
+              - combobox "Go to file" [ref=e746]
+            - navigation "File Tree Navigation" [ref=e752]:
+              - tree "Files" [ref=e754]:
+                - treeitem "batch_active_learning" [level=1] [ref=e755]:
+                  - generic [ref=e756] [cursor=pointer]:
+                    - img [ref=e758]
+                    - generic [ref=e760]:
+                      - img [ref=e764]
+                      - generic [ref=e766]: batch_active_learning
+                - treeitem "cl_streaming" [level=1] [ref=e767]:
+                  - generic [ref=e768] [cursor=pointer]:
+                    - img [ref=e770]
+                    - generic [ref=e772]:
+                      - img [ref=e776]
+                      - generic [ref=e778]: cl_streaming
+                - treeitem "data_summarization" [level=1] [ref=e779]:
+                  - generic [ref=e780] [cursor=pointer]:
+                    - img [ref=e782]
+                    - generic [ref=e784]:
+                      - img [ref=e788]
+                      - generic [ref=e790]: data_summarization
+                - treeitem ".gitignore" [level=1] [ref=e791]:
+                  - generic [ref=e793] [cursor=pointer]:
+                    - img [ref=e796]
+                    - generic [ref=e798]: .gitignore
+                - treeitem "LICENSE" [level=1] [ref=e799]:
+                  - generic [ref=e801] [cursor=pointer]:
+                    - img [ref=e804]
+                    - generic [ref=e806]: LICENSE
+                - treeitem "README.md" [level=1] [ref=e807]:
+                  - generic [ref=e809] [cursor=pointer]:
+                    - img [ref=e812]
+                    - generic [ref=e814]: README.md
+                - treeitem "bilevel_coreset.py" [level=1] [ref=e815]:
+                  - generic [ref=e817] [cursor=pointer]:
+                    - img [ref=e820]
+                    - generic [ref=e822]: bilevel_coreset.py
+                - treeitem "demo.ipynb" [level=1] [ref=e823]:
+                  - generic [ref=e825] [cursor=pointer]:
+                    - img [ref=e828]
+                    - generic [ref=e830]: demo.ipynb
+                - treeitem "loss_utils.py" [level=1] [ref=e831]:
+                  - generic [ref=e833] [cursor=pointer]:
+                    - img [ref=e836]
+                    - generic [ref=e838]: loss_utils.py
+                - treeitem "models.py" [level=1] [ref=e839]:
+                  - generic [ref=e841] [cursor=pointer]:
+                    - img [ref=e844]
+                    - generic [ref=e846]: models.py
+                - treeitem "requirements.txt" [level=1] [ref=e847]:
+                  - generic [ref=e849] [cursor=pointer]:
+                    - img [ref=e852]
+                    - generic [ref=e854]: requirements.txt
+                - treeitem "thumbnail.png" [level=1] [ref=e855]:
+                  - generic [ref=e857] [cursor=pointer]:
+                    - img [ref=e860]
+                    - generic [ref=e862]: thumbnail.png
+          - slider "Draggable pane splitter" [ref=e864]
+        - generic [ref=e867]:
+          - generic [ref=e871]:
+            - generic [ref=e873]:
+              - navigation "Breadcrumbs" [ref=e874]:
+                - heading "Breadcrumbs" [level=2] [ref=e875]
+                - list [ref=e876]:
+                  - listitem [ref=e877]:
+                    - link "bilevel_coresets" [ref=e878] [cursor=pointer]:
+                      - /url: /zalanborsos/bilevel_coresets/tree/main
+              - generic [ref=e879]:
+                - text: /
+                - heading "bilevel_coreset.py" [level=1] [ref=e880]
+              - button "Copy path" [ref=e881] [cursor=pointer]:
+                - img [ref=e882]
+            - button "More file actions" [ref=e888] [cursor=pointer]:
+              - img [ref=e889]
+          - generic [ref=e891]:
+            - generic [ref=e893]:
+              - heading "Latest commit" [level=2] [ref=e894]
+              - generic [ref=e895]:
+                - generic [ref=e897]:
+                  - link "zalanborsos" [ref=e898] [cursor=pointer]:
+                    - /url: /zalanborsos
+                    - img "zalanborsos" [ref=e899]
+                  - link "commits by zalanborsos" [ref=e900] [cursor=pointer]:
+                    - /url: /zalanborsos/bilevel_coresets/commits?author=zalanborsos
+                    - text: zalanborsos
+                - link "fix typo" [ref=e904] [cursor=pointer]:
+                  - /url: /zalanborsos/bilevel_coresets/commit/d76cf15185e2d1bdeb8b6dea7b1a3ff9023fc69c
+              - generic [ref=e905]:
+                - generic [ref=e907]:
+                  - link "Commit d76cf15" [ref=e908] [cursor=pointer]:
+                    - /url: /zalanborsos/bilevel_coresets/commit/d76cf15185e2d1bdeb8b6dea7b1a3ff9023fc69c
+                    - text: d76cf15
+                  - text: ·
+                  - generic "Nov 3, 2020, 2:35 AM GMT+8" [ref=e909]: Nov 3, 20206 years ago
+                - generic [ref=e910]:
+                  - heading "History" [level=2] [ref=e911]
+                  - link "History" [ref=e912] [cursor=pointer]:
+                    - /url: /zalanborsos/bilevel_coresets/commits/main/bilevel_coreset.py
+                    - generic [ref=e913]:
+                      - generic:
+                        - img
+                      - generic [ref=e914]: History
+            - generic [ref=e916]:
+              - generic [ref=e918]:
+                - heading "File metadata and controls" [level=2] [ref=e919]
+                - list "File view" [ref=e921]:
+                  - listitem [ref=e922]:
+                    - button "Code" [ref=e923] [cursor=pointer]:
+                      - generic [ref=e925]: Code
+                  - listitem [ref=e926]:
+                    - button "Blame" [ref=e927] [cursor=pointer]:
+                      - generic [ref=e929]: Blame
+                - generic [ref=e930]:
+                  - generic [ref=e931]:
+                    - generic [ref=e932]:
+                      - link "Raw" [ref=e934] [cursor=pointer]:
+                        - /url: https://github.com/zalanborsos/bilevel_coresets/raw/refs/heads/main/bilevel_coreset.py
+                        - generic [ref=e936]: Raw
+                      - button "Copy raw file" [ref=e938] [cursor=pointer]:
+                        - img [ref=e939]
+                      - button "Download raw file" [ref=e943] [cursor=pointer]:
+                        - img [ref=e944]
+                    - generic [ref=e947]:
+                      - button "You must be signed in to make or propose changes" [disabled] [ref=e949]:
+                        - img [ref=e950]
+                      - button "More edit options" [ref=e953] [cursor=pointer]:
+                        - img [ref=e954]
+                  - button "Open symbols panel" [ref=e956] [cursor=pointer]:
+                    - img [ref=e957]
+              - region "bilevel_coreset.py" [ref=e960]:
+                - generic [ref=e964]:
+                  - textbox "file content" [ref=e969]: "import numpy as np import torch from torch.autograd import grad import copy from scipy.sparse.linalg import cg, LinearOperator from torch.utils.data import DataLoader class BilevelCoreset: \"\"\"\" Coreset via Bilevel Optimization. The coreset is built by greedy forward selection (via matching pursuit) based on the bilevel optimization formulation of data subset selection. Args: outer_loss_fn (function): outer loss function inner_loss_fn (function): inner loss function out_dim (int): output dimension max_outer_it (int): maximum number of outer iterations, equivalently, the number of GD steps on the weights max_inner_it (int): maximum number of inner iterations for solving the inner optimization outer_lr (float): learning rate of the outer optimizer (ADAM) inner_lr (float): learning rate of the inner optimizer (L-BFGS) max_conj_grad_it (int): number of conjugate gradient steps in the approximate Hessian-vector products candidate_batch_size (int): number of candidate points considered in each selection step div_tol (float): divergence tolerance threshild for the inner optimization problem logging_period (int): logging period based on coreset size \"\"\" def __init__(self, outer_loss_fn, inner_loss_fn, out_dim=10, max_outer_it=40, max_inner_it=300, outer_lr=0.01, inner_lr=0.25, max_conj_grad_it=50, candidate_batch_size=200, div_tol=10, logging_period=10): self.outer_loss_fn = outer_loss_fn self.inner_loss_fn = inner_loss_fn self.out_dim = out_dim self.max_outer_it = max_outer_it self.max_inner_it = max_inner_it self.outer_lr = outer_lr self.inner_lr = inner_lr self.max_conj_grad_it = max_conj_grad_it self.candidate_batch_size = candidate_batch_size self.div_tol = div_tol self.logging_period = logging_period self.nystrom_batch = None self.nystrom_normalization = None def hvp(self, loss, params, v): dl_p = self.flat_grad(grad(loss, params, create_graph=True, retain_graph=True)) return self.flat_grad(grad(dl_p, params, grad_outputs=v, retain_graph=True), reshape=True, detach=True) def inverse_hvp(self, loss, params, v): # TODO: refactor this to perform cg in pytorch op = LinearOperator((len(v), len(v)), matvec=lambda x: self.hvp(loss, params, torch.from_numpy(x).to(loss.device).float()).cpu().numpy()) return torch.from_numpy(cg(op, v.cpu().numpy(), maxiter=self.max_conj_grad_it)[0]).float().to(loss.device) def implicit_grad_batch(self, inner_loss, outer_loss, weights, params): dg_dalpha = self.flat_grad(grad(outer_loss, params), detach=True) * 1e-3 ivhp = self.inverse_hvp(inner_loss, params, dg_dalpha) dg_dtheta = self.flat_grad(grad(inner_loss, params, create_graph=True, retain_graph=True)) return -self.flat_grad(grad(dg_dtheta, weights, grad_outputs=ivhp), detach=True) def solve_bilevel_opt_representer_proxy(self, K_X_S, K_S_S, y_X, y_S, data_weights, inner_reg): m = K_S_S.shape[0] # create the weight tensor weights = torch.ones([m], dtype=torch.float, requires_grad=True) outer_optimizer = torch.optim.Adam([weights], lr=self.outer_lr) # initialize the representer coefficients alpha = torch.randn(size=[m, self.out_dim], requires_grad=True) alpha.data *= 0.01 for outer_it in range(self.max_outer_it): # perform inner opt outer_optimizer.zero_grad() inner_loss = np.inf while inner_loss > self.div_tol: def closure(): inner_optimizer.zero_grad() inner_loss = self.inner_loss_fn(K_S_S, alpha, y_S, weights, inner_reg) inner_loss.backward() return inner_loss inner_optimizer = torch.optim.LBFGS([alpha], lr=self.inner_lr, max_iter=self.max_inner_it) inner_optimizer.step(closure) inner_loss = self.inner_loss_fn(K_S_S, alpha, y_S, weights, inner_reg) if inner_loss > self.div_tol: # reinitialize upon divergence print(\"Warning: inner opt diverged, try setting lower inner learning rate.\") alpha = torch.randn(size=[m, self.out_dim], requires_grad=True) alpha.data *= 0.01 # calculate outer loss outer_loss = self.outer_loss_fn(K_X_S, alpha, y_X, data_weights, 0) # calculate the implicit gradient weights._grad.data = self.implicit_grad_batch(inner_loss, outer_loss, weights, alpha).clamp_(-1, 1) outer_optimizer.step() # project weights to ensure positivity weights.data = torch.max(weights.data, torch.zeros(m).float()) return weights, alpha, outer_loss, inner_loss def build_with_representer_proxy_batch(self, X, y, m, kernel_fn_np, data_weights=None, cache_kernel=False, start_size=1, inner_reg=1e-4): \"\"\"Build a coreset of size m based on (X, y, weights). Args: X (np.ndarray or torch.Tensor): array of the data, its type depends on the kernel function you use y (np.ndarray or torch.Tensor): labels, np.ndarray or torch.Tensor of type long (for classification) or float (for regression) m (int): size of the coreset kernel_fn_np (function): kernel function of the proxy model data_weights (np.ndarray): weights of X cache_kernel (bool): if True, the Gram matrix is calculated and saved at start. Use 'True' only on small datasets. start_size (int): number of coreset points chosen at random at the start Returns: (coreset_inds, coreset_weights): coreset indices and weights \"\"\" n = X.shape[0] selected_inds = np.random.choice(n, start_size, replace=None) if isinstance(y, np.ndarray): y = torch.from_numpy(y).float() if isinstance(data_weights, np.ndarray): data_weights = torch.from_numpy(data_weights).float() elif data_weights is None: data_weights = torch.ones(n).float() if m >= X.shape[0]: return np.arange(X.shape[0]), np.ones(X.shape[0]) kernel_fn = lambda x, y: torch.from_numpy(kernel_fn_np(x, y)).float() if cache_kernel: K = kernel_fn(X, X) def calc_kernel(inds1, inds2): if cache_kernel: return K[inds1][:, inds2] else: return kernel_fn(X[inds1], X[inds2]) for i in range(start_size - 1, m): # calculate the kernel between the data and the selected points K_X_S = calc_kernel(np.arange(n), selected_inds) # calculate the kernel between the selected points K_S_S = K_X_S[selected_inds] # solve bilevel opt on current set S coreset_weights, alpha, outer_loss, inner_loss = self.solve_bilevel_opt_representer_proxy(K_X_S, K_S_S, y, y[selected_inds], data_weights, inner_reg) # generate candidate inds candidate_inds = np.setdiff1d(np.arange(n), selected_inds) candidate_inds = np.random.choice(candidate_inds, np.minimum(self.candidate_batch_size, len(candidate_inds)), replace=False) all_inds = np.concatenate((selected_inds, candidate_inds)) new_size = len(all_inds) K_X_S = calc_kernel(np.arange(n), all_inds) K_S_S = K_X_S[all_inds] weights_all = torch.zeros([new_size], requires_grad=True) weights_all.data[:i + 1] = copy.deepcopy(coreset_weights.data) alpha_all = torch.zeros([new_size, self.out_dim], requires_grad=True) alpha_all.data[:i + 1] = copy.deepcopy(alpha.data) inner_loss = self.inner_loss_fn(K_S_S, alpha_all, y[all_inds], weights_all, inner_reg) outer_loss = self.outer_loss_fn(K_X_S, alpha_all, y, data_weights, 0) weights_all_grad = self.implicit_grad_batch(inner_loss, outer_loss, weights_all, alpha_all) # choose point with the highest negative gradient chosen_ind = weights_all_grad[i + 1:].argsort()[0] chosen_ind = candidate_inds[chosen_ind] selected_inds = np.append(selected_inds, chosen_ind) if (i + 1) % self.logging_period == 0: print('Coreset size {}, outer_loss {:.3}, inner loss {:.3}'.format(i + 1, outer_loss, inner_loss)) return selected_inds[:-1], coreset_weights.detach().numpy() def select_nystrom_batch(self, dataset_wo_augm, kernel_fn_np, loader_creator_fn, nystrom_features_dim): # choose points for Nystrom nystrom_batch = None loader = loader_creator_fn(dataset_wo_augm, shuffle=True) for inputs, targets in loader: inputs = inputs.cpu().numpy() if nystrom_batch is None: nystrom_batch = inputs else: nystrom_batch = np.concatenate([nystrom_batch, inputs]) if nystrom_batch.shape[0] >= nystrom_features_dim: break self.nystrom_batch = nystrom_batch[:nystrom_features_dim] # create Nystrom feature mapper K = kernel_fn_np(self.nystrom_batch, self.nystrom_batch) U, S, V = np.linalg.svd(K) S = np.maximum(S, 1e-7) self.normalization = np.dot(U / np.sqrt(S), V) def map_to_nystrom_features(self, x, kernel_fn_np): K_X_S = kernel_fn_np(x, self.nystrom_batch) x_features = np.dot(K_X_S, self.normalization.T).astype(np.float32) return x_features def flat_grad(self, grad, reshape=False, detach=False): if reshape: return torch.cat([p.detach().reshape(-1) for p in grad]) if detach: return torch.cat([p.detach().view(-1) for p in grad]) return torch.cat([p.view(-1) for p in grad]) def calc_l2_penalty(self, model): res = 0 for p in model.parameters(): res += torch.sum(p * p) return res def build_with_nystrom_proxy(self, dataset_w_augm, dataset_wo_augm, base_inds, m, kernel_fn_np, loader_creator_fn, model, nystrom_features_dim=2000, val_size=30000, inner_reg=1e-4, nr_presampled_transforms=100, device='cuda'): \"\"\"Build a coreset of size m using the Nystrom proxy. Args: dataset_w_augm (torch.utils.data.Dataset): the dataset that contains transformations for augmenting dataset_wo_augm (torch.utils.data.Dataset): the same dataset as dataset_w_augm without augmentations base_inds (np.ndarray): an array of indices of the points already included in the coreset m (int): the number of coreset points to be added to base_inds kernel_fn_np (function): kernel function of the proxy model loader_creator_fn (function): the function that creates the dataloader based on a dataset model (torch.nn.Module): the logistic regression model that will be fitted on the Nystrom features nystrom_features_dim (int): the dimension of the Nystrom features val_size (int): the number of points to consider in the upper level problem inner_reg (float): the weight decay penalty for the logistic regression nr_presampled_transforms (int): the number of transformations (augmentations) to be cached per point device (string): the device for torch tensors Returns: coreset_inds (np.ndarray): the coreset indices containing base_inds and the next m chosen inds \"\"\" # create Nystrom feature mapper self.select_nystrom_batch(dataset_wo_augm, kernel_fn_np, loader_creator_fn, nystrom_features_dim) # generate the features for the upper level objective n = len(dataset_wo_augm.targets) available_inds = np.setdiff1d(np.arange(n), base_inds) val_inds = np.random.choice(available_inds, val_size, replace=False) subset = torch.utils.data.Subset(dataset_wo_augm, val_inds) loader = loader_creator_fn(subset) X_val = [] y_val = [] for inputs, targets in loader: x_features = self.map_to_nystrom_features(inputs.cpu().numpy(), kernel_fn_np) x_features = torch.from_numpy(x_features).float().to(device) X_val.append(x_features) y_val.append(targets.to(device)) X_val = torch.cat(X_val).to(device) y_val = torch.cat(y_val).to(device) model = model.to(device) optimizer = torch.optim.Adam(model.parameters(), lr=1e-3, weight_decay=inner_reg) # pre-sample transformations for speedup def presample_transforms(ind): X = [] y = [] repeated_inds = np.ones(nr_presampled_transforms).astype(int) * ind trainset = torch.utils.data.Subset(dataset_w_augm, repeated_inds) train_loader = loader_creator_fn(trainset, shuffle=True) for inputs, targets in train_loader: x_features = self.map_to_nystrom_features(inputs.cpu().numpy(), kernel_fn_np) x_features = torch.from_numpy(x_features).float().to(device) X.append(x_features) y.append(targets.to(device)) return torch.cat(X), torch.cat(y) X_train = [] y_train = [] for ind in base_inds: X, y = presample_transforms(ind) X_train.append(X) y_train.append(y) X_train, y_train = torch.cat(X_train).to(device), torch.cat(y_train).to(device) inds = base_inds for it in range(m): # perform inner optimization for it in range(self.max_inner_it): pred = model(X_train) loss = self.inner_loss_fn(pred, y_train) optimizer.zero_grad() loss.backward() optimizer.step() with torch.no_grad(): val_pred = model(X_val) val_loss = self.outer_loss_fn(val_pred, y_val) val_acc = torch.sum(torch.argmax(val_pred, dim=1).eq(torch.argmax(y_val, dim=1))) print('Subset size {0:d}, inner loss {1:.3f}, ' 'outer loss {2:.3f}, outer acc {3:.3f}'.format(len(inds), loss.detach().cpu().numpy(), val_loss.detach().cpu().numpy(), val_acc.cpu().numpy() / val_size)) # get outer grad pred = model(X_val) outer_loss = self.outer_loss_fn(pred, y_val) outer_grad = self.flat_grad(grad(outer_loss, model.parameters()), detach=True) # calculate inverse Hessian - outer grad product pred = model(X_train) loss = self.inner_loss_fn(pred, y_train) loss += inner_reg * self.calc_l2_penalty(model) / 2 inv_hvp = self.inverse_hvp(loss, list(model.parameters()), outer_grad) # find and add the point with the largest negative implicit grad weights = torch.ones(y_val.shape[0], device=device, requires_grad=True) model.zero_grad() pred = model(X_val) loss = self.inner_loss_fn(pred, y_val, weights) grads = self.flat_grad(grad(loss, model.parameters(), create_graph=True, retain_graph=True)) weight_grad = -grad(grads, weights, grad_outputs=inv_hvp)[0].detach().cpu() sorted_inds = np.argsort(weight_grad.numpy()) for s in sorted_inds: selected_ind = val_inds[s] if selected_ind not in inds: inds = np.append(inds, selected_ind) break x, y = presample_transforms(selected_ind) X_train = torch.cat([X_train, x]) y_train = torch.cat([y_train, y]) return inds"
+                  - generic:
+                    - generic:
+                      - generic:
+                        - generic [ref=e970]:
+                          - generic [ref=e971] [cursor=pointer]: "1"
+                          - generic [ref=e972] [cursor=pointer]: "2"
+                          - generic [ref=e973] [cursor=pointer]: "3"
+                          - generic [ref=e974] [cursor=pointer]: "4"
+                          - generic [ref=e975] [cursor=pointer]: "5"
+                          - generic [ref=e976] [cursor=pointer]: "6"
+                          - generic [ref=e977] [cursor=pointer]: "7"
+                          - generic [ref=e978] [cursor=pointer]: "8"
+                          - generic [ref=e979] [cursor=pointer]:
+                            - text: "9"
+                            - button [ref=e980]:
+                              - img [ref=e981]
+                          - generic [ref=e983] [cursor=pointer]: "10"
+                          - generic [ref=e984] [cursor=pointer]: "11"
+                          - generic [ref=e985] [cursor=pointer]: "12"
+                          - generic [ref=e986] [cursor=pointer]: "13"
+                          - generic [ref=e987] [cursor=pointer]: "14"
+                          - generic [ref=e988] [cursor=pointer]: "15"
+                          - generic [ref=e989] [cursor=pointer]: "16"
+                          - generic [ref=e990] [cursor=pointer]: "17"
+                          - generic [ref=e991] [cursor=pointer]: "18"
+                          - generic [ref=e992] [cursor=pointer]: "19"
+                          - generic [ref=e993] [cursor=pointer]: "20"
+                          - generic [ref=e994] [cursor=pointer]: "21"
+                          - generic [ref=e995] [cursor=pointer]: "22"
+                          - generic [ref=e996] [cursor=pointer]: "23"
+                          - generic [ref=e997] [cursor=pointer]: "24"
+                          - generic [ref=e998] [cursor=pointer]: "25"
+                          - generic [ref=e999] [cursor=pointer]: "26"
+                          - generic [ref=e1000] [cursor=pointer]: "27"
+                          - generic [ref=e1001] [cursor=pointer]:
+                            - text: "28"
+                            - button [ref=e1002]:
+                              - img [ref=e1003]
+                          - generic [ref=e1005] [cursor=pointer]: "29"
+                          - generic [ref=e1006] [cursor=pointer]: "30"
+                          - generic [ref=e1007] [cursor=pointer]: "31"
+                          - generic [ref=e1008] [cursor=pointer]: "32"
+                          - generic [ref=e1009] [cursor=pointer]: "33"
+                          - generic [ref=e1010] [cursor=pointer]: "34"
+                          - generic [ref=e1011] [cursor=pointer]: "35"
+                          - generic [ref=e1012] [cursor=pointer]: "36"
+                          - generic [ref=e1013] [cursor=pointer]: "37"
+                          - generic [ref=e1014] [cursor=pointer]: "38"
+                          - generic [ref=e1015] [cursor=pointer]: "39"
+                          - generic [ref=e1016] [cursor=pointer]: "40"
+                          - generic [ref=e1017] [cursor=pointer]: "41"
+                          - generic [ref=e1018] [cursor=pointer]: "42"
+                          - generic [ref=e1019] [cursor=pointer]: "43"
+                          - generic [ref=e1020] [cursor=pointer]: "44"
+                          - generic [ref=e1021] [cursor=pointer]: "45"
+                          - generic [ref=e1022] [cursor=pointer]: "46"
+                          - generic [ref=e1023] [cursor=pointer]: "47"
+                          - generic [ref=e1024] [cursor=pointer]:
+                            - text: "48"
+                            - button [ref=e1025]:
+                              - img [ref=e1026]
+                          - generic [ref=e1028] [cursor=pointer]: "49"
+                          - generic [ref=e1029] [cursor=pointer]: "50"
+                          - generic [ref=e1030] [cursor=pointer]: "51"
+                          - generic [ref=e1031] [cursor=pointer]: "52"
+                          - generic [ref=e1032] [cursor=pointer]: "53"
+                          - generic [ref=e1033] [cursor=pointer]: "54"
+                          - generic [ref=e1034] [cursor=pointer]:
+                            - text: "55"
+                            - button [ref=e1035]:
+                              - img [ref=e1036]
+                          - generic [ref=e1038] [cursor=pointer]: "56"
+                          - generic [ref=e1039] [cursor=pointer]: "57"
+                          - generic [ref=e1040] [cursor=pointer]: "58"
+                          - generic [ref=e1041] [cursor=pointer]: "59"
+                          - generic [ref=e1042] [cursor=pointer]: "60"
+                          - generic [ref=e1043] [cursor=pointer]:
+                            - text: "61"
+                            - button [ref=e1044]:
+                              - img [ref=e1045]
+                          - generic [ref=e1047] [cursor=pointer]: "62"
+                          - generic [ref=e1048] [cursor=pointer]: "63"
+                          - generic [ref=e1049] [cursor=pointer]: "64"
+                          - generic [ref=e1050] [cursor=pointer]: "65"
+                          - generic [ref=e1051] [cursor=pointer]: "66"
+                          - generic [ref=e1052] [cursor=pointer]: "67"
+                          - generic [ref=e1053] [cursor=pointer]: "68"
+                          - generic [ref=e1054] [cursor=pointer]: "69"
+                          - generic [ref=e1055] [cursor=pointer]: "70"
+                          - generic [ref=e1056] [cursor=pointer]: "71"
+                          - generic [ref=e1057] [cursor=pointer]: "72"
+                          - generic [ref=e1058] [cursor=pointer]: "73"
+                          - generic [ref=e1059] [cursor=pointer]: "74"
+                          - generic [ref=e1060] [cursor=pointer]: "75"
+                          - generic [ref=e1061] [cursor=pointer]: "76"
+                          - generic [ref=e1062] [cursor=pointer]:
+                            - text: "77"
+                            - button [ref=e1063]:
+                              - img [ref=e1064]
+                          - generic [ref=e1066] [cursor=pointer]: "78"
+                          - generic [ref=e1067] [cursor=pointer]: "79"
+                          - generic [ref=e1068] [cursor=pointer]: "80"
+                          - generic [ref=e1069] [cursor=pointer]: "81"
+                          - generic [ref=e1070] [cursor=pointer]: "82"
+                          - generic [ref=e1071] [cursor=pointer]: "83"
+                          - generic [ref=e1072] [cursor=pointer]: "84"
+                          - generic [ref=e1073] [cursor=pointer]: "85"
+                          - generic [ref=e1074] [cursor=pointer]: "86"
+                          - generic [ref=e1075] [cursor=pointer]: "87"
+                          - generic [ref=e1076] [cursor=pointer]: "88"
+                          - generic [ref=e1077] [cursor=pointer]: "89"
+                          - generic [ref=e1078] [cursor=pointer]: "90"
+                          - generic [ref=e1079] [cursor=pointer]: "91"
+                          - generic [ref=e1080] [cursor=pointer]: "92"
+                          - generic [ref=e1081] [cursor=pointer]: "93"
+                          - generic [ref=e1082] [cursor=pointer]: "94"
+                          - generic [ref=e1083] [cursor=pointer]: "95"
+                          - generic [ref=e1084] [cursor=pointer]: "96"
+                          - generic [ref=e1085] [cursor=pointer]: "97"
+                          - generic [ref=e1086] [cursor=pointer]: "98"
+                          - generic [ref=e1087] [cursor=pointer]: "99"
+                          - generic [ref=e1088] [cursor=pointer]: "100"
+                          - generic [ref=e1089] [cursor=pointer]: "101"
+                          - generic [ref=e1090] [cursor=pointer]: "102"
+                          - generic [ref=e1091] [cursor=pointer]: "103"
+                          - generic [ref=e1092] [cursor=pointer]: "104"
+                          - generic [ref=e1093] [cursor=pointer]:
+                            - text: "105"
+                            - button [ref=e1094]:
+                              - img [ref=e1095]
+                          - generic [ref=e1097] [cursor=pointer]: "106"
+                          - generic [ref=e1098] [cursor=pointer]: "107"
+                          - generic [ref=e1099] [cursor=pointer]: "108"
+                          - generic [ref=e1100] [cursor=pointer]: "109"
+                          - generic [ref=e1101] [cursor=pointer]: "110"
+                          - generic [ref=e1102] [cursor=pointer]: "111"
+                          - generic [ref=e1103] [cursor=pointer]: "112"
+                          - generic [ref=e1104] [cursor=pointer]: "113"
+                          - generic [ref=e1105] [cursor=pointer]: "114"
+                          - generic [ref=e1106] [cursor=pointer]: "115"
+                          - generic [ref=e1107] [cursor=pointer]: "116"
+                          - generic [ref=e1108] [cursor=pointer]: "117"
+                          - generic [ref=e1109] [cursor=pointer]: "118"
+                          - generic [ref=e1110] [cursor=pointer]: "119"
+                          - generic [ref=e1111] [cursor=pointer]: "120"
+                          - generic [ref=e1112] [cursor=pointer]: "121"
+                          - generic [ref=e1113] [cursor=pointer]: "122"
+                          - generic [ref=e1114] [cursor=pointer]: "123"
+                          - generic [ref=e1115] [cursor=pointer]: "124"
+                          - generic [ref=e1116] [cursor=pointer]: "125"
+                          - generic [ref=e1117] [cursor=pointer]: "126"
+                          - generic [ref=e1118] [cursor=pointer]: "127"
+                          - generic [ref=e1119] [cursor=pointer]: "128"
+                          - generic [ref=e1120] [cursor=pointer]: "129"
+                          - generic [ref=e1121] [cursor=pointer]: "130"
+                          - generic [ref=e1122] [cursor=pointer]: "131"
+                          - generic [ref=e1123] [cursor=pointer]: "132"
+                          - generic [ref=e1124] [cursor=pointer]: "133"
+                          - generic [ref=e1125] [cursor=pointer]: "269"
+                          - generic [ref=e1126] [cursor=pointer]: "270"
+                          - generic [ref=e1127] [cursor=pointer]: "271"
+                          - generic [ref=e1128] [cursor=pointer]:
+                            - text: "272"
+                            - button [ref=e1129]:
+                              - img [ref=e1130]
+                          - generic [ref=e1132] [cursor=pointer]: "273"
+                          - generic [ref=e1133] [cursor=pointer]: "274"
+                          - generic [ref=e1134] [cursor=pointer]: "275"
+                          - generic [ref=e1135] [cursor=pointer]: "276"
+                          - generic [ref=e1136] [cursor=pointer]: "277"
+                          - generic [ref=e1137] [cursor=pointer]: "278"
+                          - generic [ref=e1138] [cursor=pointer]: "279"
+                          - generic [ref=e1139] [cursor=pointer]: "280"
+                          - generic [ref=e1140] [cursor=pointer]: "281"
+                          - generic [ref=e1141] [cursor=pointer]: "282"
+                          - generic [ref=e1142] [cursor=pointer]: "283"
+                          - generic [ref=e1143] [cursor=pointer]: "284"
+                          - generic [ref=e1144] [cursor=pointer]: "285"
+                          - generic [ref=e1145] [cursor=pointer]: "286"
+                          - generic [ref=e1146] [cursor=pointer]: "287"
+                          - generic [ref=e1147] [cursor=pointer]: "288"
+                          - generic [ref=e1148] [cursor=pointer]: "289"
+                          - generic [ref=e1149] [cursor=pointer]: "290"
+                          - generic [ref=e1150] [cursor=pointer]: "291"
+                          - generic [ref=e1151] [cursor=pointer]: "292"
+                          - generic [ref=e1152] [cursor=pointer]: "293"
+                          - generic [ref=e1153] [cursor=pointer]: "294"
+                          - generic [ref=e1154] [cursor=pointer]: "295"
+                          - generic [ref=e1155] [cursor=pointer]: "296"
+                          - generic [ref=e1156] [cursor=pointer]: "297"
+                          - generic [ref=e1157] [cursor=pointer]: "298"
+                          - generic [ref=e1158] [cursor=pointer]: "299"
+                          - generic [ref=e1159] [cursor=pointer]: "300"
+                          - generic [ref=e1160] [cursor=pointer]: "301"
+                          - generic [ref=e1161] [cursor=pointer]: "302"
+                          - generic [ref=e1162] [cursor=pointer]: "303"
+                          - generic [ref=e1163] [cursor=pointer]: "304"
+                          - generic [ref=e1164] [cursor=pointer]: "305"
+                          - generic [ref=e1165] [cursor=pointer]: "306"
+                          - generic [ref=e1166] [cursor=pointer]: "307"
+                          - generic [ref=e1167] [cursor=pointer]: "308"
+                          - generic [ref=e1168] [cursor=pointer]: "309"
+                          - generic [ref=e1169] [cursor=pointer]: "310"
+                          - generic [ref=e1170] [cursor=pointer]: "311"
+                          - generic [ref=e1171] [cursor=pointer]: "312"
+                          - generic [ref=e1172] [cursor=pointer]: "313"
+                          - generic [ref=e1173] [cursor=pointer]: "314"
+                          - generic [ref=e1174] [cursor=pointer]: "315"
+                          - generic [ref=e1175] [cursor=pointer]: "316"
+                          - generic [ref=e1176] [cursor=pointer]: "317"
+                          - generic [ref=e1177] [cursor=pointer]: "318"
+                          - generic [ref=e1178] [cursor=pointer]: "319"
+                          - generic [ref=e1179] [cursor=pointer]: "320"
+                          - generic [ref=e1180] [cursor=pointer]: "321"
+                          - generic [ref=e1181] [cursor=pointer]: "322"
+                          - generic [ref=e1182] [cursor=pointer]: "323"
+                          - generic [ref=e1183] [cursor=pointer]: "324"
+                          - generic [ref=e1184] [cursor=pointer]: "325"
+                          - generic [ref=e1185] [cursor=pointer]: "326"
+                          - generic [ref=e1186] [cursor=pointer]: "327"
+                          - generic [ref=e1187] [cursor=pointer]: "328"
+                          - generic [ref=e1188] [cursor=pointer]: "329"
+                          - generic [ref=e1189] [cursor=pointer]: "330"
+                          - generic [ref=e1190] [cursor=pointer]: "331"
+                          - generic [ref=e1191] [cursor=pointer]: "332"
+                          - generic [ref=e1192] [cursor=pointer]: "333"
+                          - generic [ref=e1193] [cursor=pointer]: "334"
+                          - generic [ref=e1194] [cursor=pointer]: "335"
+                          - generic [ref=e1195] [cursor=pointer]: "336"
+                          - generic [ref=e1196] [cursor=pointer]: "337"
+                          - generic [ref=e1197] [cursor=pointer]: "338"
+                          - generic [ref=e1198] [cursor=pointer]: "339"
+                          - generic [ref=e1199] [cursor=pointer]: "340"
+                          - generic [ref=e1200] [cursor=pointer]: "341"
+                          - generic [ref=e1201] [cursor=pointer]: "342"
+                        - generic:
+                          - generic:
+                            - generic:
+                              - generic:
+                                - generic: import
+                                - generic: numpy
+                                - generic: as
+                                - generic: np
+                          - generic:
+                            - generic:
+                              - generic:
+                                - generic: import
+                                - generic: torch
+                          - generic:
+                            - generic:
+                              - generic:
+                                - generic: from
+                                - generic: torch
+                                - text: .
+                                - generic: autograd
+                                - generic: import
+                                - generic: grad
+                          - generic:
+                            - generic:
+                              - generic:
+                                - generic: import
+                                - generic: copy
+                          - generic:
+                            - generic:
+                              - generic:
+                                - generic: from
+                                - generic: scipy
+                                - text: .
+                                - generic: sparse
+                                - text: .
+                                - generic: linalg
+                                - generic: import
+                                - generic: cg
+                                - text: ","
+                                - generic: LinearOperator
+                          - generic:
+                            - generic:
+                              - generic:
+                                - generic: from
+                                - generic: torch
+                                - text: .
+                                - generic: utils
+                                - text: .
+                                - generic: data
+                                - generic: import
+                                - generic: DataLoader
+                          - generic:
+                            - generic:
+                              - generic:
+                                - generic: class
+                                - generic: BilevelCoreset
+                                - text: ":"
+                          - generic:
+                            - generic:
+                              - generic:
+                                - generic: "\"\"\"\""
+                          - generic:
+                            - generic:
+                              - generic:
+                                - generic: Coreset via Bilevel Optimization. The coreset is built by greedy forward selection (via matching pursuit)
+                          - generic:
+                            - generic:
+                              - generic:
+                                - generic: based on the bilevel optimization formulation of data subset selection.
+                          - generic:
+                            - generic:
+                              - generic:
+                                - generic: "Args:"
+                          - generic:
+                            - generic:
+                              - generic:
+                                - generic: "outer_loss_fn (function): outer loss function"
+                          - generic:
+                            - generic:
+                              - generic:
+                                - generic: "inner_loss_fn (function): inner loss function"
+                          - generic:
+                            - generic:
+                              - generic:
+                                - generic: "out_dim (int): output dimension"
+                          - generic:
+                            - generic:
+                              - generic:
+                                - generic: "max_outer_it (int): maximum number of outer iterations, equivalently, the number of GD steps on the weights"
+                          - generic:
+                            - generic:
+                              - generic:
+                                - generic: "max_inner_it (int): maximum number of inner iterations for solving the inner optimization"
+                          - generic:
+                            - generic:
+                              - generic:
+                                - generic: "outer_lr (float): learning rate of the outer optimizer (ADAM)"
+                          - generic:
+                            - generic:
+                              - generic:
+                                - generic: "inner_lr (float): learning rate of the inner optimizer (L-BFGS)"
+                          - generic:
+                            - generic:
+                              - generic:
+                                - generic: "max_conj_grad_it (int): number of conjugate gradient steps in the approximate Hessian-vector products"
+                          - generic:
+                            - generic:
+                              - generic:
+                                - generic: "candidate_batch_size (int): number of candidate points considered in each selection step"
+                          - generic:
+                            - generic:
+                              - generic:
+                                - generic: "div_tol (float): divergence tolerance threshild for the inner optimization problem"
+                          - generic:
+                            - generic:
+                              - generic:
+                                - generic: "logging_period (int): logging period based on coreset size"
+                          - generic:
+                            - generic:
+                              - generic:
+                                - generic: "\"\"\""
+                          - generic:
+                            - generic:
+                              - generic:
+                                - generic: def
+                                - generic: __init__
+                                - text: (
+                                - generic: self
+                                - text: ","
+                                - generic: outer_loss_fn
+                                - text: ","
+                                - generic: inner_loss_fn
+                                - text: ","
+                                - generic: out_dim
+                                - generic: =
+                                - generic: "10"
+                                - text: ","
+                                - generic: max_outer_it
+                                - generic: =
+                                - generic: "40"
+                                - text: ","
+                                - generic: max_inner_it
+                                - generic: =
+                                - generic: "300"
+                                - text: ","
+                                - generic: outer_lr
+                                - generic: =
+                                - generic: "0.01"
+                                - text: ","
+                          - generic:
+                            - generic:
+                              - generic:
+                                - generic: inner_lr
+                                - generic: =
+                                - generic: "0.25"
+                                - text: ","
+                                - generic: max_conj_grad_it
+                                - generic: =
+                                - generic: "50"
+                                - text: ","
+                                - generic: candidate_batch_size
+                                - generic: =
+                                - generic: "200"
+                                - text: ","
+                                - generic: div_tol
+                                - generic: =
+                                - generic: "10"
+                                - text: ","
+                                - generic: logging_period
+                                - generic: =
+                                - generic: "10"
+                                - text: "):"
+                          - generic:
+                            - generic:
+                              - generic:
+                                - generic: self
+                                - text: .
+                                - generic: outer_loss_fn
+                                - generic: =
+                                - generic: outer_loss_fn
+                          - generic:
+                            - generic:
+                              - generic:
+                                - generic: self
+                                - text: .
+                                - generic: inner_loss_fn
+                                - generic: =
+                                - generic: inner_loss_fn
+                          - generic:
+                            - generic:
+                              - generic:
+                                - generic: self
+                                - text: .
+                                - generic: out_dim
+                                - generic: =
+                                - generic: out_dim
+                          - generic:
+                            - generic:
+                              - generic:
+                                - generic: self
+                                - text: .
+                                - generic: max_outer_it
+                                - generic: =
+                                - generic: max_outer_it
+                          - generic:
+                            - generic:
+                              - generic:
+                                - generic: self
+                                - text: .
+                                - generic: max_inner_it
+                                - generic: =
+                                - generic: max_inner_it
+                          - generic:
+                            - generic:
+                              - generic:
+                                - generic: self
+                                - text: .
+                                - generic: outer_lr
+                                - generic: =
+                                - generic: outer_lr
+                          - generic:
+                            - generic:
+                              - generic:
+                                - generic: self
+                                - text: .
+                                - generic: inner_lr
+                                - generic: =
+                                - generic: inner_lr
+                          - generic:
+                            - generic:
+                              - generic:
+                                - generic: self
+                                - text: .
+                                - generic: max_conj_grad_it
+                                - generic: =
+                                - generic: max_conj_grad_it
+                          - generic:
+                            - generic:
+                              - generic:
+                                - generic: self
+                                - text: .
+                                - generic: candidate_batch_size
+                                - generic: =
+                                - generic: candidate_batch_size
+                          - generic:
+                            - generic:
+                              - generic:
+                                - generic: self
+                                - text: .
+                                - generic: div_tol
+                                - generic: =
+                                - generic: div_tol
+                          - generic:
+                            - generic:
+                              - generic:
+                                - generic: self
+                                - text: .
+                                - generic: logging_period
+                                - generic: =
+                                - generic: logging_period
+                          - generic:
+                            - generic:
+                              - generic:
+                                - generic: self
+                                - text: .
+                                - generic: nystrom_batch
+                                - generic: =
+                                - generic: None
+                          - generic:
+                            - generic:
+                              - generic:
+                                - generic: self
+                                - text: .
+                                - generic: nystrom_normalization
+                                - generic: =
+                                - generic: None
+                          - generic:
+                            - generic:
+                              - generic:
+                                - generic: def
+                                - generic: hvp
+                                - text: (
+                                - generic: self
+                                - text: ","
+                                - generic: loss
+                                - text: ","
+                                - generic: params
+                                - text: ","
+                                - generic: v
+                                - text: "):"
+                          - generic:
+                            - generic:
+                              - generic:
+                                - generic: dl_p
+                                - generic: =
+                                - generic: self
+                                - text: .
+                                - generic: flat_grad
+                                - text: (
+                                - generic: grad
+                                - text: (
+                                - generic: loss
+                                - text: ","
+                                - generic: params
+                                - text: ","
+                                - generic: create_graph
+                                - generic: =
+                                - generic: "True"
+                                - text: ","
+                                - generic: retain_graph
+                                - generic: =
+                                - generic: "True"
+                                - text: ))
+                          - generic:
+                            - generic:
+                              - generic:
+                                - generic: return
+                                - generic: self
+                                - text: .
+                                - generic: flat_grad
+                                - text: (
+                                - generic: grad
+                                - text: (
+                                - generic: dl_p
+                                - text: ","
+                                - generic: params
+                                - text: ","
+                                - generic: grad_outputs
+                                - generic: =
+                                - generic: v
+                                - text: ","
+                                - generic: retain_graph
+                                - generic: =
+                                - generic: "True"
+                                - text: ),
+                                - generic: reshape
+                                - generic: =
+                                - generic: "True"
+                                - text: ","
+                                - generic: detach
+                                - generic: =
+                                - generic: "True"
+                                - text: )
+                          - generic:
+                            - generic:
+                              - generic:
+                                - generic: def
+                                - generic: inverse_hvp
+                                - text: (
+                                - generic: self
+                                - text: ","
+                                - generic: loss
+                                - text: ","
+                                - generic: params
+                                - text: ","
+                                - generic: v
+                                - text: "):"
+                          - generic:
+                            - generic:
+                              - generic:
+                                - generic: "# TODO: refactor this to perform cg in pytorch"
+                          - generic:
+                            - generic:
+                              - generic:
+                                - generic: op
+                                - generic: =
+                                - generic: LinearOperator
+                                - text: ((
+                                - generic: len
+                                - text: (
+                                - generic: v
+                                - text: ),
+                                - generic: len
+                                - text: (
+                                - generic: v
+                                - text: )),
+                          - generic:
+                            - generic:
+                              - generic:
+                                - generic: matvec
+                                - generic: =
+                                - generic: lambda
+                                - generic: x
+                                - text: ":"
+                                - generic: self
+                                - text: .
+                                - generic: hvp
+                                - text: (
+                                - generic: loss
+                                - text: ","
+                                - generic: params
+                                - text: ","
+                          - generic:
+                            - generic:
+                              - generic:
+                                - generic: torch
+                                - text: .
+                                - generic: from_numpy
+                                - text: (
+                                - generic: x
+                                - text: ).
+                                - generic: to
+                                - text: (
+                                - generic: loss
+                                - text: .
+                                - generic: device
+                                - text: ).
+                                - generic: float
+                                - text: ()).
+                                - generic: cpu
+                                - text: ().
+                                - generic: numpy
+                                - text: ())
+                          - generic:
+                            - generic:
+                              - generic:
+                                - generic: return
+                                - generic: torch
+                                - text: .
+                                - generic: from_numpy
+                                - text: (
+                                - generic: cg
+                                - text: (
+                                - generic: op
+                                - text: ","
+                                - generic: v
+                                - text: .
+                                - generic: cpu
+                                - text: ().
+                                - generic: numpy
+                                - text: (),
+                                - generic: maxiter
+                                - generic: =
+                                - generic: self
+                                - text: .
+                                - generic: max_conj_grad_it
+                                - text: )[
+                                - generic: "0"
+                                - text: "])."
+                                - generic: float
+                                - text: ().
+                                - generic: to
+                                - text: (
+                                - generic: loss
+                                - text: .
+                                - generic: device
+                                - text: )
+                          - generic:
+                            - generic:
+                              - generic:
+                                - generic: def
+                                - generic: implicit_grad_batch
+                                - text: (
+                                - generic: self
+                                - text: ","
+                                - generic: inner_loss
+                                - text: ","
+                                - generic: outer_loss
+                                - text: ","
+                                - generic: weights
+                                - text: ","
+                                - generic: params
+                                - text: "):"
+                          - generic:
+                            - generic:
+                              - generic:
+                                - generic: dg_dalpha
+                                - generic: =
+                                - generic: self
+                                - text: .
+                                - generic: flat_grad
+                                - text: (
+                                - generic: grad
+                                - text: (
+                                - generic: outer_loss
+                                - text: ","
+                                - generic: params
+                                - text: ),
+                                - generic: detach
+                                - generic: =
+                                - generic: "True"
+                                - text: )
+                                - generic: "*"
+                                - generic: "1e-3"
+                          - generic:
+                            - generic:
+                              - generic:
+                                - generic: ivhp
+                                - generic: =
+                                - generic: self
+                                - text: .
+                                - generic: inverse_hvp
+                                - text: (
+                                - generic: inner_loss
+                                - text: ","
+                                - generic: params
+                                - text: ","
+                                - generic: dg_dalpha
+                                - text: )
+                          - generic:
+                            - generic:
+                              - generic:
+                                - generic: dg_dtheta
+                                - generic: =
+                                - generic: self
+                                - text: .
+                                - generic: flat_grad
+                                - text: (
+                                - generic: grad
+                                - text: (
+                                - generic: inner_loss
+                                - text: ","
+                                - generic: params
+                                - text: ","
+                                - generic: create_graph
+                                - generic: =
+                                - generic: "True"
+                                - text: ","
+                                - generic: retain_graph
+                                - generic: =
+                                - generic: "True"
+                                - text: ))
+                          - generic:
+                            - generic:
+                              - generic:
+                                - generic: return
+                                - generic: "-"
+                                - generic: self
+                                - text: .
+                                - generic: flat_grad
+                                - text: (
+                                - generic: grad
+                                - text: (
+                                - generic: dg_dtheta
+                                - text: ","
+                                - generic: weights
+                                - text: ","
+                                - generic: grad_outputs
+                                - generic: =
+                                - generic: ivhp
+                                - text: ),
+                                - generic: detach
+                                - generic: =
+                                - generic: "True"
+                                - text: )
+                          - generic:
+                            - generic:
+                              - generic:
+                                - generic: def
+                                - generic: solve_bilevel_opt_representer_proxy
+                                - text: (
+                                - generic: self
+                                - text: ","
+                                - generic: K_X_S
+                                - text: ","
+                                - generic: K_S_S
+                                - text: ","
+                                - generic: y_X
+                                - text: ","
+                                - generic: y_S
+                                - text: ","
+                                - generic: data_weights
+                                - text: ","
+                                - generic: inner_reg
+                                - text: "):"
+                          - generic:
+                            - generic:
+                              - generic:
+                                - generic: m
+                                - generic: =
+                                - generic: K_S_S
+                                - text: .
+                                - generic: shape
+                                - text: "["
+                                - generic: "0"
+                                - text: "]"
+                          - generic:
+                            - generic:
+                              - generic:
+                                - generic: "# create the weight tensor"
+                          - generic:
+                            - generic:
+                              - generic:
+                                - generic: weights
+                                - generic: =
+                                - generic: torch
+                                - text: .
+                                - generic: ones
+                                - text: ([
+                                - generic: m
+                                - text: "],"
+                                - generic: dtype
+                                - generic: =
+                                - generic: torch
+                                - text: .
+                                - generic: float
+                                - text: ","
+                                - generic: requires_grad
+                                - generic: =
+                                - generic: "True"
+                                - text: )
+                          - generic:
+                            - generic:
+                              - generic:
+                                - generic: outer_optimizer
+                                - generic: =
+                                - generic: torch
+                                - text: .
+                                - generic: optim
+                                - text: .
+                                - generic: Adam
+                                - text: ([
+                                - generic: weights
+                                - text: "],"
+                                - generic: lr
+                                - generic: =
+                                - generic: self
+                                - text: .
+                                - generic: outer_lr
+                                - text: )
+                          - generic:
+                            - generic:
+                              - generic:
+                                - generic: "# initialize the representer coefficients"
+                          - generic:
+                            - generic:
+                              - generic:
+                                - generic: alpha
+                                - generic: =
+                                - generic: torch
+                                - text: .
+                                - generic: randn
+                                - text: (
+                                - generic: size
+                                - generic: =
+                                - text: "["
+                                - generic: m
+                                - text: ","
+                                - generic: self
+                                - text: .
+                                - generic: out_dim
+                                - text: "],"
+                                - generic: requires_grad
+                                - generic: =
+                                - generic: "True"
+                                - text: )
+                          - generic:
+                            - generic:
+                              - generic:
+                                - generic: alpha
+                                - text: .
+                                - generic: data
+                                - generic: "*="
+                                - generic: "0.01"
+                          - generic:
+                            - generic:
+                              - generic:
+                                - generic: for
+                                - generic: outer_it
+                                - generic: in
+                                - generic: range
+                                - text: (
+                                - generic: self
+                                - text: .
+                                - generic: max_outer_it
+                                - text: "):"
+                          - generic:
+                            - generic:
+                              - generic:
+                                - generic: "# perform inner opt"
+                          - generic:
+                            - generic:
+                              - generic:
+                                - generic: outer_optimizer
+                                - text: .
+                                - generic: zero_grad
+                                - text: ()
+                          - generic:
+                            - generic:
+                              - generic:
+                                - generic: inner_loss
+                                - generic: =
+                                - generic: np
+                                - text: .
+                                - generic: inf
+                          - generic:
+                            - generic:
+                              - generic:
+                                - generic: while
+                                - generic: inner_loss
+                                - generic: ">"
+                                - generic: self
+                                - text: .
+                                - generic: div_tol
+                                - text: ":"
+                          - generic:
+                            - generic:
+                              - generic:
+                                - generic: def
+                                - generic: closure
+                                - text: "():"
+                          - generic:
+                            - generic:
+                              - generic:
+                                - generic: inner_optimizer
+                                - text: .
+                                - generic: zero_grad
+                                - text: ()
+                          - generic:
+                            - generic:
+                              - generic:
+                                - generic: inner_loss
+                                - generic: =
+                                - generic: self
+                                - text: .
+                                - generic: inner_loss_fn
+                                - text: (
+                                - generic: K_S_S
+                                - text: ","
+                                - generic: alpha
+                                - text: ","
+                                - generic: y_S
+                                - text: ","
+                                - generic: weights
+                                - text: ","
+                                - generic: inner_reg
+                                - text: )
+                          - generic:
+                            - generic:
+                              - generic:
+                                - generic: inner_loss
+                                - text: .
+                                - generic: backward
+                                - text: ()
+                          - generic:
+                            - generic:
+                              - generic:
+                                - generic: return
+                                - generic: inner_loss
+                          - generic:
+                            - generic:
+                              - generic:
+                                - generic: inner_optimizer
+                                - generic: =
+                                - generic: torch
+                                - text: .
+                                - generic: optim
+                                - text: .
+                                - generic: LBFGS
+                                - text: ([
+                                - generic: alpha
+                                - text: "],"
+                                - generic: lr
+                                - generic: =
+                                - generic: self
+                                - text: .
+                                - generic: inner_lr
+                                - text: ","
+                                - generic: max_iter
+                                - generic: =
+                                - generic: self
+                                - text: .
+                                - generic: max_inner_it
+                                - text: )
+                          - generic:
+                            - generic:
+                              - generic:
+                                - generic: inner_optimizer
+                                - text: .
+                                - generic: step
+                                - text: (
+                                - generic: closure
+                                - text: )
+                          - generic:
+                            - generic:
+                              - generic:
+                                - generic: inner_loss
+                                - generic: =
+                                - generic: self
+                                - text: .
+                                - generic: inner_loss_fn
+                                - text: (
+                                - generic: K_S_S
+                                - text: ","
+                                - generic: alpha
+                                - text: ","
+                                - generic: y_S
+                                - text: ","
+                                - generic: weights
+                                - text: ","
+                                - generic: inner_reg
+                                - text: )
+                          - generic:
+                            - generic:
+                              - generic:
+                                - generic: if
+                                - generic: inner_loss
+                                - generic: ">"
+                                - generic: self
+                                - text: .
+                                - generic: div_tol
+                                - text: ":"
+                          - generic:
+                            - generic:
+                              - generic:
+                                - generic: "# reinitialize upon divergence"
+                          - generic:
+                            - generic:
+                              - generic:
+                                - generic: print
+                                - text: (
+                                - generic: "\"Warning: inner opt diverged, try setting lower inner learning rate.\""
+                                - text: )
+                          - generic:
+                            - generic:
+                              - generic:
+                                - generic: alpha
+                                - generic: =
+                                - generic: torch
+                                - text: .
+                                - generic: randn
+                                - text: (
+                                - generic: size
+                                - generic: =
+                                - text: "["
+                                - generic: m
+                                - text: ","
+                                - generic: self
+                                - text: .
+                                - generic: out_dim
+                                - text: "],"
+                                - generic: requires_grad
+                                - generic: =
+                                - generic: "True"
+                                - text: )
+                          - generic:
+                            - generic:
+                              - generic:
+                                - generic: alpha
+                                - text: .
+                                - generic: data
+                                - generic: "*="
+                                - generic: "0.01"
+                          - generic:
+                            - generic:
+                              - generic:
+                                - generic: "# calculate outer loss"
+                          - generic:
+                            - generic:
+                              - generic:
+                                - generic: outer_loss
+                                - generic: =
+                                - generic: self
+                                - text: .
+                                - generic: outer_loss_fn
+                                - text: (
+                                - generic: K_X_S
+                                - text: ","
+                                - generic: alpha
+                                - text: ","
+                                - generic: y_X
+                                - text: ","
+                                - generic: data_weights
+                                - text: ","
+                                - generic: "0"
+                                - text: )
+                          - generic:
+                            - generic:
+                              - generic:
+                                - generic: "# calculate the implicit gradient"
+                          - generic:
+                            - generic:
+                              - generic:
+                                - generic: weights
+                                - text: .
+                                - generic: _grad
+                                - text: .
+                                - generic: data
+                                - generic: =
+                                - generic: self
+                                - text: .
+                                - generic: implicit_grad_batch
+                                - text: (
+                                - generic: inner_loss
+                                - text: ","
+                                - generic: outer_loss
+                                - text: ","
+                                - generic: weights
+                                - text: ","
+                                - generic: alpha
+                                - text: ).
+                                - generic: clamp_
+                                - text: (
+                                - generic: "-"
+                                - generic: "1"
+                                - text: ","
+                                - generic: "1"
+                                - text: )
+                          - generic:
+                            - generic:
+                              - generic:
+                                - generic: outer_optimizer
+                                - text: .
+                                - generic: step
+                                - text: ()
+                          - generic:
+                            - generic:
+                              - generic:
+                                - generic: "# project weights to ensure positivity"
+                          - generic:
+                            - generic:
+                              - generic:
+                                - generic: weights
+                                - text: .
+                                - generic: data
+                                - generic: =
+                                - generic: torch
+                                - text: .
+                                - generic: max
+                                - text: (
+                                - generic: weights
+                                - text: .
+                                - generic: data
+                                - text: ","
+                                - generic: torch
+                                - text: .
+                                - generic: zeros
+                                - text: (
+                                - generic: m
+                                - text: ).
+                                - generic: float
+                                - text: ())
+                          - generic:
+                            - generic:
+                              - generic:
+                                - generic: return
+                                - generic: weights
+                                - text: ","
+                                - generic: alpha
+                                - text: ","
+                                - generic: outer_loss
+                                - text: ","
+                                - generic: inner_loss
+                          - generic:
+                            - generic:
+                              - generic:
+                                - generic: def
+                                - generic: build_with_representer_proxy_batch
+                                - text: (
+                                - generic: self
+                                - text: ","
+                                - generic: X
+                                - text: ","
+                                - generic: "y"
+                                - text: ","
+                                - generic: m
+                                - text: ","
+                                - generic: kernel_fn_np
+                                - text: ","
+                                - generic: data_weights
+                                - generic: =
+                                - generic: None
+                                - text: ","
+                          - generic:
+                            - generic:
+                              - generic:
+                                - generic: cache_kernel
+                                - generic: =
+                                - generic: "False"
+                                - text: ","
+                                - generic: start_size
+                                - generic: =
+                                - generic: "1"
+                                - text: ","
+                                - generic: inner_reg
+                                - generic: =
+                                - generic: "1e-4"
+                                - text: "):"
+                          - generic:
+                            - generic:
+                              - generic:
+                                - generic: "\"\"\"Build a coreset of size m based on (X, y, weights)."
+                          - generic:
+                            - generic:
+                              - generic:
+                                - generic: "Args:"
+                          - generic:
+                            - generic:
+                              - generic:
+                                - generic: "X (np.ndarray or torch.Tensor): array of the data, its type depends on the kernel function you use"
+                          - generic:
+                            - generic:
+                              - generic:
+                                - generic: "y (np.ndarray or torch.Tensor): labels, np.ndarray or torch.Tensor of type long (for classification)"
+                          - generic:
+                            - generic:
+                              - generic:
+                                - generic: or float (for regression)
+                          - generic:
+                            - generic:
+                              - generic:
+                                - generic: "m (int): size of the coreset"
+                          - generic:
+                            - generic:
+                              - generic:
+                                - generic: "kernel_fn_np (function): kernel function of the proxy model"
+                          - generic:
+                            - generic:
+                              - generic:
+                                - generic: "data_weights (np.ndarray): weights of X"
+                          - generic:
+                            - generic:
+                              - generic:
+                                - generic: "cache_kernel (bool): if True, the Gram matrix is calculated and saved at start. Use 'True' only on small"
+                          - generic:
+                            - generic:
+                              - generic:
+                                - generic: datasets.
+                          - generic:
+                            - generic:
+                              - generic:
+                                - generic: "start_size (int): number of coreset points chosen at random at the start"
+                          - generic:
+                            - generic:
+                              - generic:
+                                - generic: "Returns:"
+                          - generic:
+                            - generic:
+                              - generic:
+                                - generic: "(coreset_inds, coreset_weights): coreset indices and weights"
+                          - generic:
+                            - generic:
+                              - generic:
+                                - generic: "\"\"\""
+                          - generic:
+                            - generic:
+                              - generic:
+                                - generic: "n"
+                                - generic: =
+                                - generic: X
+                                - text: .
+                                - generic: shape
+                                - text: "["
+                                - generic: "0"
+                                - text: "]"
+                          - generic:
+                            - generic:
+                              - generic:
+                                - generic: selected_inds
+                                - generic: =
+                                - generic: np
+                                - text: .
+                                - generic: random
+                                - text: .
+                                - generic: choice
+                                - text: (
+                                - generic: "n"
+                                - text: ","
+                                - generic: start_size
+                                - text: ","
+                                - generic: replace
+                                - generic: =
+                                - generic: None
+                                - text: )
+                          - generic:
+                            - generic:
+                              - generic:
+                                - generic: if
+                                - generic: isinstance
+                                - text: (
+                                - generic: "y"
+                                - text: ","
+                                - generic: np
+                                - text: .
+                                - generic: ndarray
+                                - text: "):"
+                          - generic:
+                            - generic:
+                              - generic:
+                                - generic: "y"
+                                - generic: =
+                                - generic: torch
+                                - text: .
+                                - generic: from_numpy
+                                - text: (
+                                - generic: "y"
+                                - text: ).
+                                - generic: float
+                                - text: ()
+                          - generic:
+                            - generic:
+                              - generic:
+                                - generic: if
+                                - generic: isinstance
+                                - text: (
+                                - generic: data_weights
+                                - text: ","
+                                - generic: np
+                                - text: .
+                                - generic: ndarray
+                                - text: "):"
+                          - generic:
+                            - generic:
+                              - generic:
+                                - generic: data_weights
+                                - generic: =
+                                - generic: torch
+                                - text: .
+                                - generic: from_numpy
+                                - text: (
+                                - generic: data_weights
+                                - text: ).
+                                - generic: float
+                                - text: ()
+                          - generic:
+                            - generic:
+                              - generic:
+                                - generic: elif
+                                - generic: data_weights
+                                - generic: is
+                                - generic: None
+                                - text: ":"
+                          - generic:
+                            - generic:
+                              - generic:
+                                - generic: data_weights
+                                - generic: =
+                                - generic: torch
+                                - text: .
+                                - generic: ones
+                                - text: (
+                                - generic: "n"
+                                - text: ).
+                                - generic: float
+                                - text: ()
+                          - generic:
+                            - generic:
+                              - generic:
+                                - generic: if
+                                - generic: m
+                                - generic: ">="
+                                - generic: X
+                                - text: .
+                                - generic: shape
+                                - text: "["
+                                - generic: "0"
+                                - text: "]:"
+                          - generic:
+                            - generic:
+                              - generic:
+                                - generic: return
+                                - generic: np
+                                - text: .
+                                - generic: arange
+                                - text: (
+                                - generic: X
+                                - text: .
+                                - generic: shape
+                                - text: "["
+                                - generic: "0"
+                                - text: "]),"
+                                - generic: np
+                                - text: .
+                                - generic: ones
+                                - text: (
+                                - generic: X
+                                - text: .
+                                - generic: shape
+                                - text: "["
+                                - generic: "0"
+                                - text: "])"
+                          - generic:
+                            - generic:
+                              - generic:
+                                - generic: optimizer
+                                - generic: =
+                                - generic: torch
+                                - text: .
+                                - generic: optim
+                                - text: .
+                                - generic: Adam
+                                - text: (
+                                - generic: model
+                                - text: .
+                                - generic: parameters
+                                - text: (),
+                                - generic: lr
+                                - generic: =
+                                - generic: "1e-3"
+                                - text: ","
+                                - generic: weight_decay
+                                - generic: =
+                                - generic: inner_reg
+                                - text: )
+                          - generic:
+                            - generic:
+                              - generic:
+                                - generic: "# pre-sample transformations for speedup"
+                          - generic:
+                            - generic:
+                              - generic:
+                                - generic: def
+                                - generic: presample_transforms
+                                - text: (
+                                - generic: ind
+                                - text: "):"
+                          - generic:
+                            - generic:
+                              - generic:
+                                - generic: X
+                                - generic: =
+                                - text: "[]"
+                          - generic:
+                            - generic:
+                              - generic:
+                                - generic: "y"
+                                - generic: =
+                                - text: "[]"
+                          - generic:
+                            - generic:
+                              - generic:
+                                - generic: repeated_inds
+                                - generic: =
+                                - generic: np
+                                - text: .
+                                - generic: ones
+                                - text: (
+                                - generic: nr_presampled_transforms
+                                - text: ).
+                                - generic: astype
+                                - text: (
+                                - generic: int
+                                - text: )
+                                - generic: "*"
+                                - generic: ind
+                          - generic:
+                            - generic:
+                              - generic:
+                                - generic: trainset
+                                - generic: =
+                                - generic: torch
+                                - text: .
+                                - generic: utils
+                                - text: .
+                                - generic: data
+                                - text: .
+                                - generic: Subset
+                                - text: (
+                                - generic: dataset_w_augm
+                                - text: ","
+                                - generic: repeated_inds
+                                - text: )
+                          - generic:
+                            - generic:
+                              - generic:
+                                - generic: train_loader
+                                - generic: =
+                                - generic: loader_creator_fn
+                                - text: (
+                                - generic: trainset
+                                - text: ","
+                                - generic: shuffle
+                                - generic: =
+                                - generic: "True"
+                                - text: )
+                          - generic:
+                            - generic:
+                              - generic:
+                                - generic: for
+                                - generic: inputs
+                                - text: ","
+                                - generic: targets
+                                - generic: in
+                                - generic: train_loader
+                                - text: ":"
+                          - generic:
+                            - generic:
+                              - generic:
+                                - generic: x_features
+                                - generic: =
+                                - generic: self
+                                - text: .
+                                - generic: map_to_nystrom_features
+                                - text: (
+                                - generic: inputs
+                                - text: .
+                                - generic: cpu
+                                - text: ().
+                                - generic: numpy
+                                - text: (),
+                                - generic: kernel_fn_np
+                                - text: )
+                          - generic:
+                            - generic:
+                              - generic:
+                                - generic: x_features
+                                - generic: =
+                                - generic: torch
+                                - text: .
+                                - generic: from_numpy
+                                - text: (
+                                - generic: x_features
+                                - text: ).
+                                - generic: float
+                                - text: ().
+                                - generic: to
+                                - text: (
+                                - generic: device
+                                - text: )
+                          - generic:
+                            - generic:
+                              - generic:
+                                - generic: X
+                                - text: .
+                                - generic: append
+                                - text: (
+                                - generic: x_features
+                                - text: )
+                          - generic:
+                            - generic:
+                              - generic:
+                                - generic: "y"
+                                - text: .
+                                - generic: append
+                                - text: (
+                                - generic: targets
+                                - text: .
+                                - generic: to
+                                - text: (
+                                - generic: device
+                                - text: ))
+                          - generic:
+                            - generic:
+                              - generic:
+                                - generic: return
+                                - generic: torch
+                                - text: .
+                                - generic: cat
+                                - text: (
+                                - generic: X
+                                - text: ),
+                                - generic: torch
+                                - text: .
+                                - generic: cat
+                                - text: (
+                                - generic: "y"
+                                - text: )
+                          - generic:
+                            - generic:
+                              - generic:
+                                - generic: X_train
+                                - generic: =
+                                - text: "[]"
+                          - generic:
+                            - generic:
+                              - generic:
+                                - generic: y_train
+                                - generic: =
+                                - text: "[]"
+                          - generic:
+                            - generic:
+                              - generic:
+                                - generic: for
+                                - generic: ind
+                                - generic: in
+                                - generic: base_inds
+                                - text: ":"
+                          - generic:
+                            - generic:
+                              - generic:
+                                - generic: X
+                                - text: ","
+                                - generic: "y"
+                                - generic: =
+                                - generic: presample_transforms
+                                - text: (
+                                - generic: ind
+                                - text: )
+                          - generic:
+                            - generic:
+                              - generic:
+                                - generic: X_train
+                                - text: .
+                                - generic: append
+                                - text: (
+                                - generic: X
+                                - text: )
+                          - generic:
+                            - generic:
+                              - generic:
+                                - generic: y_train
+                                - text: .
+                                - generic: append
+                                - text: (
+                                - generic: "y"
+                                - text: )
+                          - generic:
+                            - generic:
+                              - generic:
+                                - generic: X_train
+                                - text: ","
+                                - generic: y_train
+                                - generic: =
+                                - generic: torch
+                                - text: .
+                                - generic: cat
+                                - text: (
+                                - generic: X_train
+                                - text: ).
+                                - generic: to
+                                - text: (
+                                - generic: device
+                                - text: ),
+                                - generic: torch
+                                - text: .
+                                - generic: cat
+                                - text: (
+                                - generic: y_train
+                                - text: ).
+                                - generic: to
+                                - text: (
+                                - generic: device
+                                - text: )
+                          - generic:
+                            - generic:
+                              - generic:
+                                - generic: inds
+                                - generic: =
+                                - generic: base_inds
+                          - generic:
+                            - generic:
+                              - generic:
+                                - generic: for
+                                - generic: it
+                                - generic: in
+                                - generic: range
+                                - text: (
+                                - generic: m
+                                - text: "):"
+                          - generic:
+                            - generic:
+                              - generic:
+                                - generic: "# perform inner optimization"
+                          - generic:
+                            - generic:
+                              - generic:
+                                - generic: for
+                                - generic: it
+                                - generic: in
+                                - generic: range
+                                - text: (
+                                - generic: self
+                                - text: .
+                                - generic: max_inner_it
+                                - text: "):"
+                          - generic:
+                            - generic:
+                              - generic:
+                                - generic: pred
+                                - generic: =
+                                - generic: model
+                                - text: (
+                                - generic: X_train
+                                - text: )
+                          - generic:
+                            - generic:
+                              - generic:
+                                - generic: loss
+                                - generic: =
+                                - generic: self
+                                - text: .
+                                - generic: inner_loss_fn
+                                - text: (
+                                - generic: pred
+                                - text: ","
+                                - generic: y_train
+                                - text: )
+                          - generic:
+                            - generic:
+                              - generic:
+                                - generic: optimizer
+                                - text: .
+                                - generic: zero_grad
+                                - text: ()
+                          - generic:
+                            - generic:
+                              - generic:
+                                - generic: loss
+                                - text: .
+                                - generic: backward
+                                - text: ()
+                          - generic:
+                            - generic:
+                              - generic:
+                                - generic: optimizer
+                                - text: .
+                                - generic: step
+                                - text: ()
+                          - generic:
+                            - generic:
+                              - generic:
+                                - generic: with
+                                - generic: torch
+                                - text: .
+                                - generic: no_grad
+                                - text: "():"
+                          - generic:
+                            - generic:
+                              - generic:
+                                - generic: val_pred
+                                - generic: =
+                                - generic: model
+                                - text: (
+                                - generic: X_val
+                                - text: )
+                          - generic:
+                            - generic:
+                              - generic:
+                                - generic: val_loss
+                                - generic: =
+                                - generic: self
+                                - text: .
+                                - generic: outer_loss_fn
+                                - text: (
+                                - generic: val_pred
+                                - text: ","
+                                - generic: y_val
+                                - text: )
+                          - generic:
+                            - generic:
+                              - generic:
+                                - generic: val_acc
+                                - generic: =
+                                - generic: torch
+                                - text: .
+                                - generic: sum
+                                - text: (
+                                - generic: torch
+                                - text: .
+                                - generic: argmax
+                                - text: (
+                                - generic: val_pred
+                                - text: ","
+                                - generic: dim
+                                - generic: =
+                                - generic: "1"
+                                - text: ).
+                                - generic: eq
+                                - text: (
+                                - generic: torch
+                                - text: .
+                                - generic: argmax
+                                - text: (
+                                - generic: y_val
+                                - text: ","
+                                - generic: dim
+                                - generic: =
+                                - generic: "1"
+                                - text: )))
+                          - generic:
+                            - generic:
+                              - generic:
+                                - generic: print
+                                - text: (
+                                - generic: "'Subset size {0:d}, inner loss {1:.3f}, '"
+                          - generic:
+                            - generic:
+                              - generic:
+                                - generic: "'outer loss {2:.3f}, outer acc {3:.3f}'"
+                                - text: .
+                                - generic: format
+                                - text: (
+                                - generic: len
+                                - text: (
+                                - generic: inds
+                                - text: ),
+                          - generic:
+                            - generic:
+                              - generic:
+                                - generic: loss
+                                - text: .
+                                - generic: detach
+                                - text: ().
+                                - generic: cpu
+                                - text: ().
+                                - generic: numpy
+                                - text: (),
+                          - generic:
+                            - generic:
+                              - generic:
+                                - generic: val_loss
+                                - text: .
+                                - generic: detach
+                                - text: ().
+                                - generic: cpu
+                                - text: ().
+                                - generic: numpy
+                                - text: (),
+                          - generic:
+                            - generic:
+                              - generic:
+                                - generic: val_acc
+                                - text: .
+                                - generic: cpu
+                                - text: ().
+                                - generic: numpy
+                                - text: ()
+                                - generic: /
+                                - generic: val_size
+                                - text: ))
+                          - generic:
+                            - generic:
+                              - generic:
+                                - generic: "# get outer grad"
+                          - generic:
+                            - generic:
+                              - generic:
+                                - generic: pred
+                                - generic: =
+                                - generic: model
+                                - text: (
+                                - generic: X_val
+                                - text: )
+                          - generic:
+                            - generic:
+                              - generic:
+                                - generic: outer_loss
+                                - generic: =
+                                - generic: self
+                                - text: .
+                                - generic: outer_loss_fn
+                                - text: (
+                                - generic: pred
+                                - text: ","
+                                - generic: y_val
+                                - text: )
+                          - generic:
+                            - generic:
+                              - generic:
+                                - generic: outer_grad
+                                - generic: =
+                                - generic: self
+                                - text: .
+                                - generic: flat_grad
+                                - text: (
+                                - generic: grad
+                                - text: (
+                                - generic: outer_loss
+                                - text: ","
+                                - generic: model
+                                - text: .
+                                - generic: parameters
+                                - text: ()),
+                                - generic: detach
+                                - generic: =
+                                - generic: "True"
+                                - text: )
+                          - generic:
+                            - generic:
+                              - generic:
+                                - generic: "# calculate inverse Hessian - outer grad product"
+                          - generic:
+                            - generic:
+                              - generic:
+                                - generic: pred
+                                - generic: =
+                                - generic: model
+                                - text: (
+                                - generic: X_train
+                                - text: )
+                          - generic:
+                            - generic:
+                              - generic:
+                                - generic: loss
+                                - generic: =
+                                - generic: self
+                                - text: .
+                                - generic: inner_loss_fn
+                                - text: (
+                                - generic: pred
+                                - text: ","
+                                - generic: y_train
+                                - text: )
+                          - generic:
+                            - generic:
+                              - generic:
+                                - generic: loss
+                                - generic: +=
+                                - generic: inner_reg
+                                - generic: "*"
+                                - generic: self
+                                - text: .
+                                - generic: calc_l2_penalty
+                                - text: (
+                                - generic: model
+                                - text: )
+                                - generic: /
+                                - generic: "2"
+                          - generic:
+                            - generic:
+                              - generic:
+                                - generic: inv_hvp
+                                - generic: =
+                                - generic: self
+                                - text: .
+                                - generic: inverse_hvp
+                                - text: (
+                                - generic: loss
+                                - text: ","
+                                - generic: list
+                                - text: (
+                                - generic: model
+                                - text: .
+                                - generic: parameters
+                                - text: ()),
+                                - generic: outer_grad
+                                - text: )
+                          - generic:
+                            - generic:
+                              - generic:
+                                - generic: "# find and add the point with the largest negative implicit grad"
+                          - generic:
+                            - generic:
+                              - generic:
+                                - generic: weights
+                                - generic: =
+                                - generic: torch
+                                - text: .
+                                - generic: ones
+                                - text: (
+                                - generic: y_val
+                                - text: .
+                                - generic: shape
+                                - text: "["
+                                - generic: "0"
+                                - text: "],"
+                                - generic: device
+                                - generic: =
+                                - generic: device
+                                - text: ","
+                                - generic: requires_grad
+                                - generic: =
+                                - generic: "True"
+                                - text: )
+                          - generic:
+                            - generic:
+                              - generic:
+                                - generic: model
+                                - text: .
+                                - generic: zero_grad
+                                - text: ()
+                          - generic:
+                            - generic:
+                              - generic:
+                                - generic: pred
+                                - generic: =
+                                - generic: model
+                                - text: (
+                                - generic: X_val
+                                - text: )
+                          - generic:
+                            - generic:
+                              - generic:
+                                - generic: loss
+                                - generic: =
+                                - generic: self
+                                - text: .
+                                - generic: inner_loss_fn
+                                - text: (
+                                - generic: pred
+                                - text: ","
+                                - generic: y_val
+                                - text: ","
+                                - generic: weights
+                                - text: )
+                          - generic:
+                            - generic:
+                              - generic:
+                                - generic: grads
+                                - generic: =
+                                - generic: self
+                                - text: .
+                                - generic: flat_grad
+                                - text: (
+                                - generic: grad
+                                - text: (
+                                - generic: loss
+                                - text: ","
+                                - generic: model
+                                - text: .
+                                - generic: parameters
+                                - text: (),
+                                - generic: create_graph
+                                - generic: =
+                                - generic: "True"
+                                - text: ","
+                                - generic: retain_graph
+                                - generic: =
+                                - generic: "True"
+                                - text: ))
+                          - generic:
+                            - generic:
+                              - generic:
+                                - generic: weight_grad
+                                - generic: =
+                                - generic: "-"
+                                - generic: grad
+                                - text: (
+                                - generic: grads
+                                - text: ","
+                                - generic: weights
+                                - text: ","
+                                - generic: grad_outputs
+                                - generic: =
+                                - generic: inv_hvp
+                                - text: )[
+                                - generic: "0"
+                                - text: "]."
+                                - generic: detach
+                                - text: ().
+                                - generic: cpu
+                                - text: ()
+                          - generic:
+                            - generic:
+                              - generic:
+                                - generic: sorted_inds
+                                - generic: =
+                                - generic: np
+                                - text: .
+                                - generic: argsort
+                                - text: (
+                                - generic: weight_grad
+                                - text: .
+                                - generic: numpy
+                                - text: ())
+                          - generic:
+                            - generic:
+                              - generic:
+                                - generic: for
+                                - generic: s
+                                - generic: in
+                                - generic: sorted_inds
+                                - text: ":"
+                          - generic:
+                            - generic:
+                              - generic:
+                                - generic: selected_ind
+                                - generic: =
+                                - generic: val_inds
+                                - text: "["
+                                - generic: s
+                                - text: "]"
+                          - generic:
+                            - generic:
+                              - generic:
+                                - generic: if
+                                - generic: selected_ind
+                                - generic:
+                                  - generic: not
+                                  - generic: in
+                                - generic: inds
+                                - text: ":"
+                          - generic:
+                            - generic:
+                              - generic:
+                                - generic: inds
+                                - generic: =
+                                - generic: np
+                                - text: .
+                                - generic: append
+                                - text: (
+                                - generic: inds
+                                - text: ","
+                                - generic: selected_ind
+                                - text: )
+                          - generic:
+                            - generic:
+                              - generic:
+                                - generic: break
+                          - generic:
+                            - generic:
+                              - generic:
+                                - generic: x
+                                - text: ","
+                                - generic: "y"
+                                - generic: =
+                                - generic: presample_transforms
+                                - text: (
+                                - generic: selected_ind
+                                - text: )
+                          - generic:
+                            - generic:
+                              - generic:
+                                - generic: X_train
+                                - generic: =
+                                - generic: torch
+                                - text: .
+                                - generic: cat
+                                - text: ([
+                                - generic: X_train
+                                - text: ","
+                                - generic: x
+                                - text: "])"
+                          - generic:
+                            - generic:
+                              - generic:
+                                - generic: y_train
+                                - generic: =
+                                - generic: torch
+                                - text: .
+                                - generic: cat
+                                - text: ([
+                                - generic: y_train
+                                - text: ","
+                                - generic: "y"
+                                - text: "])"
+                          - generic:
+                            - generic:
+                              - generic:
+                                - generic: return
+                                - generic: inds
+  - alert [ref=e1204]
