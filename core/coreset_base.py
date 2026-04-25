@@ -140,14 +140,15 @@ class CoresetSelector(ABC):
             for batch in dataset:
                 batch_x, batch_y, _ = _parse_batch(batch)
                 batch_x = batch_x.to(self.device)
+                batch_y = batch_y.to(self.device)
 
-                # 全量模型的损失
+                # 全量模型的损失（每个样本）
                 logits_full = model_full(batch_x)
-                loss_full = nn.functional.cross_entropy(logits_full, batch_y.to(self.device))
+                loss_full = nn.functional.cross_entropy(logits_full, batch_y, reduction='none')
 
-                # 子集模型的损失
+                # 子集模型的损失（每个样本）
                 logits_sub = model_subset(batch_x)
-                loss_sub = nn.functional.cross_entropy(logits_sub, batch_y.to(self.device))
+                loss_sub = nn.functional.cross_entropy(logits_sub, batch_y, reduction='none')
 
                 # 可约损失 = 子集损失 - 全量损失
                 rel_loss = loss_sub - loss_full
@@ -222,18 +223,37 @@ class ContinualLearningFramework:
             total = 0
 
             for batch in train_loader:
-                batch_x, batch_y, _ = _parse_batch(batch)
+                batch_x, batch_y, batch_idx = _parse_batch(batch)
                 batch_x = batch_x.to(self.device)
                 batch_y = batch_y.to(self.device)
 
                 self.optimizer.zero_grad()
                 outputs = self.model(batch_x)
 
+                # 计算每个样本的损失
+                per_sample_loss = nn.functional.cross_entropy(
+                    outputs, batch_y, reduction='none'
+                )
+
                 # 如果提供了核心集权重，应用加权损失
-                if coreset_weights is not None:
-                    loss = (criterion(outputs, batch_y) * coreset_weights).mean()
+                if coreset_weights is not None and coreset_indices is not None:
+                    # 创建索引到权重的映射
+                    index_to_weight = {
+                        idx.item(): weight.item()
+                        for idx, weight in zip(coreset_indices, coreset_weights)
+                    }
+
+                    # 获取当前批次中每个样本的权重
+                    batch_weights = torch.tensor(
+                        [index_to_weight.get(idx.item(), 1.0)
+                         for idx in batch_idx],
+                        device=self.device, dtype=per_sample_loss.dtype
+                    )
+
+                    # 加权损失
+                    loss = (per_sample_loss * batch_weights).mean()
                 else:
-                    loss = criterion(outputs, batch_y)
+                    loss = per_sample_loss.mean()
 
                 loss.backward()
                 self.optimizer.step()

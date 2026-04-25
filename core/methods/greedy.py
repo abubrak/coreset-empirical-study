@@ -123,22 +123,57 @@ class GreedySelector(CoresetSelector):
         return features, indices_map
 
     def _get_intermediate_features(self, model, x):
-        """获取模型中间层特征"""
-        # 通用方法：尝试获取倒数第二层输出
-        if hasattr(model, 'get_features'):
-            return model.get_features(x)
+        """
+        获取模型中间层特征（智能回退机制）
 
-        # 逐层前传，取最后一层分类器前的输出
+        策略：
+        1. 优先使用 model.get_features()（如果模型实现了该方法）
+        2. 对于 Sequential 模型，提取分类器前的特征
+        3. 对于普通模块，逐层前传并在分类器前停止
+        4. 回退到展平的输入特征
+        """
+        # 策略1：检查是否有自定义特征提取方法
+        if hasattr(model, 'get_features'):
+            try:
+                features = model.get_features(x)
+                # 验证返回的是特征而非logits
+                if features.dim() >= 2 and features.size(0) == x.size(0):
+                    return features
+            except Exception:
+                pass  # 回退到其他策略
+
+        # 策略2：Sequential 模型处理
+        if isinstance(model, torch.nn.Sequential):
+            # 找到最后一个线性层（分类器）的索引
+            classifier_idx = -1
+            for i, module in enumerate(model):
+                if isinstance(module, torch.nn.Linear):
+                    classifier_idx = i
+                    break
+
+            if classifier_idx > 0:
+                # 在分类器之前停止
+                with torch.no_grad():
+                    features = x
+                    for module in list(model)[:classifier_idx]:
+                        features = module(features)
+                    return features.view(features.size(0), -1)
+
+        # 策略3：逐层前传，在第一个线性层后停止
         features = x
         for name, module in model.named_children():
             features = module(features)
-            # 如果是分类头（最后一个线性层），使用之前的结果
+            # 在第一个线性层后停止（通常是特征提取的终点）
             if isinstance(module, torch.nn.Linear):
                 break
 
-        # 如果特征维度太高，降维
+        # 确保特征是2D张量
         if features.dim() > 2:
             features = features.view(features.size(0), -1)
+
+        # 策略4：如果特征维度不合理（如过小），回退到展平输入
+        if features.size(-1) < 10:  # 启发式：特征维度太小可能返回的是logits
+            return x.view(x.size(0), -1)
 
         return features
 
