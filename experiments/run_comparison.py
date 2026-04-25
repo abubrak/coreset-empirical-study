@@ -295,18 +295,23 @@ class ExperimentRunner:
 
             print(f"核心集选择: {len(coreset_indices)} 样本, 耗时 {select_time:.2f}s")
 
-            # 保存核心集
-            previous_coresets.append(coreset_indices)
+            # 保存核心集 (索引和权重)
+            previous_coresets.append((coreset_indices, coreset_weights))
 
-            # 创建核心集 DataLoader
-            coreset_loader = selector.get_coreset_subset(
-                train_loader, coreset_indices
-            )
+            # 创建合并的训练数据加载器 (历史核心集 + 当前任务数据)
+            if task_id > 0 and previous_coresets:
+                # 合并历史核心集和当前任务数据
+                combined_loader = self._create_combined_loader(
+                    continual_dataset, previous_coresets, task_id
+                )
+            else:
+                # 第一个任务，直接使用当前任务数据
+                combined_loader = train_loader
 
-            # 在核心集 + 当前任务数据上训练
+            # 在合并数据集上训练
             train_start = time.time()
             train_metrics = framework.train_task(
-                train_loader=coreset_loader,
+                train_loader=combined_loader,
                 num_epochs=num_epochs
             )
             train_time = time.time() - train_start
@@ -443,6 +448,53 @@ class ExperimentRunner:
             'total_select_time': float(total_select_time),
             'total_train_time': float(total_train_time),
         }
+
+    def _create_combined_loader(self, continual_dataset, previous_coresets, current_task_id):
+        """
+        创建合并的训练数据加载器 (历史核心集 + 当前任务数据)
+
+        Args:
+            continual_dataset: 持续学习数据集
+            previous_coresets: 历史核心集列表 [(indices, weights), ...]
+            current_task_id: 当前任务ID
+
+        Returns:
+            合并的 DataLoader
+        """
+        from torch.utils.data import DataLoader, TensorDataset, ConcatDataset
+        import torch
+
+        combined_datasets = []
+
+        # 添加历史核心集数据
+        for prev_task_id, (indices, weights) in enumerate(previous_coresets[:-1]):
+            # 获取历史任务的数据加载器
+            prev_loader = continual_dataset.get_task_loaders(prev_task_id)
+
+            # 从历史任务数据集中提取核心集样本
+            dataset = prev_loader.dataset
+            coreset_dataset = torch.utils.data.Subset(dataset, indices)
+            combined_datasets.append(coreset_dataset)
+
+        # 添加当前任务的完整数据
+        current_loader = continual_dataset.get_task_loaders(current_task_id)
+        combined_datasets.append(current_loader.dataset)
+
+        # 合并所有数据集
+        if len(combined_datasets) > 1:
+            combined_dataset = ConcatDataset(combined_datasets)
+        else:
+            combined_dataset = combined_datasets[0]
+
+        # 创建新的 DataLoader
+        combined_loader = DataLoader(
+            combined_dataset,
+            batch_size=current_loader.batch_size,
+            shuffle=True,
+            num_workers=0
+        )
+
+        return combined_loader
 
 
 # ==================== 命令行入口 ====================

@@ -300,14 +300,14 @@ class ContinualLearningFramework:
                 for cls in range(outputs.size(1)):
                     cls_mask = (batch_y == cls)
                     if cls_mask.any():
-                        cls_correct[cls] = cls_correct.get(cls, 0) + predicted[cls_mask].eq(batch_y[cls_mask]).sum().item()
-                        cls_total[cls] = cls_total.get(cls, 0) + cls_mask.sum().item()
+                        class_correct[cls] = class_correct.get(cls, 0) + predicted[cls_mask].eq(batch_y[cls_mask]).sum().item()
+                        class_total[cls] = class_total.get(cls, 0) + cls_mask.sum().item()
 
         accuracy = correct / total
 
         per_class_acc = {
-            cls: cls_correct[cls] / cls_total[cls]
-            for cls in cls_total.keys()
+            cls: class_correct[cls] / class_total[cls]
+            for cls in class_total.keys()
         }
 
         return accuracy, per_class_acc

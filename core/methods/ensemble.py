@@ -38,8 +38,7 @@ class EnsembleSelector(CoresetSelector):
         # 子选择器
         self.csrel_selector = CSReLSelector(
             memory_budget=memory_budget,
-            device=device,
-            temperature=1.0
+            device=device
         )
 
         self.use_early_strategy = True
