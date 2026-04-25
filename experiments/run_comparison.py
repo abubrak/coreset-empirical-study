@@ -31,8 +31,16 @@ from data.datasets import ContinualDataset
 
 class SimpleCNN(nn.Module):
     """轻量 CNN，适用于 MNIST / CIFAR-10"""
-    def __init__(self, num_classes=10, input_channels=1):
+    def __init__(self, num_classes=10, input_channels=1, input_size=28):
+        """
+        Args:
+            num_classes: 分类类别数
+            input_channels: 输入通道数 (1=灰度, 3=RGB)
+            input_size: 输入图像尺寸 (MNIST=28, CIFAR=32)
+        """
         super().__init__()
+        self.input_size = input_size
+
         self.features = nn.Sequential(
             nn.Conv2d(input_channels, 32, 3, padding=1),
             nn.BatchNorm2d(32),
@@ -43,9 +51,15 @@ class SimpleCNN(nn.Module):
             nn.ReLU(inplace=True),
             nn.MaxPool2d(2),
         )
+
+        # 计算特征图尺寸: input_size -> Pool1 -> Pool2
+        # 每次MaxPool2d(2)使尺寸减半
+        feature_size = input_size // 4  # 两次MaxPool
+        self.feature_dim = 64 * feature_size * feature_size
+
         self.classifier = nn.Sequential(
             nn.Flatten(),
-            nn.Linear(64 * 8 * 8, 128),
+            nn.Linear(self.feature_dim, 128),
             nn.ReLU(inplace=True),
             nn.Dropout(0.3),
             nn.Linear(128, num_classes),
@@ -113,13 +127,13 @@ class ResNetLike(nn.Module):
 def create_model(dataset_name, num_classes):
     """根据数据集创建对应模型"""
     if dataset_name == 'mnist':
-        return SimpleCNN(num_classes=num_classes, input_channels=1)
+        return SimpleCNN(num_classes=num_classes, input_channels=1, input_size=28)
     elif dataset_name == 'cifar10':
-        return SimpleCNN(num_classes=num_classes, input_channels=3)
+        return SimpleCNN(num_classes=num_classes, input_channels=3, input_size=32)
     elif dataset_name == 'cifar100':
         return ResNetLike(num_classes=num_classes, input_channels=3)
     else:
-        return SimpleCNN(num_classes=num_classes, input_channels=3)
+        return SimpleCNN(num_classes=num_classes, input_channels=3, input_size=32)
 
 
 # ==================== 实验运行器 ====================
