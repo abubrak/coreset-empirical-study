@@ -43,6 +43,7 @@ class CSReLSelector(CoresetSelector):
         self.class_balanced = class_balanced
         self.reference_model = None
         self.ref_losses = None
+        self.ref_num_samples = None  # 记录 ref_losses 对应的样本数
         self.reloss_history = []
 
     def select_coreset(
@@ -63,7 +64,6 @@ class CSReLSelector(CoresetSelector):
            a. 在当前核心集上训练模型
            b. 计算可约损失 = 当前损失 - 参考损失
            c. 选择 ReL 最高的样本加入核心集
-        5. 与历史核心集合并
         """
         model.eval()
 
@@ -78,8 +78,14 @@ class CSReLSelector(CoresetSelector):
             self.selection_weights = weights
             return selected_indices, weights
 
-        # 第二步: 训练参考模型(首次或模型变化时)
-        if self.reference_model is None or not self._is_same_architecture(model, self.reference_model):
+        # 第二步: 训练参考模型(首次或模型/任务大小变化时)
+        need_new_ref = (
+            self.reference_model is None or
+            not self._is_same_architecture(model, self.reference_model) or
+            self.ref_num_samples != num_samples  # 关键修复：任务大小变化时重新训练
+        )
+
+        if need_new_ref:
             self.reference_model = self._train_reference_model(
                 all_data, all_targets, model
             )
@@ -87,6 +93,7 @@ class CSReLSelector(CoresetSelector):
             self.ref_losses = self._compute_losses(
                 self.reference_model, all_data, all_targets
             )
+            self.ref_num_samples = num_samples  # 记录样本数
 
         # 第三步: 初始化核心集(随机选择少量样本)
         init_size = max(1, int(self.memory_budget * self.init_ratio))
@@ -110,7 +117,7 @@ class CSReLSelector(CoresetSelector):
                 current_model, all_data, all_targets
             )
 
-            # 计算可约损失
+            # 计算可约损失（现在大小匹配）
             rel_losses = cur_losses - self.ref_losses
 
             # 从未选样本中选择 ReL 最高的
@@ -141,14 +148,10 @@ class CSReLSelector(CoresetSelector):
         weights = rel_final[selected_indices]
 
         # 归一化权重
-        weights = weights / weights.sum()
-
-        # 第五步: 与历史核心集合并
-        if previous_coresets is not None and len(previous_coresets) > 0:
-            selected_indices, weights = self._merge_with_previous(
-                selected_indices, weights, previous_coresets,
-                all_data, all_targets
-            )
+        if weights.sum() > 0:
+            weights = weights / weights.sum()
+        else:
+            weights = torch.ones(len(selected_indices), device=self.device)
 
         self.selected_indices = selected_indices
         self.selection_weights = weights
@@ -162,11 +165,16 @@ class CSReLSelector(CoresetSelector):
         all_targets = []
         all_indices = []
 
+        position = 0  # 局部位置计数器
+
         for batch in dataset:
-            x, y, idx = _parse_batch(batch)
+            x, y, _ = _parse_batch(batch)  # 不使用 _parse_batch 的索引
+            batch_size = x.size(0)
             all_data.append(x)
             all_targets.append(y)
-            all_indices.extend(idx.tolist())
+            # 使用局部位置索引
+            all_indices.extend(range(position, position + batch_size))
+            position += batch_size
 
         all_data = torch.cat(all_data, dim=0).to(self.device)
         all_targets = torch.cat(all_targets, dim=0).to(self.device)

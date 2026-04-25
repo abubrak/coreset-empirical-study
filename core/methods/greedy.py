@@ -48,7 +48,6 @@ class GreedySelector(CoresetSelector):
         1. 提取所有样本的特征表示
         2. 选择距离中心最近的样本作为种子
         3. 迭代选择距离已选集合最远的样本
-        4. 与历史核心集合并
 
         Returns:
             (indices, weights): 选择的索引和权重
@@ -68,27 +67,6 @@ class GreedySelector(CoresetSelector):
             selected_indices = [indices_map[i] for i in selected_positions]
             weights = torch.ones(len(selected_indices), device=self.device)
 
-        # 第三步：与历史核心集合并
-        if previous_coresets is not None and len(previous_coresets) > 0:
-            all_previous = []
-            for prev in previous_coresets:
-                all_previous.extend(prev)
-
-            # 历史样本占一半预算
-            budget_hist = self.memory_budget // 2
-            budget_new = self.memory_budget - budget_hist
-
-            if len(all_previous) > budget_hist:
-                # 从历史中随机采样（贪心方法的简化处理）
-                import random
-                hist_selected = random.sample(all_previous, budget_hist)
-            else:
-                hist_selected = all_previous
-
-            new_selected = selected_indices[:budget_new]
-            selected_indices = hist_selected + new_selected
-            weights = torch.ones(len(selected_indices), device=self.device)
-
         self.selected_indices = selected_indices
         self.selection_weights = weights
 
@@ -99,20 +77,25 @@ class GreedySelector(CoresetSelector):
         features_list = []
         indices_map = []
 
+        position = 0  # 局部位置计数器
+
         with torch.no_grad():
             for batch in dataset:
-                batch_x, _, idx = _parse_batch(batch)
+                batch_x, _, _ = _parse_batch(batch)  # 不使用 _parse_batch 的索引
                 batch_x = batch_x.to(self.device)
+                batch_size = batch_x.size(0)
 
                 if self.use_features:
                     # 使用模型中间层特征
                     feat = self._get_intermediate_features(model, batch_x)
                 else:
                     # 使用原始像素展平
-                    feat = batch_x.view(batch_x.size(0), -1)
+                    feat = batch_x.view(batch_size, -1)
 
                 features_list.append(feat)
-                indices_map.extend(idx.tolist())
+                # 使用局部位置索引（0, 1, 2, ..., task_size-1）
+                indices_map.extend(range(position, position + batch_size))
+                position += batch_size
 
         features = torch.cat(features_list, dim=0)
 

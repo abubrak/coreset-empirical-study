@@ -69,11 +69,11 @@ class BCSRSelector(CoresetSelector):
 
     def _implicit_gradient(self, model, train_data, train_targets, val_data, val_targets, weights):
         """
-        计算双层优化的隐式梯度
+        计算双层优化的隐式梯度（批处理版本，减少内存使用）
 
         使用隐函数定理: ∂L_val/∂w = ∂L_val/∂θ · (∂²L_train/∂θ²)^(-1) · ∂²L_train/∂θ∂w
 
-        通过一阶近似避免计算完整的Hessian矩阵
+        关键修复：使用批处理降低内存消耗
 
         Args:
             model: 当前模型
@@ -86,36 +86,65 @@ class BCSRSelector(CoresetSelector):
         Returns:
             jacobian: 隐式梯度向量 (∂L_val/∂w)
         """
+        # 关键修复：使用较小的批处理来减少内存
+        batch_size = 256  # 减小批大小以降低内存使用
+        n_train = train_data.shape[0]
+
         # 1. 外层损失对模型参数的梯度
         val_pred = model(val_data)
         val_loss = F.cross_entropy(val_pred, val_targets)
         d_theta = torch.autograd.grad(val_loss, model.parameters(), retain_graph=True, create_graph=True)
         d_theta_flat = torch.cat([g.flatten() for g in d_theta if g is not None])
 
-        # 2. 内层损失对模型参数的梯度(需要二阶导数)
-        train_pred = model(train_data)
-        sample_losses = F.cross_entropy(train_pred, train_targets, reduction='none')
-        weighted_loss = (sample_losses * weights).sum()
+        # 2. 内层损失对模型参数的梯度(使用批处理)
+        # 关键修复：分批计算梯度，避免一次性处理所有数据
+        grads_theta_list = []
+        weighted_loss_sum = 0.0
 
-        grads_theta = torch.autograd.grad(
-            weighted_loss, model.parameters(), create_graph=True
-        )
+        for i in range(0, n_train, batch_size):
+            end_i = min(i + batch_size, n_train)
+            batch_data = train_data[i:end_i]
+            batch_targets = train_targets[i:end_i]
+            batch_weights = weights[i:end_i]
+
+            train_pred = model(batch_data)
+            sample_losses = F.cross_entropy(train_pred, batch_targets, reduction='none')
+            weighted_loss = (sample_losses * batch_weights).sum()
+
+            # 保留梯度图用于二阶导数
+            batch_grads = torch.autograd.grad(
+                weighted_loss, model.parameters(), retain_graph=True, create_graph=True
+            )
+
+            # 累积梯度（按批大小加权）
+            batch_weight = batch_size / n_train
+            if i == 0:
+                grads_theta_list = [g * batch_weight for g in batch_grads]
+                weighted_loss_sum = weighted_loss * batch_weight
+            else:
+                grads_theta_list = [
+                    (g + bg * batch_weight) if g is not None else bg * batch_weight
+                    for g, bg in zip(grads_theta_list, batch_grads)
+                ]
+                weighted_loss_sum = weighted_loss_sum + weighted_loss * batch_weight
+
+            # 清理中间变量
+            del train_pred, sample_losses, weighted_loss, batch_grads
 
         # 3. 近似 Hessian-vector 乘积
-        # 使用 θ - lr·∇θ 近似 SGD 一步后的参数
         G_theta = []
-        for p, g in zip(model.parameters(), grads_theta):
+        for p, g in zip(model.parameters(), grads_theta_list):
             if g is not None:
                 G_theta.append(p - self.inner_lr * g)
             else:
                 G_theta.append(p)
 
-        # 4. 多次迭代近似 H^(-1) * v
+        # 4. 多次迭代近似 H^(-1) * v（减少迭代次数）
         v_Q = [g.detach() for g in d_theta]
-        for _ in range(3):
+        for _ in range(2):  # 减少到2次迭代以节省内存
             # 计算 H * v_Q
             grads_v = torch.autograd.grad(
-                grads_theta, model.parameters(),
+                grads_theta_list, model.parameters(),
                 grad_outputs=v_Q, retain_graph=True
             )
 
@@ -129,13 +158,18 @@ class BCSRSelector(CoresetSelector):
 
             v_Q = v_new
 
+            # 清理
+            del grads_v
+
         # 5. 计算 Jacobian (权重梯度)
-        # ∂²L_train/∂θ∂w · v
         jacobian_grads = torch.autograd.grad(
-            grads_theta, weights, grad_outputs=v_Q, retain_graph=True
+            grads_theta_list, weights, grad_outputs=v_Q, retain_graph=True
         )
 
         jacobian = -jacobian_grads[0]  # 负号很重要!
+
+        # 清理
+        del grads_theta_list, d_theta, v_Q
 
         return jacobian
 
@@ -236,7 +270,7 @@ class BCSRSelector(CoresetSelector):
             dataset: 数据加载器
             model: 模型
             task_id: 任务ID
-            previous_coresets: 历史核心集
+            previous_coresets: 历史核心集（不用于选择，由上层处理合并）
 
         Returns:
             (indices, weights): 选择的索引和权重
@@ -319,16 +353,15 @@ class BCSRSelector(CoresetSelector):
         k = min(self.memory_budget, n_train)
         _, top_k_pos = torch.topk(final_weights, k)
 
-        # 映射回原始索引
-        selected_indices = [all_indices[train_idx[i].item()] for i in top_k_pos.tolist()]
+        # 映射回原始索引（局部索引）
+        selected_indices = [train_idx[i].item() for i in top_k_pos.tolist()]
         selected_weights = final_weights[top_k_pos]
 
-        # 第五步：与历史核心集合并
-        if previous_coresets is not None and len(previous_coresets) > 0:
-            selected_indices, selected_weights = self._merge_with_previous(
-                selected_indices, selected_weights, previous_coresets,
-                all_data, all_targets, all_indices, model
-            )
+        # 归一化权重
+        if selected_weights.sum() > 0:
+            selected_weights = selected_weights / selected_weights.sum()
+        else:
+            selected_weights = torch.ones(len(selected_indices), device=self.device)
 
         self.selected_indices = selected_indices
         self.selection_weights = selected_weights
@@ -403,11 +436,16 @@ class BCSRSelector(CoresetSelector):
         all_targets = []
         all_indices = []
 
+        position = 0  # 局部位置计数器
+
         for batch in dataset:
-            x, y, idx = _parse_batch(batch)
+            x, y, _ = _parse_batch(batch)  # 不使用 _parse_batch 的索引
+            batch_size = x.size(0)
             all_data.append(x)
             all_targets.append(y)
-            all_indices.extend(idx.tolist())
+            # 使用局部位置索引
+            all_indices.extend(range(position, position + batch_size))
+            position += batch_size
 
         all_data = torch.cat(all_data, dim=0).to(self.device)
         all_targets = torch.cat(all_targets, dim=0).to(self.device)

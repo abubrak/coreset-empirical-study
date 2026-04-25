@@ -92,7 +92,8 @@ class ContinualDataset:
         num_classes = len(self.full_dataset.classes)
         classes_per_task = num_classes // num_tasks
 
-        targets = torch.tensor(self.full_dataset.targets)
+        # 关键修复：使用 .clone() 避免 UserWarning
+        targets = torch.tensor(self.full_dataset.targets).clone()
         indices_by_class = {}
 
         # 按类别分组索引

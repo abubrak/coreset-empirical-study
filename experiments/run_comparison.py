@@ -453,6 +453,8 @@ class ExperimentRunner:
         """
         创建合并的训练数据加载器 (历史核心集 + 当前任务数据)
 
+        关键修复：将局部索引映射到全局索引，避免索引越界错误。
+
         Args:
             continual_dataset: 持续学习数据集
             previous_coresets: 历史核心集列表 [(indices, weights), ...]
@@ -470,11 +472,25 @@ class ExperimentRunner:
         for prev_task_id, (indices, weights) in enumerate(previous_coresets[:-1]):
             # 获取历史任务的数据加载器
             prev_loader = continual_dataset.get_task_loaders(prev_task_id)
+            prev_subset = prev_loader.dataset  # Subset(full_dataset, task_indices)
 
-            # 从历史任务数据集中提取核心集样本
-            dataset = prev_loader.dataset
-            coreset_dataset = torch.utils.data.Subset(dataset, indices)
-            combined_datasets.append(coreset_dataset)
+            # 关键修复：将局部索引映射到全局索引
+            # indices 是相对于 prev_subset 的，需要映射到 full_dataset 的全局索引
+            task_indices = prev_subset.indices  # 任务的全局索引列表
+
+            # 过滤有效索引并映射
+            global_indices = []
+            for idx in indices:
+                idx_int = int(idx)  # 处理 float 和 tensor
+                if 0 <= idx_int < len(task_indices):
+                    global_indices.append(task_indices[idx_int])
+
+            if global_indices:
+                # 使用全局索引创建 full_dataset 的 Subset
+                coreset_dataset = torch.utils.data.Subset(
+                    continual_dataset.full_dataset, global_indices
+                )
+                combined_datasets.append(coreset_dataset)
 
         # 添加当前任务的完整数据
         current_loader = continual_dataset.get_task_loaders(current_task_id)
