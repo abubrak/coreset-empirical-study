@@ -31,7 +31,8 @@ echo "实验开始: $START_TIME" >> "$BASE_DIR/experiment_log.txt"
 
 # 定义数据集列表
 DATASETS=("mnist" "cifar10" "cifar100")
-METHODS="random,greedy,csrel,bcsr"
+# 关键修复：使用数组而不是逗号分隔的字符串
+METHODS=("random" "greedy" "csrel" "bcsr")
 
 # 循环运行每个数据集
 for DATASET in "${DATASETS[@]}"; do
@@ -48,10 +49,10 @@ for DATASET in "${DATASETS[@]}"; do
     DATASET_START=$(date +%s)
     echo "[$DATASET] 实验开始: $(date)" | tee -a "$BASE_DIR/experiment_log.txt"
 
-    # 运行实验
+    # 运行实验 - 关键修复：正确传递多个方法参数
     if python experiments/run_comparison.py \
         --dataset $DATASET \
-        --method $METHODS \
+        --method "${METHODS[@]}" \
         --quick \
         --output "$DATASET_DIR" 2>&1 | tee -a "$BASE_DIR/experiment_log.txt"; then
         # 成功

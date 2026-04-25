@@ -90,8 +90,14 @@ runner.config['comparison'] = {
     'memory_ratios': [0.1],
     'num_runs': 1
 }
-runner.config['training']['num_epochs'] = 10
-runner.config['training']['batch_size'] = 64
+# 关键修复：先设置 training 字典
+runner.config['training'] = {
+    'num_epochs': 10,
+    'batch_size': 64,
+    'learning_rate': 0.01,
+    'momentum': 0.9,
+    'weight_decay': 0.0001
+}
 
 print("开始实验... (预计 5-10 分钟)")
 start_time = time.time()

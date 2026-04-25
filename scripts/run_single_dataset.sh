@@ -6,12 +6,13 @@ set -e
 
 # 默认参数
 DATASET=${1:-mnist}
-METHODS=${2:-"random,greedy,csrel,bcsr"}
+# 关键修复：使用数组而不是逗号分隔的字符串
+METHODS=("random" "greedy" "csrel" "bcsr")
 
 echo "========================================="
 echo "📊 单数据集实验"
 echo "数据集: $DATASET"
-echo "方法: $METHODS"
+echo "方法: ${METHODS[@]}"
 echo "========================================="
 echo ""
 
@@ -31,11 +32,11 @@ echo "  • 运行次数: 1"
 echo "  • Memory ratio: 0.1"
 echo ""
 
-# 运行实验
+# 运行实验 - 关键修复：正确传递多个方法参数
 echo "🚀 开始实验..."
 python experiments/run_comparison.py \
     --dataset $DATASET \
-    --method $METHODS \
+    --method "${METHODS[@]}" \
     --quick \
     --output "$OUTPUT_DIR"
 

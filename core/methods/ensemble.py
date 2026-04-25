@@ -94,87 +94,50 @@ class EnsembleSelector(CoresetSelector):
         后期精细选择策略
 
         结合可约损失和历史重要性进行选择
+
+        关键修复：不合并历史核心集，只选择当前任务样本
         """
         # 计算可约损失
-        rel_losses = self.csrel_selector._compute_reducible_losses(dataset, model)
+        rel_losses = self._compute_reducible_losses(dataset, model)
 
-        # 如果有历史核心集，考虑历史重要性
-        if previous_coresets and len(previous_coresets) > 0:
-            all_previous = []
-            for prev in previous_coresets:
-                all_previous.extend(prev)
-
-            # 计算历史样本重要性
-            hist_importance = self._compute_historical_importance(
-                dataset, model, all_previous
-            )
-
-            # 合并新旧样本
-            new_budget = self.memory_budget // 2
-            hist_budget = self.memory_budget - new_budget
-
-            # 从历史中选择最重要的
-            if len(all_previous) > hist_budget:
-                hist_selected = self._top_k_indices(hist_importance, hist_budget)
-            else:
-                hist_selected = all_previous
-
-            # 从新样本中选择 ReL 最高的
-            if len(rel_losses) > new_budget:
-                new_selected = self._top_k_indices(rel_losses, new_budget)
-            else:
-                new_selected = list(range(len(rel_losses)))
-
-            selected_indices = hist_selected + new_selected
-            weights = self._compute_combined_weights(
-                len(selected_indices), hist_budget
-            )
+        # 直接从当前任务选择 ReL 最高的样本
+        if len(rel_losses) <= self.memory_budget:
+            selected_indices = list(range(len(rel_losses)))
         else:
-            # 没有历史，直接选择 ReL 最高的
-            if len(rel_losses) <= self.memory_budget:
-                selected_indices = list(range(len(rel_losses)))
-            else:
-                selected_indices = self._top_k_indices(rel_losses, self.memory_budget)
+            selected_indices = self._top_k_indices(rel_losses, self.memory_budget)
 
-            weights = torch.ones(len(selected_indices), device=self.device)
+        weights = torch.ones(len(selected_indices), device=self.device)
 
         return selected_indices, weights
 
-    def _compute_historical_importance(self, dataset, model, indices):
-        """计算历史样本的重要性"""
-        importance = torch.zeros(len(indices), device=self.device)
+    def _compute_reducible_losses(self, dataset, model):
+        """
+        计算可约损失（简化版本）
 
+        使用模型的不确定性作为样本重要性
+        高损失 = 高不确定性 = 更需要学习的样本
+        """
+        from ..coreset_base import _parse_batch
+
+        losses_list = []
+
+        model.eval()
         with torch.no_grad():
-            for i, idx in enumerate(indices):
-                x, y = dataset.dataset[idx]
-                x = x.unsqueeze(0).to(self.device)
-                y = torch.tensor([y]).to(self.device)
+            for batch in dataset:
+                batch_x, batch_y, _ = _parse_batch(batch)
+                batch_x = batch_x.to(self.device)
+                batch_y = batch_y.to(self.device)
 
-                logits = model(x)
-                probs = torch.softmax(logits, dim=1)
+                logits = model(batch_x)
+                loss = torch.nn.functional.cross_entropy(
+                    logits, batch_y, reduction='none'
+                )
+                losses_list.append(loss)
 
-                # 重要性 = 置信度 * (1 - 预测概率)
-                confidence, pred_idx = probs.max(1)
-                importance[i] = confidence * (1 - probs[0, y])
-
-        return importance
+        return torch.cat(losses_list)
 
     def _top_k_indices(self, scores, k):
         """选择得分最高的 k 个索引"""
+        k = min(k, len(scores))
         return torch.topk(scores, k).indices.tolist()
 
-    def _compute_combined_weights(self, total_size, hist_size):
-        """计算组合权重"""
-        weights = torch.ones(total_size, device=self.device)
-        # 历史样本权重略高
-        if hist_size > 0:
-            weights[:hist_size] = 1.2
-            weights[hist_size:] = 0.8
-            # 归一化
-            weights = weights / weights.sum()
-        return weights
-
-
-def _top_k_indices(scores, k):
-    """辅助函数：选择top-k索引"""
-    return torch.topk(scores, k).indices.tolist()
