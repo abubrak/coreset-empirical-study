@@ -217,6 +217,10 @@ class ExperimentRunner:
         print(f"数据集: {train_set_size} 样本, {num_classes} 类")
         print(f"核心集预算: {memory_budget} ({memory_ratio*100:.1f}%)\n")
 
+        # 重置批次索引计数器
+        from core.coreset_base import reset_batch_index_counter
+        reset_batch_index_counter()
+
         # 创建模型
         model = create_model(dataset_name, num_classes).to(self.device)
 

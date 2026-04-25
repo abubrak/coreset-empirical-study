@@ -8,6 +8,9 @@ import torch
 import torch.nn as nn
 from torch.utils.data import DataLoader, Subset
 
+# 全局批次索引计数器，用于生成跨批次的唯一索引
+_batch_index_counter = 0
+
 
 def _parse_batch(batch):
     """
@@ -19,15 +22,26 @@ def _parse_batch(batch):
     Returns:
         (x, y, indices): 数据、标签和索引
     """
+    global _batch_index_counter
+
     if len(batch) == 3:
         x, y, indices = batch
     elif len(batch) == 2:
         x, y = batch
-        indices = torch.arange(x.size(0))
+        # 生成全局唯一索引
+        batch_size = x.size(0)
+        indices = torch.arange(_batch_index_counter, _batch_index_counter + batch_size)
+        _batch_index_counter += batch_size
     else:
         raise ValueError(f"Unexpected batch format: {len(batch)} elements")
 
     return x, y, indices
+
+
+def reset_batch_index_counter():
+    """重置全局批次索引计数器"""
+    global _batch_index_counter
+    _batch_index_counter = 0
 
 
 class CoresetSelector(ABC):
