@@ -16,39 +16,66 @@
 
 ## 快速开始
 
-### 安装依赖
+### 1. 安装依赖
 
 ```bash
 pip install -r requirements.txt
 ```
 
-### 快速验证
+### 2. 快速验证（5-10 分钟）
+
+验证所有 bug 已修复：
 
 ```bash
+# 方法 1: 使用便捷脚本（推荐）
+python scripts/run_experiments.py --quick
+
+# 方法 2: 直接运行
 python run_quick.py
+
+# 方法 3: Shell 脚本（Linux/Mac）
+bash scripts/quick_test.sh
 ```
 
-### 运行对比实验
+### 3. 运行实验
+
+#### 单数据集实验（20-30 分钟）
 
 ```bash
-# 完整实验（所有数据集 x 所有方法）
-python experiments/run_comparison.py --config configs/experiments.yaml
-
-# 快速模式（减少 epochs 和运行次数）
-python experiments/run_comparison.py --config configs/experiments.yaml --quick
-
-# 指定数据集和方法
-python experiments/run_comparison.py --dataset mnist cifar10 --method random bcsr csrel
-
-# 一键运行（Linux/Mac）
-bash run_quick.sh
+python scripts/run_experiments.py --dataset mnist
 ```
 
-### 分析结果
+#### 完整论文实验（2-4 小时）
 
 ```bash
-python experiments/analysis.py results/comparison_XXXXXX.json
+python scripts/run_experiments.py --full
 ```
+
+#### Colab 运行（推荐，免费 GPU）
+
+```python
+# 在 Colab 单元格中
+!python scripts/colab_helper.py --all
+```
+
+### 4. 分析结果
+
+```bash
+# 查看结果汇总
+python scripts/analyze_results.py --input results/
+
+# 生成论文表格
+python scripts/analyze_results.py --input results/ --latex results/table.tex
+
+# 导出 CSV
+python scripts/analyze_results.py --input results/ --csv results/results.csv
+```
+
+### 📖 详细指南
+
+查看完整的实验运行指南：
+- 📘 **[EXPERIMENT_GUIDE.md](EXPERIMENT_GUIDE.md)** - 详细实验流程
+- 🔧 **[scripts/README.md](scripts/README.md)** - 脚本使用说明
 
 ## 项目结构
 
