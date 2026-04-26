@@ -69,113 +69,143 @@ class BCSRSelector(CoresetSelector):
 
     def _implicit_gradient(self, model, train_data, train_targets, val_data, val_targets, weights):
         """
-        计算双层优化的隐式梯度（批处理版本，减少内存使用）
+        计算双层优化的隐式梯度（有限差分近似，内存友好）
 
-        使用隐函数定理: ∂L_val/∂w = ∂L_val/∂θ · (∂²L_train/∂θ²)^(-1) · ∂²L_train/∂θ∂w
+        完全避免 create_graph=True，通过有限差分近似:
+        - Hessian-vector 乘积 (Pearlmutter, 1994)
+        - Jacobian-vector 乘积
 
-        关键修复：使用批处理降低内存消耗
-
-        Args:
-            model: 当前模型
-            train_data: 训练数据
-            train_targets: 训练标签
-            val_data: 验证数据
-            val_targets: 验证标签
-            weights: 当前权重
-
-        Returns:
-            jacobian: 隐式梯度向量 (∂L_val/∂w)
+        内存峰值仅为单批次大小，适合 T4 等低显存 GPU
         """
-        # 关键修复：使用较小的批处理来减少内存
-        batch_size = 64  # 减小批大小以降低内存使用
+        batch_size = 256  # 无需 create_graph，可用更大 batch
         n_train = train_data.shape[0]
+        eps = 1e-3  # 有限差分步长
+        detached_weights = weights.detach()
 
-        # 1. 外层损失对模型参数的梯度（分批计算，避免 OOM）
+        model.eval()
+
+        # 1. 计算 ∂L_val/∂θ（标准梯度，无需 create_graph）
         val_loss_parts = []
         for vi in range(0, val_data.shape[0], batch_size):
             end_vi = min(vi + batch_size, val_data.shape[0])
             val_pred = model(val_data[vi:end_vi])
             val_loss_parts.append(F.cross_entropy(val_pred, val_targets[vi:end_vi], reduction='sum'))
+            del val_pred
         val_loss = sum(val_loss_parts) / val_data.shape[0]
-        d_theta = torch.autograd.grad(val_loss, model.parameters(), retain_graph=True, create_graph=True)
-        d_theta_flat = torch.cat([g.flatten() for g in d_theta if g is not None])
+        del val_loss_parts
+        torch.cuda.empty_cache()
 
-        # 2. 内层损失对模型参数的梯度(使用批处理)
-        # 关键修复：分批计算梯度，避免一次性处理所有数据
-        grads_theta_list = []
-        weighted_loss_sum = 0.0
+        d_theta = torch.autograd.grad(val_loss, model.parameters())
+        d_theta = [g.detach() for g in d_theta]
+        del val_loss
+        torch.cuda.empty_cache()
 
-        for i in range(0, n_train, batch_size):
-            end_i = min(i + batch_size, n_train)
-            batch_data = train_data[i:end_i]
-            batch_targets = train_targets[i:end_i]
-            batch_weights = weights[i:end_i]
-
-            train_pred = model(batch_data)
-            sample_losses = F.cross_entropy(train_pred, batch_targets, reduction='none')
-            weighted_loss = (sample_losses * batch_weights).sum()
-
-            # 保留梯度图用于二阶导数
-            batch_grads = torch.autograd.grad(
-                weighted_loss, model.parameters(), retain_graph=True, create_graph=True
+        # 2. Neumann 迭代近似 v = H^(-1) * d_theta
+        # 使用有限差分近似 H*v
+        v = list(d_theta)
+        for _ in range(2):
+            hvp = self._finite_diff_hvp(
+                model, train_data, train_targets,
+                detached_weights, v, batch_size, eps
             )
+            v = [(vi - hi).detach() for vi, hi in zip(v, hvp)]
+            del hvp
+            torch.cuda.empty_cache()
 
-            # 累积梯度（按批大小加权）
-            batch_weight = batch_size / n_train
-            if i == 0:
-                grads_theta_list = [g * batch_weight for g in batch_grads]
-                weighted_loss_sum = weighted_loss * batch_weight
-            else:
-                grads_theta_list = [
-                    (g + bg * batch_weight) if g is not None else bg * batch_weight
-                    for g, bg in zip(grads_theta_list, batch_grads)
-                ]
-                weighted_loss_sum = weighted_loss_sum + weighted_loss * batch_weight
+        # 3. 计算每个样本的梯度与 v 的内积: g_i · v
+        # 使用有限差分: g_i · v ≈ (L_i(θ+εv) - L_i(θ-εv)) / (2ε)
+        # θ -> θ + εv
+        with torch.no_grad():
+            for p, vi in zip(model.parameters(), v):
+                p.data.add_(vi * eps)
 
-            # 清理中间变量
-            del train_pred, sample_losses, weighted_loss, batch_grads
-
-        # 3. 近似 Hessian-vector 乘积
-        G_theta = []
-        for p, g in zip(model.parameters(), grads_theta_list):
-            if g is not None:
-                G_theta.append(p - self.inner_lr * g)
-            else:
-                G_theta.append(p)
-
-        # 4. 多次迭代近似 H^(-1) * v（减少迭代次数）
-        v_Q = [g.detach() for g in d_theta]
-        for _ in range(2):  # 减少到2次迭代以节省内存
-            # 计算 H * v_Q
-            grads_v = torch.autograd.grad(
-                grads_theta_list, model.parameters(),
-                grad_outputs=v_Q, retain_graph=True
-            )
-
-            # v_new = v_Q - H * v_Q
-            v_new = []
-            for i, (v, grad_v) in enumerate(zip(v_Q, grads_v)):
-                if grad_v is not None:
-                    v_new.append(v.detach() - grad_v.detach())
-                else:
-                    v_new.append(v.detach())
-
-            v_Q = v_new
-
-            # 清理
-            del grads_v
-
-        # 5. 计算 Jacobian (权重梯度)
-        jacobian_grads = torch.autograd.grad(
-            grads_theta_list, weights, grad_outputs=v_Q, retain_graph=True
+        losses_plus = self._compute_per_sample_losses(
+            model, train_data, train_targets, batch_size
         )
 
-        jacobian = -jacobian_grads[0]  # 负号很重要!
+        # θ + εv -> θ - εv
+        with torch.no_grad():
+            for p, vi in zip(model.parameters(), v):
+                p.data.add_(-2 * vi * eps)
 
-        # 清理
-        del grads_theta_list, d_theta, v_Q
+        losses_minus = self._compute_per_sample_losses(
+            model, train_data, train_targets, batch_size
+        )
+
+        # θ - εv -> θ（恢复原始参数）
+        with torch.no_grad():
+            for p, vi in zip(model.parameters(), v):
+                p.data.add_(vi * eps)
+
+        # g_i · v ≈ (L_i+ - L_i-) / (2ε)
+        grad_dot_v = (losses_plus - losses_minus) / (2 * eps)
+
+        # ∂L_val/∂w_i = -g_i · v （负号来自隐函数定理）
+        jacobian = -grad_dot_v
+
+        del losses_plus, losses_minus, grad_dot_v, v, d_theta
+        torch.cuda.empty_cache()
 
         return jacobian
+
+    def _compute_weighted_grad(self, model, data, targets, weights, batch_size):
+        """计算加权训练损失的梯度（无 create_graph）"""
+        n = data.shape[0]
+        loss_parts = []
+        for i in range(0, n, batch_size):
+            end_i = min(i + batch_size, n)
+            logits = model(data[i:end_i])
+            losses = F.cross_entropy(logits, targets[i:end_i], reduction='none')
+            loss_parts.append((losses * weights[i:end_i]).sum())
+            del logits, losses
+
+        total_loss = sum(loss_parts) / n
+        del loss_parts
+
+        grads = torch.autograd.grad(total_loss, model.parameters())
+        return [g.detach() for g in grads]
+
+    def _finite_diff_hvp(self, model, data, targets, weights, vector, batch_size, eps):
+        """
+        有限差分近似 Hessian-vector 乘积
+        H*v ≈ (∇L(θ+εv) - ∇L(θ-εv)) / (2ε)
+        """
+        # θ + εv
+        with torch.no_grad():
+            for p, vi in zip(model.parameters(), vector):
+                p.data.add_(vi * eps)
+
+        grad_plus = self._compute_weighted_grad(model, data, targets, weights, batch_size)
+
+        # θ + εv -> θ - εv
+        with torch.no_grad():
+            for p, vi in zip(model.parameters(), vector):
+                p.data.add_(-2 * vi * eps)
+
+        grad_minus = self._compute_weighted_grad(model, data, targets, weights, batch_size)
+
+        # θ - εv -> θ
+        with torch.no_grad():
+            for p, vi in zip(model.parameters(), vector):
+                p.data.add_(vi * eps)
+
+        # H*v ≈ (grad_plus - grad_minus) / (2ε)
+        hvp = [(gp - gm) / (2 * eps) for gp, gm in zip(grad_plus, grad_minus)]
+
+        del grad_plus, grad_minus
+        return hvp
+
+    def _compute_per_sample_losses(self, model, data, targets, batch_size):
+        """计算每个样本的损失（无梯度）"""
+        losses = []
+        with torch.no_grad():
+            for i in range(0, data.shape[0], batch_size):
+                end_i = min(i + batch_size, data.shape[0])
+                logits = model(data[i:end_i])
+                batch_losses = F.cross_entropy(logits, targets[i:end_i], reduction='none')
+                losses.append(batch_losses)
+
+        return torch.cat(losses)
 
     def _topk_regularization(self, weights, beta=None, topk=None):
         """
@@ -334,9 +364,9 @@ class BCSRSelector(CoresetSelector):
                 inner_opt.step()
 
             # --- 外层优化：使用隐式梯度更新权重 ---
-            # 子采样以减少隐式梯度的显存消耗（create_graph=True 非常耗内存）
-            max_grad_samples = 5000
-            max_val_samples = 2000
+            # 有限差分方案无 create_graph，可使用更大的子采样规模
+            max_grad_samples = 10000
+            max_val_samples = 5000
 
             if n_train > max_grad_samples:
                 grad_idx = torch.randperm(n_train)[:max_grad_samples]
