@@ -90,9 +90,13 @@ class BCSRSelector(CoresetSelector):
         batch_size = 256  # 减小批大小以降低内存使用
         n_train = train_data.shape[0]
 
-        # 1. 外层损失对模型参数的梯度
-        val_pred = model(val_data)
-        val_loss = F.cross_entropy(val_pred, val_targets)
+        # 1. 外层损失对模型参数的梯度（分批计算，避免 OOM）
+        val_loss_parts = []
+        for vi in range(0, val_data.shape[0], batch_size):
+            end_vi = min(vi + batch_size, val_data.shape[0])
+            val_pred = model(val_data[vi:end_vi])
+            val_loss_parts.append(F.cross_entropy(val_pred, val_targets[vi:end_vi], reduction='sum'))
+        val_loss = sum(val_loss_parts) / val_data.shape[0]
         d_theta = torch.autograd.grad(val_loss, model.parameters(), retain_graph=True, create_graph=True)
         d_theta_flat = torch.cat([g.flatten() for g in d_theta if g is not None])
 
@@ -319,11 +323,14 @@ class BCSRSelector(CoresetSelector):
 
             for _ in range(self.inner_steps):
                 inner_opt.zero_grad()
-                logits = model_copy(train_data)
-                # 加权交叉熵
-                loss = F.cross_entropy(logits, train_targets, reduction='none')
-                weighted_loss = (loss * detached_weights).sum()
-                weighted_loss.backward()
+                # 分批前向+反向，避免 OOM
+                inner_batch_size = 256
+                for j in range(0, n_train, inner_batch_size):
+                    end_j = min(j + inner_batch_size, n_train)
+                    logits = model_copy(train_data[j:end_j])
+                    loss = F.cross_entropy(logits, train_targets[j:end_j], reduction='none')
+                    weighted_loss = (loss * detached_weights[j:end_j]).sum()
+                    weighted_loss.backward()
                 inner_opt.step()
 
             # --- 外层优化：使用隐式梯度更新权重 ---
