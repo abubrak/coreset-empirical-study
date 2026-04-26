@@ -269,6 +269,13 @@ class BCSRSelector(CoresetSelector):
         # 找到阈值
         ind = np.arange(n_features) + 1
         cond = u - cssv / ind > 0
+
+        # 边界情况：如果 cond 全为 False，返回均匀分布
+        if not np.any(cond):
+            w = np.ones(n_features) / n_features * b
+            w = torch.from_numpy(w).to(self.device)
+            return w
+
         rho = ind[cond][-1]
         theta = cssv[cond][-1] / float(rho)
 
