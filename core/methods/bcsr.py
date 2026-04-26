@@ -35,12 +35,12 @@ class BCSRSelector(CoresetSelector):
         device=None,
         inner_lr: float = 0.01,
         outer_lr: float = 0.1,
-        inner_steps: int = 5,
-        meta_steps: int = 3,
+        inner_steps: int = 10,    # 5 → 10，更强的内层优化
+        meta_steps: int = 5,      # 3 → 5，更多的外层迭代
         temperature: float = 1.0,
         use_val_set: bool = True,
         val_ratio: float = 0.2,
-        beta: float = 1.0  # Top-K正则化系数
+        beta: float = 0.2         # 1.0 → 0.2，降低正则化强度
     ):
         """
         Args:
@@ -48,12 +48,12 @@ class BCSRSelector(CoresetSelector):
             device: 计算设备
             inner_lr: 内层学习率（模型训练）
             outer_lr: 外层学习率（权重优化）
-            inner_steps: 内层优化步数
-            meta_steps: 元优化（外层）迭代步数
+            inner_steps: 内层优化步数（默认10，适合复杂任务）
+            meta_steps: 元优化（外层）迭代步数（默认5，适合复杂任务）
             temperature: Softmax 温度
             use_val_set: 是否使用验证集指导选择
             val_ratio: 验证集比例
-            beta: Top-K正则化系数
+            beta: Top-K正则化系数（默认0.2，降低以避免过度稀疏）
         """
         super().__init__(memory_budget, device)
         self.inner_lr = inner_lr
@@ -74,12 +74,14 @@ class BCSRSelector(CoresetSelector):
         完全避免 create_graph=True，通过有限差分近似:
         - Hessian-vector 乘积 (Pearlmutter, 1994)
         - Jacobian-vector 乘积
+        - 3次 Neumann 迭代提升精度
+        - eps=1e-4 提升数值稳定性
 
         内存峰值仅为单批次大小，适合 T4 等低显存 GPU
         """
         batch_size = 128  # ResNetLike 需较小 batch 控制显存
         n_train = train_data.shape[0]
-        eps = 1e-3  # 有限差分步长
+        eps = 1e-4  # 有限差分步长（提升精度）
         detached_weights = weights.detach()
 
         model.eval()
@@ -101,9 +103,9 @@ class BCSRSelector(CoresetSelector):
         torch.cuda.empty_cache()
 
         # 2. Neumann 迭代近似 v = H^(-1) * d_theta
-        # 使用有限差分近似 H*v
+        # 使用有限差分近似 H*v（3次迭代提升精度）
         v = list(d_theta)
-        for _ in range(2):
+        for _ in range(3):  # 2 → 3，更精确的 H^(-1) 近似
             hvp = self._finite_diff_hvp(
                 model, train_data, train_targets,
                 detached_weights, v, batch_size, eps
