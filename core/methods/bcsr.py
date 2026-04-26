@@ -87,7 +87,7 @@ class BCSRSelector(CoresetSelector):
             jacobian: 隐式梯度向量 (∂L_val/∂w)
         """
         # 关键修复：使用较小的批处理来减少内存
-        batch_size = 256  # 减小批大小以降低内存使用
+        batch_size = 64  # 减小批大小以降低内存使用
         n_train = train_data.shape[0]
 
         # 1. 外层损失对模型参数的梯度（分批计算，避免 OOM）
@@ -334,11 +334,47 @@ class BCSRSelector(CoresetSelector):
                 inner_opt.step()
 
             # --- 外层优化：使用隐式梯度更新权重 ---
-            # 计算隐式梯度
-            implicit_grad = self._implicit_gradient(
-                model_copy, train_data, train_targets,
-                val_data, val_targets, weights
+            # 子采样以减少隐式梯度的显存消耗（create_graph=True 非常耗内存）
+            max_grad_samples = 5000
+            max_val_samples = 2000
+
+            if n_train > max_grad_samples:
+                grad_idx = torch.randperm(n_train)[:max_grad_samples]
+                grad_train_data = train_data[grad_idx]
+                grad_train_targets = train_targets[grad_idx]
+                grad_weights = weights[grad_idx]
+            else:
+                grad_idx = None
+                grad_train_data = train_data
+                grad_train_targets = train_targets
+                grad_weights = weights
+
+            n_val = val_data.shape[0]
+            if n_val > max_val_samples:
+                val_sub_idx = torch.randperm(n_val)[:max_val_samples]
+                grad_val_data = val_data[val_sub_idx]
+                grad_val_targets = val_targets[val_sub_idx]
+            else:
+                grad_val_data = val_data
+                grad_val_targets = val_targets
+
+            # 释放内层优化的缓存
+            torch.cuda.empty_cache()
+
+            implicit_grad_sub = self._implicit_gradient(
+                model_copy, grad_train_data, grad_train_targets,
+                grad_val_data, grad_val_targets, grad_weights
             )
+
+            # 将子采样梯度映射回全量权重
+            if grad_idx is not None:
+                implicit_grad = torch.zeros(n_train, device=self.device)
+                implicit_grad[grad_idx] = implicit_grad_sub
+            else:
+                implicit_grad = implicit_grad_sub
+
+            del model_copy
+            torch.cuda.empty_cache()
 
             # 计算Top-K正则化梯度
             topk_reg = self._topk_regularization(weights)
