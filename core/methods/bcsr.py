@@ -77,7 +77,7 @@ class BCSRSelector(CoresetSelector):
 
         内存峰值仅为单批次大小，适合 T4 等低显存 GPU
         """
-        batch_size = 256  # 无需 create_graph，可用更大 batch
+        batch_size = 128  # ResNetLike 需较小 batch 控制显存
         n_train = train_data.shape[0]
         eps = 1e-3  # 有限差分步长
         detached_weights = weights.detach()
@@ -353,8 +353,8 @@ class BCSRSelector(CoresetSelector):
 
             for _ in range(self.inner_steps):
                 inner_opt.zero_grad()
-                # 分批前向+反向，避免 OOM
-                inner_batch_size = 256
+                # 分批前向+反向，ResNetLike 模型需较小 batch_size
+                inner_batch_size = 128
                 for j in range(0, n_train, inner_batch_size):
                     end_j = min(j + inner_batch_size, n_train)
                     logits = model_copy(train_data[j:end_j])
@@ -362,11 +362,12 @@ class BCSRSelector(CoresetSelector):
                     weighted_loss = (loss * detached_weights[j:end_j]).sum()
                     weighted_loss.backward()
                 inner_opt.step()
+                torch.cuda.empty_cache()  # 每步后释放缓存
 
             # --- 外层优化：使用隐式梯度更新权重 ---
-            # 有限差分方案无 create_graph，可使用更大的子采样规模
-            max_grad_samples = 10000
-            max_val_samples = 5000
+            # 有限差分方案无 create_graph，但 ResNetLike 模型仍需控制规模
+            max_grad_samples = 6000
+            max_val_samples = 3000
 
             if n_train > max_grad_samples:
                 grad_idx = torch.randperm(n_train)[:max_grad_samples]
